@@ -1,7 +1,51 @@
 
 class TravelCost:
-    pass
+    def __init__(self, startLoc, endLoc):
+        self.startLoc = startLoc
+        self.endLoc = endLoc
 
+    def cost(self):
+        self.getDistanceBetween(self.startLoc.getAddress(), self.endLoc.getAddress())
+
+    def getDistanceBetween(self, source_address, dest_address):
+        import os
+        temp_dir = "./data_tmp/"
+        if not os.path.exists(temp_dir):
+            os.makedirs(temp_dir)
+        filename = temp_dir + source_address.replace(" ", "_") + "-" + dest_address.replace(" ", "_") + ".obj"
+
+        import urllib.parse
+        import urllib.request
+        import os.path
+        if os.path.isfile(filename):
+            j = loadObj(filename)
+        else:
+            my_url = "/maps/api/directions/json?origin=%s&destination=%s&sensor=false&mode=driving" % (
+                    urllib.parse.quote_plus(source_address),
+                    urllib.parse.quote_plus(dest_address) )
+            url_addr = "http://maps.googleapis.com%s" % my_url
+
+            data = urllib.request.urlopen(url_addr)
+            print(f'data.status = {data.status}')
+            resData = data.read()
+            print(f'resData = {resData}')
+
+            #data = urllib.request.urlopen(url_addr)
+            print(type(data))
+            import json
+            j = json.loads(resData)
+            #j = json.loads(data.read())
+            if 'error_message' in j:
+                print(f"There is an error message embedded in the response:\n\t {j['error_message']}")
+            else:
+                dumpObj(j, filename)
+
+            dist = j['routes'][0]['legs'][0]['distance']['text'] 
+            dist_meters = j['routes'][0]['legs'][0]['distance']['value'] 
+            duration = j['routes'][0]['legs'][0]['duration']['text']
+            duration_seconds = j['routes'][0]['legs'][0]['duration']['value']
+
+        return [dist_meters, duration_seconds]
 
 def dumpObj(obj, filename):
     import pickle
@@ -20,54 +64,6 @@ def loadObj(filename):
         data = pickle.load(fin)
     return data
 
-def getDistanceBetween(source_address, dest_address):
-    import os
-    temp_dir = "./data_tmp/"
-    if not os.path.exists(temp_dir):
-        os.makedirs(temp_dir)
-    filename = temp_dir + source_address.replace(" ", "_") + "-" + dest_address.replace(" ", "_") + ".obj"
-
-    import urllib.parse
-    import urllib.request
-    import os.path
-    if os.path.isfile(filename):
-        j = loadObj(filename)
-    else:
-        my_url = "/maps/api/directions/json?origin=%s&destination=%s&sensor=false&mode=driving" % (
-                urllib.parse.quote_plus(source_address),
-                urllib.parse.quote_plus(dest_address) )
-        url_addr = "http://maps.googleapis.com%s" % my_url
-
-        data = urllib.request.urlopen(url_addr)
-        import json
-        j = json.loads(data.read())
-        dumpObj(j, filename)
-
-    dist = j['routes'][0]['legs'][0]['distance']['text'] 
-    dist_meters = j['routes'][0]['legs'][0]['distance']['value'] 
-    duration = j['routes'][0]['legs'][0]['duration']['text']
-    duration_seconds = j['routes'][0]['legs'][0]['duration']['value']
-
-    return [dist_meters, duration_seconds]
-
-class Location:
-    def __init__(self, name, address):
-        self.name = name
-        self.address = address 
-
-    def getName(self):
-        return self.name
-
-    def calculateDistances(self, allGuests, ceremony):
-        self.paths = {}
-        for guest in allGuests:
-            if self.address != guest.address:
-                print("\t {0} and {1}".format(self.address, guest.address))
-                results = getDistanceBetween(self.address, guest.address)
-                print("\t\t {} meters {} seconds".format(results[0], results[1]))
-                self.paths[guest.getName()] = results
-        self.ceremony = getDistanceBetween(self.address, ceremony.address)
-        print("\tCeremony: {} meters {} seconds".format(self.ceremony[0], self.ceremony[1]))
 
 class CarPool:
     def __init__(self, allGuests, ceremony):
