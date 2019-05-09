@@ -1,0 +1,689 @@
+{   'geocoded_waypoints': [   {   'geocoder_status': 'OK',
+                                  'place_id': 'ChIJVXealLU_xkcRja_At0z9AGY',
+                                  'types': ['locality', 'political']},
+                              {   'geocoder_status': 'OK',
+                                  'place_id': 'ChIJ_58PdIbEw0cRMIBML6uZAAE',
+                                  'types': [   'administrative_area_level_1',
+                                               'locality',
+                                               'political']}],
+    'routes': [   {   'bounds': {   'northeast': {   'lat': 52.3679935,
+                                                     'lng': 5.0993908},
+                                    'southwest': {   'lat': 50.8503321,
+                                                     'lng': 4.315032}},
+                      'copyrights': 'Map data ©2019 Google',
+                      'legs': [   {   'distance': {   'text': '203 km',
+                                                      'value': 202828},
+                                      'duration': {   'text': '2 hours 20 mins',
+                                                      'value': 8372},
+                                      'end_address': 'Brussels, Belgium',
+                                      'end_location': {   'lat': 50.8503321,
+                                                          'lng': 4.3517241},
+                                      'start_address': 'Amsterdam, Netherlands',
+                                      'start_location': {   'lat': 52.3679935,
+                                                            'lng': 4.903474999999999},
+                                      'steps': [   {   'distance': {   'text': '67 '
+                                                                               'm',
+                                                                       'value': 67},
+                                                       'duration': {   'text': '1 '
+                                                                               'min',
+                                                                       'value': 13},
+                                                       'end_location': {   'lat': 52.3675363,
+                                                                           'lng': 4.9040742},
+                                                       'html_instructions': 'Head '
+                                                                            '<b>south</b> '
+                                                                            'on '
+                                                                            '<b>Mr. '
+                                                                            'Visserplein</b> '
+                                                                            'toward '
+                                                                            '<b>Waterlooplein</b>',
+                                                       'polyline': {   'points': '}bs~Huu|\\D?JEFEDGDGP_@HQJWJQ'},
+                                                       'start_location': {   'lat': 52.3679935,
+                                                                             'lng': 4.903474999999999},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '0.2 '
+                                                                               'km',
+                                                                       'value': 166},
+                                                       'duration': {   'text': '1 '
+                                                                               'min',
+                                                                       'value': 23},
+                                                       'end_location': {   'lat': 52.3661335,
+                                                                           'lng': 4.904908499999999},
+                                                       'html_instructions': 'Continue '
+                                                                            'onto '
+                                                                            '<b>Jonas '
+                                                                            'Daniël '
+                                                                            'Meijerplein</b>',
+                                                       'polyline': {   'points': 'c`s~Hmy|\\JMHGJGNIJGl@SpAq@RI`@QPKRI'},
+                                                       'start_location': {   'lat': 52.3675363,
+                                                                             'lng': 4.9040742},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '0.5 '
+                                                                               'km',
+                                                                       'value': 460},
+                                                       'duration': {   'text': '1 '
+                                                                               'min',
+                                                                       'value': 55},
+                                                       'end_location': {   'lat': 52.3622458,
+                                                                           'lng': 4.9072265},
+                                                       'html_instructions': 'Continue '
+                                                                            'onto '
+                                                                            '<b>Weesperstraat</b>',
+                                                       'polyline': {   'points': 'iwr~Hu~|\\b@SZQVOfAk@f@YHGLINKHEDEBABA@A@ADAJEJEf@Sf@Sx@c@TMHCBCBAHENGTKd@W^SBCLGRKFCBADCd@UNIRIZOVM'},
+                                                       'start_location': {   'lat': 52.3661335,
+                                                                             'lng': 4.904908499999999},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '0.1 '
+                                                                               'km',
+                                                                       'value': 122},
+                                                       'duration': {   'text': '1 '
+                                                                               'min',
+                                                                       'value': 24},
+                                                       'end_location': {   'lat': 52.36121370000001,
+                                                                           'lng': 4.907854599999999},
+                                                       'html_instructions': 'Continue '
+                                                                            'onto '
+                                                                            '<b>Weesperplein</b>',
+                                                       'polyline': {   'points': 'a_r~Hem}\\^Qx@_@RMl@[RKLKPG'},
+                                                       'start_location': {   'lat': 52.3622458,
+                                                                             'lng': 4.9072265},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '0.3 '
+                                                                               'km',
+                                                                       'value': 312},
+                                                       'duration': {   'text': '1 '
+                                                                               'min',
+                                                                       'value': 56},
+                                                       'end_location': {   'lat': 52.3585828,
+                                                                           'lng': 4.9094312},
+                                                       'html_instructions': 'Continue '
+                                                                            'onto '
+                                                                            '<b>Rhijnspoorplein</b>',
+                                                       'polyline': {   'points': 'qxq~Haq}\\XOFCLIHEFERInAq@PKZOXMVEhAk@TQLKJGTMh@WlAm@'},
+                                                       'start_location': {   'lat': 52.36121370000001,
+                                                                             'lng': 4.907854599999999},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '1.2 '
+                                                                               'km',
+                                                                       'value': 1192},
+                                                       'duration': {   'text': '2 '
+                                                                               'mins',
+                                                                       'value': 130},
+                                                       'end_location': {   'lat': 52.34926979999999,
+                                                                           'lng': 4.9173988},
+                                                       'html_instructions': 'Continue '
+                                                                            'onto '
+                                                                            '<b>Wibautstraat</b>/<b>s112</b>',
+                                                       'polyline': {   'points': 'chq~H}z}\\pCwAp@]TM\\QRK^SHELIRM`@ULGLGDCBA^MTKNIJE^UPKv@c@NIHCRMb@Un@[RKf@WNIDABABCf@S^MBA@ABARIl@WFE`@UvAs@lAo@PIFEfAk@ZOJGTKHEFEDCBCBA@ADEBC@ABEFGDGDEBGDGDG@CFMdBqDz@gBR_@Te@L[Xi@FMHOFODIDGBGTa@DGVe@RWBEDEFKDIFGT]LS'},
+                                                       'start_location': {   'lat': 52.3585828,
+                                                                             'lng': 4.9094312},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '2.0 '
+                                                                               'km',
+                                                                       'value': 2023},
+                                                       'duration': {   'text': '2 '
+                                                                               'mins',
+                                                                       'value': 134},
+                                                       'end_location': {   'lat': 52.3385352,
+                                                                           'lng': 4.9389398},
+                                                       'html_instructions': 'Keep '
+                                                                            '<b>left</b> '
+                                                                            'to '
+                                                                            'stay '
+                                                                            'on '
+                                                                            '<b>Wibautstraat</b>/<b>s112</b><div '
+                                                                            'style="font-size:0.9em">Continue '
+                                                                            'to '
+                                                                            'follow '
+                                                                            's112</div>',
+                                                       'maneuver': 'keep-left',
+                                                       'polyline': {   'points': '}mo~Hwl_]@G@C@C@A@EHMT[JMNSFIDEJMh@o@TSLKNQDGDKBKBW@WBe@?O?UQuBCYOaCU}COqBG_AEw@Am@?s@@]@Y@SBSBUDc@@OBMHe@H]BK@ATq@FQFQLUTa@Xc@^s@rB{DFIXc@DIHKFKPWNWVa@Zi@l@u@~CkFrDkGJMJQLUXg@z@sAHOhCkEVc@Va@lAsBxBuD|BwDt@mAhAkBFIXe@pAqBRWLQFKBG\\g@HKlAiBb@q@X_@^o@j@aA'},
+                                                       'start_location': {   'lat': 52.34926979999999,
+                                                                             'lng': 4.9173988},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '1.7 '
+                                                                               'km',
+                                                                       'value': 1665},
+                                                       'duration': {   'text': '1 '
+                                                                               'min',
+                                                                       'value': 80},
+                                                       'end_location': {   'lat': 52.3298639,
+                                                                           'lng': 4.9210897},
+                                                       'html_instructions': 'Turn '
+                                                                            '<b>right</b> '
+                                                                            'to '
+                                                                            'merge '
+                                                                            'onto '
+                                                                            '<b>A10</b> '
+                                                                            'toward '
+                                                                            '<b>s111</b>/<b>Utrecht</b>/<b>Den '
+                                                                            'Haag</b>/<b>Ring</b>',
+                                                       'polyline': {   'points': '{jm~Hksc]HABCBADEFKP[BEBCBA@?B?BAL@RNVRRJFDJDRFNBJBJ@L@j@@V?VAb@BH@J@JBHBHBFBHFJJJJDD@@B@LPHLHLLTFNHRJZDLJVBDTLFTHXDNPr@BLPn@BLX`AH\\FRBHb@bBLh@BFxB~Ij@|BJd@Jb@v@jDj@tBLh@TfAbAtDPp@v@vCJ`@~@zDj@bCh@vBRz@Ll@\\xAPr@Pp@lBbIVjAPr@VnAH`@n@xC'},
+                                                       'start_location': {   'lat': 52.3385352,
+                                                                             'lng': 4.9389398},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '25.4 '
+                                                                               'km',
+                                                                       'value': 25365},
+                                                       'duration': {   'text': '16 '
+                                                                               'mins',
+                                                                       'value': 938},
+                                                       'end_location': {   'lat': 52.1237649,
+                                                                           'lng': 5.0220452},
+                                                       'html_instructions': 'At '
+                                                                            'the '
+                                                                            'interchange '
+                                                                            '<b>Knooppunt '
+                                                                            'Amstel</b>, '
+                                                                            'keep '
+                                                                            '<b>right</b> '
+                                                                            'and '
+                                                                            'follow '
+                                                                            'signs '
+                                                                            'for '
+                                                                            '<b>A2</b>/<b>E35</b> '
+                                                                            'toward '
+                                                                            '<b>Utrecht</b>',
+                                                       'maneuver': 'ramp-right',
+                                                       'polyline': {   'points': 'stk~Hyc`]HbARjAv@bEJb@Ll@Jh@Jn@Hb@D^Lz@Fd@Hn@BXBTBVBXBXDn@?F@R@Z@F?J?Z?\\?HA\\C`@Cb@Ef@Ih@CNMn@GXEXGXQx@Oz@Gh@C^E^A^A^?`@@^@ZBb@Bb@F`@F^H\\H\\J\\DHFPLV@@JVJNBBTXFFJJTP\\PXJRFRBTB`@AH?^GFALEVMRMNMJIDENQZc@R]\\q@LWXi@P]@AJUZi@PW^i@RUTMTW`@_@d@a@f@[j@[hAc@ZIp@O`@Id@Kf@M^KRG~Ai@|@[\\OJExBcA^QNIn@[d@W\\QTOrBkAz@i@PMRMLI\\WdAw@t@k@PQj@e@FGJIf@g@NMtAuABChFqFl@q@Z]zAaBbAgAhAoA~BiCzBeCFGv@}@FG^c@hAoAPSBC^c@JKX]zGuHl@o@~@aA`DoDbCiCPQzB_C`AcA`AeA\\_@^_@vD_EhAkADExA}ApAsAj@m@pBuBl@o@`HkHf@o@v@{@jAkAf@e@p@q@f@e@d@c@v@q@l@i@^]`@[NOhCwBbBsArGmFtGmFh@g@`@[vHkGtHkGx@s@dMeK|GwFhDoCtAkArAgAtAgAj@g@PMRQhCuB^[l@e@pAaAh@a@fD_CvCmBd@[LIf@[t@e@f@YfCwA~AaAJGdBiAl@_@fAq@^OfAw@~@q@LKLILK?AHEn@e@XU@ANKj@a@v@m@|@q@v@k@PKzAiA`BiAvAaAdBeA`BaAhAo@|@g@zBgAt@_@`@Q`@SnCkA`DoAbHcClCaAzCmAlDyAbBy@NGh@YdDeBhCyAvA{@hBgAdAk@pBeAjB{@dBy@pB{@XO~@]BCbA]~CgAHCfDcA|DiA`@MhCs@nDcANEvBk@pA_@~@WvAa@`AWtAa@vAa@tA_@lDaAvAa@rBm@`D{@vC{@vCaAxBu@PI`C_AhDuAfD{AfHaDrGwC|HoDrAm@dF_Cn@Yf@UdCiAzBeAvCqA`@Sh@W`EiBz@a@rCsAvAw@|A{@nBkA`BaA~@m@z@m@dBkAjA{@lA_AfBwA`Aw@f@c@d@a@TUf@c@jCeCtBoBLKhAeAdA{@ZWx@m@bBmAvBsApAs@nAm@b@S|@a@v@[bA_@f@QpAa@h@OBAbBa@tAY|@OrASj@Id@Er@I`AGbAGx@CR?|@C~@AtA?B?dB?j@?j@?h@?t@@^?|@?tC@tA?tA@j@?jFBhIB|F@lF@fB@pD@|F@tE@`C?tFCvDC~@?vCC~@Aj@?p@Ab@?~@AF?bBA`CAjBAjBAjBAzFCdC?`A@~@?~@@`A@pWZr@@j@@nDFpHLzILnFBbLDhQc@|HW~Kc@lGOnCGp@ApFSB?D?NAN?DAD?dCEnFMLAb@?L?X?`CExBM`BKnC[`G}@tA]bBe@LG`@MFCdEcBz@_@hDgBzD{BnBmAXSXQzHsFjAw@hMuIfHqEjJ_GjUuN~@m@nHyElKkGTMxJ}FtGgE|CqBtMiIrHwEhL}GpKmG`H_FLIz@s@v@q@`AcA|@_ARU|AcB~BsCrBuCv@mAZe@NWHMt@mArA}BlDyGLWvLaVbBgDj@gA'},
+                                                       'start_location': {   'lat': 52.3298639,
+                                                                             'lng': 4.9210897},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '0.6 '
+                                                                               'km',
+                                                                       'value': 582},
+                                                       'duration': {   'text': '1 '
+                                                                               'min',
+                                                                       'value': 22},
+                                                       'end_location': {   'lat': 52.1200115,
+                                                                           'lng': 5.027918199999999},
+                                                       'html_instructions': 'Take '
+                                                                            'exit '
+                                                                            '<b>6 '
+                                                                            't/m '
+                                                                            '8</b> '
+                                                                            'for '
+                                                                            '<b>N230</b> '
+                                                                            'toward '
+                                                                            '<b>Maarssen</b>/<b>Vleuten</b>/<b>Ring '
+                                                                            'Utrecht(noord)</b>',
+                                                       'maneuver': 'ramp-right',
+                                                       'polyline': {   'points': 'olc}Hyzs]\\O`AeAjAsB`AcB|@kBn@sAxAwCtC{FjBsDt@_B'},
+                                                       'start_location': {   'lat': 52.1237649,
+                                                                             'lng': 5.0220452},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '1.7 '
+                                                                               'km',
+                                                                       'value': 1658},
+                                                       'duration': {   'text': '1 '
+                                                                               'min',
+                                                                       'value': 61},
+                                                       'end_location': {   'lat': 52.1116329,
+                                                                           'lng': 5.0479772},
+                                                       'html_instructions': 'Keep '
+                                                                            '<b>left</b>, '
+                                                                            'follow '
+                                                                            'signs '
+                                                                            'for '
+                                                                            '<b>A '
+                                                                            "2</b>/<b>Jaarbeurs</b>/<b>E35</b>/<b>Centrum</b>/<b>'s-Hertogenbosch</b>",
+                                                       'maneuver': 'keep-left',
+                                                       'polyline': {   'points': 'aub}Ho_u]rAcDlAaD`@cAt@yBhEeNh@kB|CkKfFkOt@wCt@sCz@wCvBcHbBsFRo@rAoE`E{MhBeG'},
+                                                       'start_location': {   'lat': 52.1200115,
+                                                                             'lng': 5.027918199999999},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '3.9 '
+                                                                               'km',
+                                                                       'value': 3925},
+                                                       'duration': {   'text': '3 '
+                                                                               'mins',
+                                                                       'value': 151},
+                                                       'end_location': {   'lat': 52.08203270000001,
+                                                                           'lng': 5.0753657},
+                                                       'html_instructions': 'Keep '
+                                                                            '<b>left</b>, '
+                                                                            'follow '
+                                                                            'signs '
+                                                                            'for '
+                                                                            "<b>'s-Hertogenbosch</b>/<b>Ring</b>",
+                                                       'maneuver': 'keep-left',
+                                                       'polyline': {   'points': 'u`a}H{|x]p@_CBKtBuG|@sC~@iCjAyCBGTk@@AXs@|HgQ|BkE~EcJDG|AcC|C}EtAyBr@cAxAwBfDwD~BqCdBkBnBuB|BwBrGgGbEsC^YbD{B~@q@tNwKrFwDpA{@`@WhAw@fEiCpDsBnGwC|D{AhCq@\\K^IlA[BAhBYxBSrHa@bCCl@Aj@?h@A\\@\\BL@L@V?'},
+                                                       'start_location': {   'lat': 52.1116329,
+                                                                             'lng': 5.0479772},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '0.9 '
+                                                                               'km',
+                                                                       'value': 930},
+                                                       'duration': {   'text': '1 '
+                                                                               'min',
+                                                                       'value': 35},
+                                                       'end_location': {   'lat': 52.0738627,
+                                                                           'lng': 5.0726569},
+                                                       'html_instructions': 'Keep '
+                                                                            '<b>left</b> '
+                                                                            'to '
+                                                                            'continue '
+                                                                            'toward '
+                                                                            '<b>A2</b>/<b>E25</b>',
+                                                       'maneuver': 'keep-left',
+                                                       'polyline': {   'points': 'ug{|Hah~]jBJ`FV~Ch@j@Pd@L?@`@Jx@J|AXz@V|@`@zFhBtHfCZJd@PRFb@L`AZ'},
+                                                       'start_location': {   'lat': 52.08203270000001,
+                                                                             'lng': 5.0753657},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '11.0 '
+                                                                               'km',
+                                                                       'value': 10979},
+                                                       'duration': {   'text': '7 '
+                                                                               'mins',
+                                                                       'value': 391},
+                                                       'end_location': {   'lat': 51.9811231,
+                                                                           'lng': 5.0954808},
+                                                       'html_instructions': 'Keep '
+                                                                            '<b>right</b> '
+                                                                            'at '
+                                                                            'the '
+                                                                            'fork, '
+                                                                            'follow '
+                                                                            'signs '
+                                                                            'for '
+                                                                            "<b>A2</b>/<b>E25</b>/<b>Maastricht</b>/<b>'s-Hertogenbosch</b> "
+                                                                            'and '
+                                                                            'merge '
+                                                                            'onto '
+                                                                            '<b>A2</b>/<b>E25</b>',
+                                                       'maneuver': 'fork-right',
+                                                       'polyline': {   'points': 'sty|Hcw}]RLrAd@nBr@VHRJDBNHXRPLNNRPFHJJLJRTLNVVPPLNDBLNTRNJb@XFDXNNHPHVHPFXHRDHBLBH@HBN@J@N@J?L?P?b@AL?TA`@Ez@Oz@QDATEj@ITCL?LAN?L?V@V@TBRD`@HPFHB`AXt@TxBp@t@T`A\\h@PNDzBv@pBn@rBp@n@R~FdB`MvDvDdA`B^JBF?H?`@AvCdAF@ZJjCv@l@Rl@Rr@RHBt@Tz@VfBd@~@T|@RD@bARjANl@HnAJrAJvAFdADdCBdSXjKL`HJ`@@vEFbFHX@X?jBDj@@nKVbCDdAB|EHrBDp@@jB@`CBfBBdFFnCBb@@rDDL?T@bFHN?j@@L?r@@r@@h@?d@@n@?j@?h@?~@ARAf@Cv@Cr@ELANAv@Gb@EXEp@Ix@Mh@If@K`@IVEp@O`@K`@KZK`@Iv@W\\Mh@Qr@WlBu@tAg@n@YB?v@]@?`@QbAa@r@Yt@[rBw@j@Sn@UBA\\MLELEdBu@h@UtAo@LGpAo@bAe@d@Wb@WdE{BjAo@fAm@~@e@tCsAxDgBhFaCFExDgBvFiC|CyAfAc@xAq@ZM|@a@fBq@|Am@dA_@tAc@vAc@PG~DgAj@Or@UrBo@bA]f@S`A]PGPIdBq@p@[fAe@bBy@l@Yj@WfD}Ab@StCsAjB{@LGzAw@jEoBLGLE`@Sx@_@j@YbAg@`@QBC\\OhCgAJETMtCuAd@Wf@WJGLGjFyClBgAv@e@dC{Af@[d@]n@e@n@g@p@o@|@}@pA{Al@u@V[DG|@sAb@w@d@{@d@_Av@gBTg@Rg@^y@\\y@tB{EDIPc@pA}CpAwC|AoDTk@hD_IN]N]\\u@Xq@JWVk@x@kBz@kB'},
+                                                       'start_location': {   'lat': 52.0738627,
+                                                                             'lng': 5.0726569},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '55.0 '
+                                                                               'km',
+                                                                       'value': 54994},
+                                                       'duration': {   'text': '31 '
+                                                                               'mins',
+                                                                       'value': 1877},
+                                                       'end_location': {   'lat': 51.5543469,
+                                                                           'lng': 4.820580000000001},
+                                                       'html_instructions': 'At '
+                                                                            'the '
+                                                                            'interchange '
+                                                                            '<b>Knooppunt '
+                                                                            'Everdingen</b>, '
+                                                                            'keep '
+                                                                            '<b>right</b> '
+                                                                            'and '
+                                                                            'follow '
+                                                                            'signs '
+                                                                            'for '
+                                                                            '<b>E311</b>/<b>A27</b> '
+                                                                            'toward '
+                                                                            '<b>Gorinchem</b>/<b>Breda</b>',
+                                                       'maneuver': 'ramp-right',
+                                                       'polyline': {   'points': '_qg|Hweb^DCDCDCDCBEHMp@mALWJS\\i@b@s@dAuAPUBCd@k@fAeAXUd@_@^[x@i@HEl@_@n@[n@Y|Ae@FA`ASZG~AQr@Cb@AD?`A?t@Bz@Fn@HxAVpA`@lAf@pAp@h@Xr@h@DDlA`Ad@`@r@r@LLzAbBzFtGLJJHDDFBHDZ`@Z^LPLRnBbCvAlBZd@^f@dDpE`AtA`B~BvApBbA|Ar@fAJPLPfDlFpHdM~C`G`CzEnBdE~BnFlBfFTl@FPlApDlAzDFRFRn@bCx@bDb@lBh@|BVrA\\`Bn@xDp@lE^jCXbCZxC^~DT|CRzCDz@JzAH|BHtBF|AD`BBhB?@Bx@?d@B`CB~D?pGCzB?fLAlD?bH?d@?ZA`A?|@?P?r@?rD?pDCtV?rBAdKAvH?lD?vBA|IAtF@zG?pB@r@?t@@zC@zBBxBLxILxGJpDFdBHfBNnD@\\BZ?FFx@B`@RfDL~ANnBBVTzBT~BXzBXxBR|ADPDZN`AThAXxA\\`B|@|Dd@pBl@tBl@tBt@|B`@hAb@hAXr@\\x@d@dAP`@x@dBTd@FJPZz@~ArBbDr@`A^h@r@|@b@h@d@h@|A`B\\\\B@tCvCbFbFfChClBlBnBnB`EbE\\\\zBzBrCrCt@v@j@h@n@p@dDdD|B|BXXfDhDl@j@zAzADDJJzJzJr@t@t@t@p@p@hAhAxAzAhAhAx@v@t@v@xAxAf@d@b@b@x@v@x@r@lAbAx@l@z@n@rBtA`Al@r@d@z@f@pAp@vBhAdB|@RJ^RjDdB~JbFzBhA~@b@lCvApCrAfCnAnAn@~EbC?@dBx@|EbCxFtClG~C`@RjFjCnHtDlExB\\P`@PbAd@|@`@|CnA`MzDhRrFb@LxHzBhJnCdHrBtA^rBl@dElAnBl@nBj@|C~@n@PdFzAxCz@fBh@vGnBbCp@pDnAj@TpAf@j@VjBz@fCrAdB`AxAv@hEzBhFrChEzBfDhBhFpCtEbCxBjAjFpChE|BpKxFdAh@rBhArAr@BBdB|@tC|Ab@R|F~Cx_@fRh@V~DnBrIfE~GfDj@XrJzErJzEpElB~@^D@nFtBFBhFjBdGvBp@X`A\\pBr@bCz@dA^fBn@|Aj@lAb@`@NrFnBTH@@\\Lz@ZbBl@THdA\\nC~@rCdAhBp@hBp@hC|@`@NbA\\b@PhE|Ah@Rf@PxAh@dCz@D@jBr@\\J`@NlDnAbBj@d@NRHRFnCdAHBz@ZjAb@p@Vn@TvG~Br@VrAd@p@X^LpC`AhCx@j@PhBd@tBj@VFlAZ\\HVF@@PDnEhA@@dBd@pD~@fBd@tBh@~Bj@jCr@p@PlEfAzBl@zBj@zBl@h@Nh@LpBj@rBh@x@Rx@RbEjAtBn@@?D@pCz@~Br@~@Zx@VxDpAhKtDnC`AvAf@b@NnAd@zAh@`@Nb@Nl@TjIvC`WbJbCz@`KrDtAd@j@RxD`AxAZb@Fv@LLBb@DzBXdEb@VBlCZtCZ~@JvAPtCZ~Dd@h@F|Gt@zDb@|Dd@vKlApD`@b@DjBTN@vJhAfKjAfALdJbAb@FvANbALfAHb@Dd@BfAFx@D\\@z@?|C?f@Cx@ClAC~AErAE`ACnCIb@CT?dDKfCGtEOR?RAVA@?LAL?z@C\\AjCItBGjEKb@Ab@AhACv@A`A?`A?`BDL?dAFv@Fd@BtAN@?`@Db@DpD\\b@DxFj@rLjAr@HbALtARtAVx@NZFhBd@D@b@L`@LHBVJPDh@Rh@RnAd@z@\\zBx@DB`C~@PFPHnAd@t@Xb@Pr@XtAf@dBp@n@VrAf@jAb@DBZLj@R~Al@pAh@nCdAJDtAh@tAd@b@R|An@hAj@nAl@~@h@jAp@n@b@NJ\\T`@ZDDDBFDXTl@d@j@d@TRz@r@`@\\LHHFz@v@bBzAlAfA~AzAXVLNLJ~DzD~A~AbAdA`BdBjEvEzA`BfArAXZZ`@t@|@rBvCv@fA^j@x@pAXd@~AnC?@nA~BdAvBXj@Xj@rBnEbBtDXj@hAdCvDfIzB|EzB~EvAzCHNVf@DJr@tA`BxCbBrCf@t@z@pA^j@`@h@h@r@r@|@^b@\\b@LL`@d@t@x@v@v@j@j@n@j@hAbAd@`@ZTr@l@^Xf@^`@VZRDDbCzA\\T\\Pr@`@rAp@`@Th@VVJLFr@Zj@TLFhBp@v@VLDf@NdCp@tBp@rBp@`FnA`AZlAXp@Pf@H\\H`@FpAXjAR~C^XB@?VBd@Bd@DbDL`DLnELlEJrDHvELb@@jABrDJdEJdGNF@`DH|BF@?rCJ~@FX@|@FfAHv@HZDb@Fz@J~B\\^F\\FtAXnCj@z@PxCn@dE|@TDLBvH`BbKvBvE`AXF@?VFbCh@~SnEz@P\\HRDPDRDNB^Hv@P~H`Bb@JrE~@b@Jb@LVDD@^HLBB?RFPD`B\\`B\\bHzAj@LvFlAdDp@pAX\\FfB^nB`@VF`Cb@lBZRBjBVjBP`AH|@Fh@BvAHhBDxAB~B?tACxACNAj@AtAG~BQLA|AKtAMfBMbCSh@EhQuAtNiALATAzE_@fDYhDWnE]`BOrAKfDWxAMnAIfBKt@G`AGdAG~CMdEQpBGzCIfAE|BILAdJWvDMb@A@?lCI`AE~DMjBE`BIdBEtAExAGbACf@ANA|@C^Az@B`AD~@FVDf@FdB\\TF\\HTFz@Xb@NhAf@nAp@nAx@XRf@^b@^^Zj@h@PPr@v@p@v@vJjLzBjCzBjCdCtC~@hAdE~Er@x@p@v@\\b@hApAfFdG`CpCLNJL@@HJDFB@BBBDDD`CrCpAzArCdDHLRRnEbFxD~DtDnDBDfG~FFFTTbKxJrAnAhHbHl@l@f@d@`FzEfBdB`@^rKjKzAzAjBpBjBxBj@p@d@j@jA|AbArAb@l@`AvAbA|Av@lAh@z@rAzBvB~DNVjA~Bx@bBz@fBlFfLhFbLnC|Fx@dBh@dAjAzBDFd@z@nAvBn@hAn@bAp@dApAlBfDrElBhCRX`AlAZb@pA`Bf@n@fArAb@h@f@n@bAvAx@hAh@p@xAlBzDbFbBtBzBrCv@|@h@l@\\\\PPj@j@n@r@bAbAn@n@dAz@^ZRPr@j@z@r@|@r@z@l@nAx@tBpALFl@^b@Tt@^z@b@h@VfBv@fAb@vBt@`@LbAZrA^VFpAZx@P`AP`ARn@HtAR|@JvALfAJ@?V@P@RBX@r@Dv@Dr@BrAB`AB`BAp@?vD?jA@|BBlDJ~AHX@~ADf@DrAJxBRnBT`@Dr@H|B\\hAPd@HZDrB\\x@PdARH@|H`BlAV`B\\tAVj@Lh@H|@PbALXFB?j@HdCZtAP~@HrANV@hBNh@DjDTfAHd@BdDR~BT~@LdANjARz@NnDv@b@JZHj@NVDd@Hh@F^B^@j@@b@A^ATCh@Ed@INCJC~@S`@KTIZMTKRMXOZU\\U\\W\\Yb@a@'},
+                                                       'start_location': {   'lat': 51.9811231,
+                                                                             'lng': 5.0954808},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '1.0 '
+                                                                               'km',
+                                                                       'value': 1047},
+                                                       'duration': {   'text': '1 '
+                                                                               'min',
+                                                                       'value': 40},
+                                                       'end_location': {   'lat': 51.5466146,
+                                                                           'lng': 4.8198129},
+                                                       'html_instructions': 'At '
+                                                                            'the '
+                                                                            'interchange '
+                                                                            '<b>Knooppunt '
+                                                                            'St.Annabosch-Roosendaal</b>, '
+                                                                            'keep '
+                                                                            '<b>right</b> '
+                                                                            'and '
+                                                                            'follow '
+                                                                            'signs '
+                                                                            'for '
+                                                                            '<b>E312</b>/<b>A58</b>/<b>A27</b> '
+                                                                            'toward '
+                                                                            '<b>Roosendaal</b>/<b>Antwerpen</b>',
+                                                       'maneuver': 'ramp-right',
+                                                       'polyline': {   'points': 'uetyHsol\\JA@?DE\\_@f@i@^c@^g@^i@r@kAFKZg@`@o@LSJOT[NSNQNOXYh@e@DCDCPMd@YZOXMLELETGHCNCVEVC\\CRAR?@?X?L@V@XBN@TDLBLBPFND`@Nh@VPJRLZVPLTRZ\\XZV\\T\\RXJTPZHNHRHPBFDLTl@Vp@\\dAL`@N^dAxC?@?@@??@@?@@LF'},
+                                                       'start_location': {   'lat': 51.5543469,
+                                                                             'lng': 4.820580000000001},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '5.2 '
+                                                                               'km',
+                                                                       'value': 5235},
+                                                       'duration': {   'text': '3 '
+                                                                               'mins',
+                                                                       'value': 173},
+                                                       'end_location': {   'lat': 51.5263265,
+                                                                           'lng': 4.7529507},
+                                                       'html_instructions': 'Merge '
+                                                                            'onto '
+                                                                            '<b>A58</b>/<b>E312</b>',
+                                                       'maneuver': 'merge',
+                                                       'polyline': {   'points': 'iuryHyjl\\HV`DdKbBhFPb@z@jCpBdGRl@`@jA@FRn@Xx@pA|DtAdEj@bB`DjJlApDjBhFxBlGt@xBTr@b@pAp@lBFR`AtCtAhEX|@l@fB|BpHNj@JZHVVt@dBvFbBxFjB~GnAnEr@rCb@`BPp@b@bBz@hD`AzDlB~HVdAl@fChBrHdApEpApFbAtErAzFFXJf@n@lCl@nCh@bCh@bCPp@Pz@Nn@f@~Bf@~BTdAd@tB`@pBP~@`@pBjApGl@pDXbBd@jDHn@@F\\dCf@jEXjC@DJjALhAVvC^tETtDJxADr@?BXrFJhCJtCLbD@`@Bn@B|ADnD@nB@pB@bD?nJAfF'},
+                                                       'start_location': {   'lat': 51.5466146,
+                                                                             'lng': 4.8198129},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '5.8 '
+                                                                               'km',
+                                                                       'value': 5849},
+                                                       'duration': {   'text': '3 '
+                                                                               'mins',
+                                                                       'value': 204},
+                                                       'end_location': {   'lat': 51.4858661,
+                                                                           'lng': 4.7351272},
+                                                       'html_instructions': 'At '
+                                                                            'the '
+                                                                            'interchange '
+                                                                            '<b>Knooppunt '
+                                                                            'Galder</b>, '
+                                                                            'keep '
+                                                                            '<b>left</b> '
+                                                                            'and '
+                                                                            'follow '
+                                                                            'signs '
+                                                                            'for '
+                                                                            '<b>E19</b>/<b>A16</b> '
+                                                                            'toward '
+                                                                            '<b>Antwerpen</b><div '
+                                                                            'style="font-size:0.9em">Entering '
+                                                                            'Belgium</div>',
+                                                       'maneuver': 'ramp-left',
+                                                       'polyline': {   'points': 'qvnyH}h_\\?dAAbAEdGEhFIlKGnHElFC`BAdAAbAAr@?r@A\\?^Av@?ZA^CZAXEZG\\I`@IVKPINMNGFGDIFKFKBIBI?I@M?OCIAKGMIMIOQIMIMIWEKEQEQAKCMAQAQ?S?O?S@O@OBSDS?CFWDMDIDMLUNQNQHGHEJG^ODAZKt@Ur@Qx@WfAYBARUvDq@tAUvASfAMlC[\\EpDWdDQpBIdCCxCAV?@?`A@~CDtBHnFVrDR|CP|CRtKp@d@DpM~@pBRrFf@zKbAV@dAJtDb@xAN~@Lz@LxFx@fFbAfAVrCn@~Ab@D@bBd@tBn@nA`@dDhAv@ZhBp@tAj@zB`AZLlAj@pCpAtCrA`Bv@lAj@hD|ApJnExIbEbBv@b@RjBz@RJRJ'},
+                                                       'start_location': {   'lat': 51.5263265,
+                                                                             'lng': 4.7529507},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '44.1 '
+                                                                               'km',
+                                                                       'value': 44134},
+                                                       'duration': {   'text': '25 '
+                                                                               'mins',
+                                                                       'value': 1524},
+                                                       'end_location': {   'lat': 51.1910722,
+                                                                           'lng': 4.4212545},
+                                                       'html_instructions': 'Continue '
+                                                                            'onto '
+                                                                            '<b>E19</b>',
+                                                       'polyline': {   'points': 'uyfyHqy{[VJfChAxDbBzMtFjEhBb@P`@NvB~@rGdCz@\\v@XzDxAnFpBlDlAt@V`@NtAd@lDnAhA^dBj@`Cv@nBl@fDdAxAd@lBj@dEnA`EjAjElApCt@`@LxCx@hAXdAXPDlBd@xCt@PD`KbCZHB@VF~A^pGzAbDz@nCp@pA^l@NlBh@fElAvExANF`@L`Bh@tAd@pE|A|DrAnC`AjBp@h@RfGvB@@VHnIxCt@XRF@@VJ`@N`MpEpFpB`@NpCbAbC|@|@\\~@Z~@\\NDpBr@vCdAtCfA`A^hBp@nBr@fBl@tAf@lBp@dDlAxAf@THPFj@RzCfAjBp@lBp@hBn@`Cx@~Al@\\Jh@RRHbFzAbBl@jG|BpBr@|I`DnBr@|B|@xEdBjBt@~@^j@T|@^vAj@d@TXJ~@`@r@\\xB`AdClAv@`@f@TfAj@`Af@z@f@j@ZlBhAfBhANJJFHFXR~AdArA~@fAv@dBpAlA~@TRx@j@~@r@x@n@j@h@|@t@t@p@v@r@jAfAzA|AFDXV`@`@d@d@p@r@l@l@h@l@n@p@f@j@f@j@|@bAt@|@t@|@x@`AhAvAt@|@pAbBdAvAvAlBfAzAzCfErAnBdAzAtArBFF`AzAnAjB`EfGxCpE^j@HLlAhBp@dAX`@p@bAXb@v@lAp@bAT^|@pAn@`Ah@z@n@~@t@hAdA~Az@pArB|CvAxBn@~@r@fAl@~@l@|@j@x@|@tABDpAnBn@`AT\\FHFJh@v@b@p@f@t@fAbB|@tAl@~@p@`Al@|@p@dAz@nAn@bAbBfClAhBhBnCpBvCfA`BbCjDjAfBPRjBlCxApBfBbCbBzB`AnAbEnFdArAfAtATXt@bAxBpCp@x@rBjCfC~Cd@j@t@bAx@fAdArAdBvBdArAnF`Hb@h@vAhBvBnCX\\TZ|@hAlA|ARVTXZ`@DDl@v@~@jA~DdFdC~ClA|APTxCvDZ`@NPdBvBRVRXhWf\\^`@h@p@b@j@pAzAx@dAx@bAd@h@fBxB`QvSjAtAx@~@b@j@dAlAtBbCbAlAhAtAB@bAlAbAjAFFrCbDx@bAbAlAdAlA|@dAl@v@v@~@v@|@nBzBdF~FjBxBhBvBbCtCvEnFdBpBxBhCjC|CfFdGdE`FbFdGJLHJJLx@`AvDxEp@z@lDnEz@jATXFHLPfAtALRfAzAzBzCV\\fBfCf@r@Zd@PVtE|GNTZd@vAxBn@`AXd@^j@pB`DdBrC|AhCzBxDd@z@jApBnAzB@@`CjEtBzDbCxEn@lAvArC`@x@z@`BjAbC|@jBx@fBzA`Dx@fBz@jB`AxBVj@fBbEtAdDtAdDxAhDt@pBN\\\\v@rAfD`AdC^|@pBdFz@vB`AfCh@tA`@dAFR^`AN\\b@jA|@|BzA|D|AbEfCtGxAxDPb@?@N^tCtH`ClGTl@FL|BbGh@xATl@h@pAn@`Bp@fBf@rAv@rBv@pBdAnCbAlCrAjDfArC`BhETn@^`Ah@tAv@tBVn@x@tBt@lBh@xAv@rBXv@dApClAbDZ|@hBbFtB~FpAtDN`@FNRl@Tn@bAxCpApDvAfEBHjApDpAzDXz@t@|BpAxDhAlDb@pAZ~@p@tBr@tB~@pCr@xBTr@jAnDrAbErA|DL`@pAxDx@`C`ApCjAfDJXJXBHZ|@Tl@rApDf@tAf@tAlAdDnBbFhCpG|@tBtA`DfAdCdBzDz@hBhAbClAdCjAdCjAbCxAzClAdCxA|CjAbCxAxCjAdCjAbChA`C|@hB|@hBl@nA|@bBn@lAn@jAn@hA|@bB`A~A`A|ABD~@xAfA|Ar@dAn@|@r@`AfBzBBBnBbCnBxBpBtBdCfCrBnBrD`DVTVTtF|ElEzDnCdCjF|EnGfGvBzBLLxA|A\\`@\\^\\^TVpB|BhCdDp@z@jA~Ar@bAdAzAhAbBdAdBnAtBpA|B`AnBv@`Bf@dAn@zAx@hBLZ@BLZr@pBt@tBf@vAn@rBb@zAl@xB^~Ar@xCbA~Ev@hE\\~Bh@lEXhCNhBZnENdCFvAD|@HrC@x@BfA@fC@jAAjAAlDCnCKxEQpFOjD[zFKfBGdAQjCMdBc@fGItASjCSlCOhCKfBMhBOnDEdACv@Cn@CjBCfAAbA?hA?tB@x@?z@BrAXvLBn@@p@DvATfIXnKJzE@HBlA@~AD`BF~BPlGPzFPjEXvFH~ATbDNjBLpAZ|CPbBJz@NbAPtAT`BLv@Lx@FZHd@f@rCJ^dAjEdAlETz@Pp@DNd@|A`@tAd@vATr@@Bt@pBr@lB^|@d@fA`@~@l@pAHJz@dB\\r@p@hA\\l@z@tAr@bAzB~CdAvAt@z@p@v@lArANPf@h@p@n@fB|AnAbAnA`ApAz@dAr@^T|@h@tAp@|@`@j@TRHRHVJ~@\\`AZh@Pl@Pj@N~@T`ARdCb@`ALl@FvANnBJl@@j@@H?x@Bj@@tC@\\?bAAl@?T?hABbBBjBAnAAXApCA`AAtAA`AAz@A|@AhEBp@AZ?jA?rB@fA?hBEfAC`E@fAI@?l@O^Ob@IVGXGPGRGr@[ZSb@[`@]b@a@b@a@`@e@`@k@\\i@\\m@Zq@Vk@Zw@Xw@\\eAj@qBl@{Bp@oCPi@H[j@yB`@{AVw@Vw@Vy@\\aAHWFOf@qAf@kAh@kA^w@fAsBj@eA`BmCpAyB`BqCpBeDjAqBl@aAZe@Ta@lAqBx@uALQXe@PWh@_AlBcDnAsBvBmDf@u@l@cAhBqC`BaCTY\\g@b@i@fAsAt@{@RUv@y@x@w@d@c@lAaAd@_@h@_@f@]f@YTM|@e@RIj@Wh@SvAc@XGd@MdAU@?@A@?VEZCp@Gt@CBAfBAz@Br@DZ@|@Lp@HrBd@v@Tr@V`A`@HDr@^xBrALHhBtAhBzAr@n@`ErDTT|@v@zCpCjAdApF`FjDbDjFzEf@b@l@p@f@f@b@b@~FnFv@p@|AtAd@b@PLnFjElD~BjAr@nEdCLHfB|@XLtB|@`Ab@~DfBvCxAfAf@VNfAn@x@h@l@\\v@j@f@`@bAv@dA~@`AbAj@p@p@z@RXZd@@@p@dAt@nAl@pANZf@dABJf@pA`@hA^fARl@j@rBb@dBRz@|@vDb@pBNz@`@pBh@xC@Hv@pF^vCr@|H'},
+                                                       'start_location': {   'lat': 51.4858661,
+                                                                             'lng': 4.7351272},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '0.6 '
+                                                                               'km',
+                                                                       'value': 569},
+                                                       'duration': {   'text': '1 '
+                                                                               'min',
+                                                                       'value': 21},
+                                                       'end_location': {   'lat': 51.1919468,
+                                                                           'lng': 4.413329399999999},
+                                                       'html_instructions': 'Keep '
+                                                                            '<b>right</b> '
+                                                                            'at '
+                                                                            'the '
+                                                                            'fork '
+                                                                            'to '
+                                                                            'continue '
+                                                                            'on '
+                                                                            '<b>A12</b>/<b>E19</b>, '
+                                                                            'follow '
+                                                                            'signs '
+                                                                            'for '
+                                                                            '<b>Brussel</b>/<b>Mechelen</b>/<b>Boom</b>/<b>Wilrijk</b>',
+                                                       'maneuver': 'fork-right',
+                                                       'polyline': {   'points': 'egmwHyo~YAdAJpCB~@@r@?jA?@?PAf@A`@AVEv@E`@KlACLKt@QpAg@rCQjAQnAMfAIhAKtAGjAC~@Ad@AX'},
+                                                       'start_location': {   'lat': 51.1910722,
+                                                                             'lng': 4.4212545},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '35.3 '
+                                                                               'km',
+                                                                       'value': 35333},
+                                                       'duration': {   'text': '26 '
+                                                                               'mins',
+                                                                       'value': 1535},
+                                                       'end_location': {   'lat': 50.8957741,
+                                                                           'lng': 4.351225299999999},
+                                                       'html_instructions': 'Keep '
+                                                                            '<b>right</b> '
+                                                                            'to '
+                                                                            'continue '
+                                                                            'on '
+                                                                            '<b>A12</b>, '
+                                                                            'follow '
+                                                                            'signs '
+                                                                            'for '
+                                                                            '<b>Boom</b>/<b>Wilrijk</b>',
+                                                       'maneuver': 'keep-right',
+                                                       'polyline': {   'points': 'ulmwHi~|YEh@?bA?^@z@D|@@b@JbBHbA?@N|AJ`AF\\N~@DPJf@Hb@HXFR^hAHRLZLTLXPX^l@X`@TX@@RTb@b@RPf@b@f@`@j@h@@BJHf@f@`@f@RVPV\\l@P^Xp@Pf@FPL^Tz@J\\l@|BLh@z@rD~FlVT~@H`@Nl@pAnFhAzE^|An@`Cj@rBPj@Rr@b@xAL\\L`@`@zAPb@f@nA^t@V`@d@v@t@fADHXZ\\^b@XTNh@RnAXtBf@l@L~@P~AZpC`@r@LZCPBzCn@nCf@rATf@Jp@L\\FtAVhB\\dARpDp@lATjATlATdBZb@Hb@HtEx@rAT^H@?ZFnATrEx@tEx@PDD@\\F~AX~OtC~Cj@dAPdANrATrATb@HpDl@hBZ\\F`ANxC`@B?nAPjAVdEt@dEt@vFdA`IvAXFdCb@NDh@JPD^Hn@Jj@LjBZTDhBZvF`AfCb@jB\\lATvFfAjB\\jJ`Bl@LpEx@TDVF\\DPDvFbAxCj@jBZ\\HfF~@n@JZF\\Fd@H|AVnLvBtEv@~@P^FRDPBH@fARrB^bCb@bC`@tCh@tDn@~HvAhB\\TDj@J`APj@J|@Nj@LVD~@NhB\\t@Ld@H@@LB\\FhARvFbA`ItAb@HlEx@bEt@dKfBTDlF~@d@J\\J`AXVFf@Jt@NrB^rAVpB`@hDn@~Dr@rATrIzAdC`@nATt@L|AXvAXJ@bAPz@NnATf@JNB|AXbBZd@HdAR\\D\\FtB^fGfAN@@@TDnEv@jDl@VDH@PDpDr@b@LZFj@Nh@Nh@P`@L\\J|HbC|@V`AZ`AZ|@V~@X~@Zh@Rh@Tl@Vh@V\\Rj@Zj@Zx@h@PJFD`@Zv@j@^Xf@`@x@t@x@t@z@|@LNTTt@|@d@f@b@h@RTb@h@^b@BDb@h@NRRVb@j@`@j@b@j@PTX`@bA~AjBvCjFvI~CjFr@jA|CfFvDnGXb@`@p@`@n@`@j@`@l@RVb@j@h@n@bAjAx@z@v@v@d@b@f@d@`@\\DBf@`@f@`@h@\\^XFDf@ZVNPJf@ZVJ`@TFBh@V`A`@j@Rf@R`A`@`A\\~@^~@^`A^j@TF@n@VdA`@`AZpCfArDtAzEhBfDnAB@|Bz@jBv@`C~@rBv@x@\\jBr@RHTHrDvAJBJDxCfA`IxC`DlArG`CnE`B|@\\fA`@dEbBdAb@rFxBbTrIvGnCxBz@hHvCzEjBt@ZdEfB`LpEn@V|An@j@TxAj@jIhDz@\\~IlD|F`CvD|AfAd@xDzAfDrAxYpLjDtAbAb@hAb@`Bp@pGhChBr@bBp@f@ThDrAjOdGvElBzClAzH|CdA`@|An@jFtBbA`@dAb@p@XzD|AnBt@`@NRH@?l@RPFdAX`@Lh@LhBZrAPl@Fb@DB?^@X@VBH?X@vA@R?l@@|@?H@b@?X?r@@|CBD?nC@F?@?`@@b@?b@@H?@?R?Z?D@F?lBBxB@X@@?F?J?xBBH?tFDB?~GLn@?n@@fCBf@@hBBn@?bB@rDDj@?b@@pA@dCBfA@hCBf@?vA@`CB~B@bBBX@b@@dA?hCBdB@r@@P?~@@v@@`@?~ABpDBrFFbRNbA@nIFzFDbCDlB?xABzA@xA@xA@@?bCB`CBz@@dB@bEFB?^?lDDdC@pDDvDBzCB@?lDDzCBxCBR?fCB`DBxA@pDDvCBjDBjFDxCBhEDrDD~@?l@@`C@tBBtDD~@?|BBhDD~CBlBBdA?H@hA@nBANAnCMxAO~B_@l@MbAUfBk@@?|@]vAk@rAo@RM~@i@bBgAXUx@m@x@q@|AyA`BcBLOzBmCpCsDl@w@vCwDb@g@vAkBnCmDZa@DGfAwAtCuDZc@b@i@fCeDFIdAuAzAoB\\c@TYvBsCv@eAt@aAb@k@d@g@b@g@JIXYd@e@f@a@RQRQx@m@h@]FEt@c@h@Y~@a@j@UTIVKXId@M`AWVEj@Kj@In@Gj@El@Ej@G^CJAHC\\Ej@Kj@Mf@MBAj@O~@]j@SPIVKh@Wh@[f@YPMpA_AvBkBBA~BgBXSdAw@VQxB_BrA_Ad@[v@i@BCh@[|@k@d@YDAFGd@WfBaAtAq@t@_@?AFCtAq@jB{@@ARItAm@`A_@~@_@@A@?f@S~@]TInAa@FCj@Q`A[`A[z@U\\K`AWj@M|EgAtCq@hAWj@MnEeApBe@XIvA[nBa@RGdAWNEdAWJCJC|A_@|@UFCjCq@RGXGHC`@KjBg@ZK\\IfBe@@?fBg@@?hBe@NEt@Sp@S|I_CPEdHmBfD{@`@KlCq@fBe@jGcBbCo@h@Oh@O^ITGz@Uh@ObAY`AU?A`AU~@WTG`A[h@UPI@Ah@Yh@]f@a@DC^]`@_@VWd@g@PUt@aAb@i@`@k@r@cAFMJQ^i@|@_Bj@gAXk@'},
+                                                       'start_location': {   'lat': 51.1919468,
+                                                                             'lng': 4.413329399999999},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '0.4 '
+                                                                               'km',
+                                                                       'value': 371},
+                                                       'duration': {   'text': '1 '
+                                                                               'min',
+                                                                       'value': 22},
+                                                       'end_location': {   'lat': 50.8937198,
+                                                                           'lng': 4.3553349},
+                                                       'html_instructions': 'Take '
+                                                                            'exit '
+                                                                            '<b>Basiliek-Basilique</b> '
+                                                                            'toward '
+                                                                            '<b>Basilique</b>/<b>Basiliek</b>',
+                                                       'maneuver': 'ramp-right',
+                                                       'polyline': {   'points': 'qqsuHezpYNKDGZq@d@cA@C@ELWt@iB@Ab@gAFO`@cA~@aCDMFOx@sBHQJ[F[Ba@'},
+                                                       'start_location': {   'lat': 50.8957741,
+                                                                             'lng': 4.351225299999999},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '0.2 '
+                                                                               'km',
+                                                                       'value': 158},
+                                                       'duration': {   'text': '1 '
+                                                                               'min',
+                                                                       'value': 18},
+                                                       'end_location': {   'lat': 50.8931374,
+                                                                           'lng': 4.357356},
+                                                       'html_instructions': 'At '
+                                                                            'the '
+                                                                            'roundabout, '
+                                                                            'take '
+                                                                            'the '
+                                                                            '<b>1st</b> '
+                                                                            'exit',
+                                                       'maneuver': 'roundabout-right',
+                                                       'polyline': {   'points': 'wdsuHysqY@C?C@C?A@C?C@A?CNi@HkADk@Fe@Jo@DSFWPi@@AHOJY'},
+                                                       'start_location': {   'lat': 50.8937198,
+                                                                             'lng': 4.3553349},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '2.5 '
+                                                                               'km',
+                                                                       'value': 2524},
+                                                       'duration': {   'text': '5 '
+                                                                               'mins',
+                                                                       'value': 295},
+                                                       'end_location': {   'lat': 50.8723501,
+                                                                           'lng': 4.360293},
+                                                       'html_instructions': 'Merge '
+                                                                            'onto '
+                                                                            '<b>Avenue '
+                                                                            'du '
+                                                                            'Parc '
+                                                                            'Royal</b>/<b>Koninklijk '
+                                                                            'Parklaan</b>/<b>N277</b><div '
+                                                                            'style="font-size:0.9em">Continue '
+                                                                            'to '
+                                                                            'follow '
+                                                                            'N277</div>',
+                                                       'maneuver': 'merge',
+                                                       'polyline': {   'points': 'casuHo`rYTa@X[DC^e@RMVQJI^UVQPITGZG`@EB?HAXCVAZA^@d@BTBRDTJf@Vf@Z^XVVTTb@h@TZPXV`@P\\Zr@HH\\n@f@z@h@`ADF\\l@BBT\\h@p@`@^LDTLp@ZRHFBVHn@RVB`@FjBVhBLhBBB?d@?`@At@A@?PA`BKt@GpAQd@GTE|@Ub@Ib@KlA[h@SlAYJCLCt@YbAk@`@[VSJENI\\O~@m@jAu@FCNKXE\\CJD^VPXDDBBD?BA^OROz@k@l@_@ZSv@g@t@a@NINIPK?ALGLIxAgAf@[NKZWRMd@[ZSPKpBoAd@[r@Ul@[VININKRIPO@ADIDU@ADEb@]POj@]BAZULC'},
+                                                       'start_location': {   'lat': 50.8931374,
+                                                                             'lng': 4.357356},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '1.8 '
+                                                                               'km',
+                                                                       'value': 1817},
+                                                       'duration': {   'text': '4 '
+                                                                               'mins',
+                                                                       'value': 235},
+                                                       'end_location': {   'lat': 50.8579584,
+                                                                           'lng': 4.3485818},
+                                                       'html_instructions': 'Slight '
+                                                                            '<b>right</b> '
+                                                                            'onto '
+                                                                            '<b>Allée '
+                                                                            'Verte</b>/<b>Groendreef</b>/<b>N201</b><div '
+                                                                            'style="font-size:0.9em">Continue '
+                                                                            'to '
+                                                                            'follow '
+                                                                            'N201</div>',
+                                                       'maneuver': 'turn-slight-right',
+                                                       'polyline': {   'points': 'e_ouHyrrYbABT?d@AbAj@xAhAtAhAFDlA~@pPbM|DxCbD~B|AfARRVXVj@b@z@h@vAJZ^h@Vb@RT`ExCtAbAZV^Zf@\\`@\\jAz@pG~EfDbCb@Z`@TJFLD\\PPFd@TJDHDFDDDLH@@HF'},
+                                                       'start_location': {   'lat': 50.8723501,
+                                                                             'lng': 4.360293},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '58 '
+                                                                               'm',
+                                                                       'value': 58},
+                                                       'duration': {   'text': '1 '
+                                                                               'min',
+                                                                       'value': 16},
+                                                       'end_location': {   'lat': 50.8574487,
+                                                                           'lng': 4.3485492},
+                                                       'html_instructions': 'Continue '
+                                                                            'onto '
+                                                                            '<b>IJzerplein</b>/<b>Place '
+                                                                            'de '
+                                                                            "l'Yser</b>",
+                                                       'polyline': {   'points': 'geluHsipYd@Nb@EZC'},
+                                                       'start_location': {   'lat': 50.8579584,
+                                                                             'lng': 4.3485818},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '0.2 '
+                                                                               'km',
+                                                                       'value': 213},
+                                                       'duration': {   'text': '1 '
+                                                                               'min',
+                                                                       'value': 46},
+                                                       'end_location': {   'lat': 50.8557418,
+                                                                           'lng': 4.3471943},
+                                                       'html_instructions': 'Slight '
+                                                                            '<b>right</b> '
+                                                                            'onto '
+                                                                            '<b>Handelskaai</b>/<b>Quai '
+                                                                            'du '
+                                                                            'Commerce</b>',
+                                                       'maneuver': 'turn-slight-right',
+                                                       'polyline': {   'points': 'abluHmipYRFTNfGrEb@b@'},
+                                                       'start_location': {   'lat': 50.8574487,
+                                                                             'lng': 4.3485492},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '59 '
+                                                                               'm',
+                                                                       'value': 59},
+                                                       'duration': {   'text': '1 '
+                                                                               'min',
+                                                                       'value': 13},
+                                                       'end_location': {   'lat': 50.8554295,
+                                                                           'lng': 4.3467955},
+                                                       'html_instructions': '<b>Handelskaai</b>/<b>Quai '
+                                                                            'du '
+                                                                            'Commerce</b> '
+                                                                            'turns '
+                                                                            '<b>right</b> '
+                                                                            'and '
+                                                                            'becomes '
+                                                                            '<b>Oeverpoort</b>/<b>Porte '
+                                                                            'du '
+                                                                            'Rivage</b>',
+                                                       'polyline': {   'points': 'kwkuH}`pY?bAf@@D@D@HB'},
+                                                       'start_location': {   'lat': 50.8557418,
+                                                                             'lng': 4.3471943},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '52 '
+                                                                               'm',
+                                                                       'value': 52},
+                                                       'duration': {   'text': '1 '
+                                                                               'min',
+                                                                       'value': 11},
+                                                       'end_location': {   'lat': 50.8554252,
+                                                                           'lng': 4.3474417},
+                                                       'html_instructions': 'Turn '
+                                                                            '<b>left</b> '
+                                                                            'to '
+                                                                            'stay '
+                                                                            'on '
+                                                                            '<b>Oeverpoort</b>/<b>Porte '
+                                                                            'du '
+                                                                            'Rivage</b>',
+                                                       'maneuver': 'turn-left',
+                                                       'polyline': {   'points': 'mukuHo~oYL}BMA'},
+                                                       'start_location': {   'lat': 50.8554295,
+                                                                             'lng': 4.3467955},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '0.3 '
+                                                                               'km',
+                                                                       'value': 345},
+                                                       'duration': {   'text': '1 '
+                                                                               'min',
+                                                                       'value': 63},
+                                                       'end_location': {   'lat': 50.8553309,
+                                                                           'lng': 4.352354399999999},
+                                                       'html_instructions': 'Turn '
+                                                                            '<b>right</b> '
+                                                                            'onto '
+                                                                            '<b>Arduinkaai</b>/<b>Quai '
+                                                                            'aux '
+                                                                            'Pierres '
+                                                                            'de '
+                                                                            'Taille</b>',
+                                                       'maneuver': 'turn-right',
+                                                       'polyline': {   'points': 'mukuHobpYF_C@oC?C?{@?c@B{D?gDD}F'},
+                                                       'start_location': {   'lat': 50.8554252,
+                                                                             'lng': 4.3474417},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '0.5 '
+                                                                               'km',
+                                                                       'value': 513},
+                                                       'duration': {   'text': '2 '
+                                                                               'mins',
+                                                                       'value': 128},
+                                                       'end_location': {   'lat': 50.85088630000001,
+                                                                           'lng': 4.3504109},
+                                                       'html_instructions': 'Turn '
+                                                                            '<b>right</b> '
+                                                                            'onto '
+                                                                            '<b>Rue '
+                                                                            'de '
+                                                                            'Laeken</b>/<b>Lakensestraat</b>',
+                                                       'maneuver': 'turn-right',
+                                                       'polyline': {   'points': 'ytkuHeaqYvCj@vE|Ah@Vz@VbBn@rAd@vAj@zAl@JBJDNHLD'},
+                                                       'start_location': {   'lat': 50.8553309,
+                                                                             'lng': 4.352354399999999},
+                                                       'travel_mode': 'DRIVING'},
+                                                   {   'distance': {   'text': '0.1 '
+                                                                               'km',
+                                                                       'value': 111},
+                                                       'duration': {   'text': '1 '
+                                                                               'min',
+                                                                       'value': 38},
+                                                       'end_location': {   'lat': 50.8503321,
+                                                                           'lng': 4.3517241},
+                                                       'html_instructions': 'Turn '
+                                                                            '<b>left</b> '
+                                                                            'onto '
+                                                                            '<b>Bisschopsstraat</b>/<b>Rue '
+                                                                            'de '
+                                                                            "l'Evêque</b>",
+                                                       'maneuver': 'turn-left',
+                                                       'polyline': {   'points': 'ayjuHaupYPk@Rm@DObA{C'},
+                                                       'start_location': {   'lat': 50.85088630000001,
+                                                                             'lng': 4.3504109},
+                                                       'travel_mode': 'DRIVING'}],
+                                      'traffic_speed_entry': [],
+                                      'via_waypoint': []}],
+                      'overview_polyline': {   'points': '}bs~Huu|\\zRiMzSaK|u@y_@dOmSfJyMgAo[fBuJ|n@oeAvK_PtDRdG~@vCvFpZbnA`M`v@wBbQbBnLfHnB`HyJvg@cWnx@qz@tf@mh@nh@ef@teA}{@ha@wXfr@oc@tz@{_@xm@sShs@aT`iAsg@le@i[xQwO~OyHb\\gEvr@N~dCVvyAiAbNa@vQ[vYmEd_BwaAjgAmq@~i@__@rM}Pj\\_n@xSe`@`Uaq@tj@chBpUaf@lWi^n`@}\\pp@qb@zToFdSa@dRpB`[hJpO|GtGnF~Fr@zKy@fc@|Mrh@`OdNvCzv@|A|}@zArd@f@dSaBpTiH~rAwm@hiA_d@d\\gPjOaKbJ{LtXco@`JkQdSuOrKo@tOhFxSrTrp@tdA~O~a@dHv[lGbz@LbzDnDrr@lNvn@xTl^ft@lt@lh@ph@l_@bWjgA|i@l]zPlgAl\\r`AlZ|vAvu@dmBt_Axu@pXfkAbb@t{Azb@|eC`y@jeChX~hA_Cbo@|FvVrHd{@v^bSbQtd@zh@pc@p~@~T|\\rUjQ|a@rNl`@~Ep`AhCdcBf\\hg@pKzm@xJfx@uDdaAmHh~@yChZb@vKbFfSrT`f@bk@phB|jBnk@pgAv]zh@~_@xe@nZlTna@fKl^p@zf@xEpc@|H`j@dG`PDbJuFdLeOzHyBlI~BzF|InMn_@h{@llCnl@rjCfHrr@pAbcAw@||@wCfFwCcErAmGrWoGl\\{Ax`@bBlv@dGha@tGjn@fVpiAlg@`~@r[rxBjm@~lB~q@vdBto@~]`UrWvU`aAlsAnp@tbAtvAtlB`aB~rBj_BzkBlbA|xAra@ty@j]b{@ny@rwB`u@jvBfWru@lf@`iAz_@tu@~d@|h@xw@fx@~X~i@xJda@jDl`@qBfcAgDhv@nCvkApGhy@fOri@`Xbb@v[tSn]xEdd@I`c@gAbG}DhFwJzMqc@`\\yj@t\\wf@hVoMtTbAnOnJn]n[bXtVfZ~RpUxK~LbKbO~\\jGh\\bBnZoDh]l@~YtFzN`LpNvVdcAvL`WtjApTnpBr]v{Ef{@jsApVfe@`J~_@`N|QtPt[lf@~Zrb@zNlIdgBbq@lhEpdBjkAfe@vQ~Czf@`@rdFlEneAz@pULbSkDpNqIdUgX|`@mh@jQ_OvP}CzToKlVuPvWuLn]aJ`aAkVjn@kPjPeJbMmS~HgTdBsJdIuFrERhFzE~KdOtUnA|U{GvFyCnBz@fOmJ|M{HxBuBbCUxG|Drb@x[~JxMv[bUbBz@hBLrI|H^kKBcMD}FvCj@`GtBjIxCbC`A|B_G'},
+                      'summary': 'A27',
+                      'warnings': [],
+                      'waypoint_order': []}],
+    'status': 'OK'}

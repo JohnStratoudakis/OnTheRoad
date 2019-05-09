@@ -20,15 +20,18 @@ class TravelCost:
         if os.path.isfile(filename):
             j = loadObj(filename)
         else:
+            import os
+            API_KEY = os.environ['GOOG_API_KEY']
             my_url = "/maps/api/directions/json?origin=%s&destination=%s&sensor=false&mode=driving" % (
                     urllib.parse.quote_plus(source_address),
                     urllib.parse.quote_plus(dest_address) )
-            url_addr = "http://maps.googleapis.com%s" % my_url
+            url_addr = "https://maps.googleapis.com%s" % my_url
+            url_addr += "&key=" + API_KEY
 
             data = urllib.request.urlopen(url_addr)
             print(f'data.status = {data.status}')
             resData = data.read()
-            print(f'resData = {resData}')
+            #print(f'resData = {resData}')
 
             #data = urllib.request.urlopen(url_addr)
             print(type(data))
@@ -40,12 +43,13 @@ class TravelCost:
             else:
                 dumpObj(j, filename)
 
-            dist = j['routes'][0]['legs'][0]['distance']['text'] 
-            dist_meters = j['routes'][0]['legs'][0]['distance']['value'] 
-            duration = j['routes'][0]['legs'][0]['duration']['text']
-            duration_seconds = j['routes'][0]['legs'][0]['duration']['value']
+            #dist = j['routes'][0]['legs'][0]['distance']['text'] 
+            #dist_meters = j['routes'][0]['legs'][0]['distance']['value'] 
+            #duration = j['routes'][0]['legs'][0]['duration']['text']
+            #duration_seconds = j['routes'][0]['legs'][0]['duration']['value']
 
-        return [dist_meters, duration_seconds]
+        return [0, 0]
+        #return [dist_meters, duration_seconds]
 
 def dumpObj(obj, filename):
     import pickle

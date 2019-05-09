@@ -17,7 +17,8 @@ class TravelCostTests(unittest.TestCase):
         # WHEN
         cost = TravelCost.TravelCost(ams, brussels).cost()
 
-#        # THEN
+        # THEN
+        self.assertEquals(1, 2)
 #        #self.assertEquals(cost)
 
 if __name__ == '__main__':
