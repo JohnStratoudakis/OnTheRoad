@@ -22,9 +22,14 @@ class TravelCost:
         else:
             import os
             API_KEY = os.environ['GOOG_API_KEY']
-            my_url = "/maps/api/directions/json?origin=%s&destination=%s&sensor=false&mode=driving" % (
-                    urllib.parse.quote_plus(source_address),
-                    urllib.parse.quote_plus(dest_address) )
+            mode = "driving"
+            source_address = urllib.parse.quote_plus(source_address)
+            dest_address = urllib.parse.quote_plus(dest_address)
+
+            my_url = f"/maps/api/directions/json?origin={source_address}&destination={dest_address}&sensor=false&mode={mode}" 
+            #my_url = "/maps/api/directions/json?origin=%s&destination=%s&sensor=false&mode=driving" % (
+            #        urllib.parse.quote_plus(source_address),
+            #        urllib.parse.quote_plus(dest_address) )
             url_addr = "https://maps.googleapis.com%s" % my_url
             url_addr += "&key=" + API_KEY
 
