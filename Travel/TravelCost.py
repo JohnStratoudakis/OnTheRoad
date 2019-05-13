@@ -5,9 +5,10 @@ class TravelCost:
         self.endLoc = endLoc
 
     def cost(self):
-        self.getDistanceBetween(self.startLoc.getAddress(), self.endLoc.getAddress())
+        return self.getDistanceBetween(self.startLoc.getAddress(), self.endLoc.getAddress())
 
     def getDistanceBetween(self, source_address, dest_address):
+        # Prepare Caching Directory
         import os
         temp_dir = "./data_tmp/"
         if not os.path.exists(temp_dir):
@@ -22,39 +23,29 @@ class TravelCost:
         else:
             import os
             API_KEY = os.environ['GOOG_API_KEY']
-            mode = "driving"
+            mode = "transit"
             source_address = urllib.parse.quote_plus(source_address)
             dest_address = urllib.parse.quote_plus(dest_address)
 
             my_url = f"/maps/api/directions/json?origin={source_address}&destination={dest_address}&sensor=false&mode={mode}" 
-            #my_url = "/maps/api/directions/json?origin=%s&destination=%s&sensor=false&mode=driving" % (
-            #        urllib.parse.quote_plus(source_address),
-            #        urllib.parse.quote_plus(dest_address) )
             url_addr = "https://maps.googleapis.com%s" % my_url
             url_addr += "&key=" + API_KEY
 
+            # Make actual request
             data = urllib.request.urlopen(url_addr)
-            print(f'data.status = {data.status}')
+            print(f'Request data.status = {data.status}')
             resData = data.read()
-            #print(f'resData = {resData}')
-
-            #data = urllib.request.urlopen(url_addr)
-            print(type(data))
+            #print(type(data))
             import json
             j = json.loads(resData)
-            #j = json.loads(data.read())
             if 'error_message' in j:
                 print(f"There is an error message embedded in the response:\n\t {j['error_message']}")
             else:
                 dumpObj(j, filename)
 
-            #dist = j['routes'][0]['legs'][0]['distance']['text'] 
-            #dist_meters = j['routes'][0]['legs'][0]['distance']['value'] 
-            #duration = j['routes'][0]['legs'][0]['duration']['text']
-            #duration_seconds = j['routes'][0]['legs'][0]['duration']['value']
-
-        return [0, 0]
-        #return [dist_meters, duration_seconds]
+        dist_meters = j['routes'][0]['legs'][0]['distance']['value']
+        duration_seconds = j['routes'][0]['legs'][0]['duration']['value']
+        return [dist_meters, duration_seconds]
 
 def dumpObj(obj, filename):
     import pickle
