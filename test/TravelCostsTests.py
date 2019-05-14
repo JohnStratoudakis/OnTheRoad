@@ -1,13 +1,14 @@
-#!/usr/local/bin/python3
-
 from Travel import TravelCost, Location
 
 import unittest
+from unittest import mock
+from hamcrest import *
 
 class TravelCostTests(unittest.TestCase):
 
     def test_smoke(self):
-        self.assertEqual("Sugar is bad", "Sugar is bad")
+        assert_that("Sugar is bad", equal_to("Sugar is bad"))
+        #self.assertEqual("Sugar is bad", "Sugar is bad")
 
     def test_amsterdam_to_brussels(self):
         # given
