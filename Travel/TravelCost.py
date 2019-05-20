@@ -1,4 +1,5 @@
 
+
 class TravelCost:
     def __init__(self, startLoc, endLoc):
         self.startLoc = startLoc
