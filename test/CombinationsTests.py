@@ -90,9 +90,9 @@ class TestCombinations(unittest.TestCase):
         expPaths.append([ ("C", "A", "B") ])
 
         # WHEN
-        self.assertEqual( len(actPaths), len(expPaths) )
+        self.assertEqual( len(allPaths), len(expPaths) )
         for expPath in expPaths:
-            self.assertTrue( expPath in actPaths )
+            self.assertTrue( expPath in allPaths )
 
     def test_4_guests(self):
         global verbose
@@ -119,7 +119,7 @@ class TestCombinations(unittest.TestCase):
         expPaths.append([ ("A", ), ("B", "D", "C", ) ])
 
         for expPath in expPaths:
-            self.assertTrue( expPath in actPaths )
+            self.assertTrue( expPath in allPaths )
 
     def test_remove_duplicates(self):
         pass
