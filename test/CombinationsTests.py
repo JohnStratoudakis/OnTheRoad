@@ -32,7 +32,7 @@ class TestCombinations(unittest.TestCase):
         guests = [ "A", "B" ]
 
         # WHEN
-        allPaths = Travel.Combinations.calc( guests )
+        allPaths = Combinations.Combinations.calc( guests )
 
         # THEN
         expPaths = [ ]
@@ -51,7 +51,7 @@ class TestCombinations(unittest.TestCase):
         guests = [ "A", "B", "C" ]
 
         # WHEN
-        allPaths = Travel.Combinations.calc( guests )
+        allPaths = Combinations.Combinations.calc( guests )
 
         # THEN
         expPaths = [ ]
@@ -102,7 +102,7 @@ class TestCombinations(unittest.TestCase):
         guests = [ "A", "B", "C", "D" ]
 
         # WHEN
-        allPaths = Travel.Combinations.calc( guests )
+        allPaths = Combinations.Combinations.calc( guests )
 
         # THEN
         expPaths = [ ]
