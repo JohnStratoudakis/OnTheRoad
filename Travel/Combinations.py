@@ -7,7 +7,18 @@ def log( line ):
 class Combinations:
 
     @staticmethod
+    def calcSinglePath( cities ):
+        """ This is intended to calculate all paths
+            between all cities passed in
+        """
+        if len(cities) == 1:
+            return cities
+
+    @staticmethod
     def calc( guests ):
+        """ This looks optimized for CarPool
+            because it allows for people to drive alone
+        """
         if len( guests ) == 1:
             allPaths = [ ]
             allPaths.append ([ (guests[0],)  ]) # A drives alone

@@ -1,6 +1,7 @@
 from Travel import Combinations, TravelCost, Location
 
 import unittest
+from hamcrest import *
 
 def dumpPath( path ):
     print("Dumping path")
@@ -121,8 +122,15 @@ class TestCombinations(unittest.TestCase):
         for expPath in expPaths:
             self.assertTrue( expPath in allPaths )
 
-    def test_remove_duplicates(self):
-        pass
+    def test_1_city(self):
+        # GIVEN
+        ams = "Amsterdam"
+
+        # WHEN
+        allPaths = Combinations.Combinations.calcSinglePath( [ ams ] )
+
+        # THEN
+        assert_that(len(allPaths), equal_to(1))
 
 if __name__ == '__main__':
     unittest.main()
