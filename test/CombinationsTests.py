@@ -3,10 +3,10 @@ from Travel import Combinations, TravelCost, Location
 import unittest
 from hamcrest import *
 
-def dumpPath( path ):
-    print("Dumping path")
+#def dumpPath( path ):
+#    print("Dumping path")
 
-class TestCombinations(unittest.TestCase):
+class CombinationsTests(unittest.TestCase):
 
     def test_1_guest(self):
         global verbose
@@ -131,6 +131,39 @@ class TestCombinations(unittest.TestCase):
 
         # THEN
         assert_that(len(allPaths), equal_to(1))
+        # Only one city in path - Amsterdam
+        assert_that(allPaths[0], equal_to(ams))
+
+    def test_2_cities(self):
+        # GIVEN
+        ams = "Amsterdam"
+        bru = "Brussels"
+
+        # WHEN
+        allPaths = Combinations.Combinations.calcSinglePath( [ ams, bru ] )
+
+        # THEN
+        assert_that(len(allPaths), equal_to(2))
+        # Order is important
+        assert_that(allPaths[0], equal_to(ams))
+        assert_that(allPaths[1], equal_to(bru))
+
+    def test_3_cities(self):
+        # GIVEN
+        ams = "Amsterdam"
+        bru = "Brussels"
+        lon = "London"
+
+        # WHEN
+        allPaths = Combinations.Combinations.calcSinglePath( [ ams, bru, lon ] )
+
+        # THEN
+        assert_that(len(allPaths), equal_to(3))
+        # Order is important
+        assert_that(allPaths[0], equal_to(ams))
+        assert_that(allPaths[1], equal_to(bru))
+        assert_that(allPaths[2], equal_to(lon))
+
 
 if __name__ == '__main__':
     unittest.main()

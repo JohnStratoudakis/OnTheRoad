@@ -4,7 +4,7 @@ import unittest
 from unittest import mock
 from hamcrest import *
 
-class TravelCostTests(unittest.TestCase):
+class TravelCostsTests(unittest.TestCase):
 
     def test_smoke(self):
         assert_that("Sugar is bad", equal_to("Sugar is bad"))

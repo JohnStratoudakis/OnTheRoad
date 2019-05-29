@@ -13,6 +13,17 @@ class Combinations:
         """
         if len(cities) == 1:
             return cities
+        elif len(cities) == 2:
+            return cities
+
+        # 3 cities
+        #  pick 1 city as starting point
+        print("DEBUG")
+        for city in cities:
+            print(f"Starting point {city}")
+            remainingCities = sorted(set(cities) - set(city))
+            print(f"Remaining cities: {', '.join(remainingCities)}")
+        #
 
     @staticmethod
     def calc( guests ):
