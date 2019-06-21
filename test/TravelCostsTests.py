@@ -17,12 +17,20 @@ class TravelCostsTests(unittest.TestCase):
         brussels = Location.Location("brussels", "brussels, belgium")
 
         # WHEN
-        [distance_meters, duration_seconds] = TravelCost.TravelCost(ams, brussels).cost()
+        [distance_meters, duration_seconds] = TravelCost.TravelCost.cost(ams, brussels)
 
         # THEN
         self.assertEqual(distance_meters, 202828)
         self.assertEqual(duration_seconds, 8372)
 
+    def test_fill_out_matrix(self):
+        # GIVEN
+        ams = Location.Location("Amsterdam", "Amsterdam, Netherlands")
+        brussels = Location.Location("Brussels", "Brussels, Belgium")
+
+        # WHEN
+
+        # THEN
 
 if __name__ == '__main__':
     unittest.main()

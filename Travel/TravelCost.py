@@ -5,6 +5,11 @@ class TravelCost:
         self.startLoc = startLoc
         self.endLoc = endLoc
 
+    @staticmethod
+    def getTravelCost(startLoc, endLoc):
+        travelCost = TravelCost(startLoc, endLoc)
+        return travelCost.cost()
+
     def cost(self):
         return self.getDistanceBetween(self.startLoc.getAddress(), self.endLoc.getAddress())
 
