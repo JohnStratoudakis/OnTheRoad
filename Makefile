@@ -1,5 +1,4 @@
-
-PYTHON=python3.7
+PYTHON?=python3.7
 
 .PHONY: freeze
 freeze:
@@ -12,5 +11,5 @@ install-deps:
 .PHONY: test
 test:
 	echo "Running tests"
-	${PYTHON} -m unittest discover --pattern=*Tests.py
+	${PYTHON} -m pytest test/*
 
