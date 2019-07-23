@@ -1,3 +1,4 @@
+from Travel import TravelCost, Location, Path
 
 def log( line ):
     verbose = False
@@ -12,9 +13,10 @@ class Combinations:
             between all cities passed in
         """
         if len(cities) == 1:
-            return cities
+            return [ Path.Path(cities[0], cities[0]) ] 
         elif len(cities) == 2:
-            return cities
+            result = [ Path.Path(cities[0], cities[1]), Path.Path(cities[1], cities[0]) ]
+            return result
 
         # 3 cities
         #  pick 1 city as starting point

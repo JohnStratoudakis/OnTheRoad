@@ -1,4 +1,4 @@
-from Travel import Combinations, TravelCost, Location
+from Travel import Combinations, TravelCost, Location, Path
 
 import unittest
 from hamcrest import *
@@ -132,7 +132,8 @@ class CombinationsTests(unittest.TestCase):
         # THEN
         assert_that(len(allPaths), equal_to(1))
         # Only one city in path - Amsterdam
-        assert_that(allPaths[0], equal_to(ams))
+        assert_that(allPaths[0].getStartCity(), equal_to(ams))
+        assert_that(allPaths[0].getStopCity(), equal_to(ams))
 
     def test_2_cities(self):
         # GIVEN
@@ -145,8 +146,13 @@ class CombinationsTests(unittest.TestCase):
         # THEN
         assert_that(len(allPaths), equal_to(2))
         # Order is important
-        assert_that(allPaths[0], equal_to(ams))
-        assert_that(allPaths[1], equal_to(bru))
+        assert_that(allPaths[0].getStartCity(), equal_to(ams))
+        assert_that(allPaths[0].getStopCity(), equal_to(bru))
+
+        assert_that(allPaths[1].getStartCity(), equal_to(bru))
+        assert_that(allPaths[1].getStopCity(), equal_to(ams))
+
+        assert_that(1, equal_to(0))
 
     def test_3_cities(self):
         # GIVEN
@@ -155,15 +161,15 @@ class CombinationsTests(unittest.TestCase):
         lon = "London"
 
         # WHEN
-#        allPaths = Combinations.Combinations.calcSinglePath( [ ams, bru, lon ] )
+        allPaths = Combinations.Combinations.calcSinglePath( [ ams, bru, lon ] )
 
         # THEN
 #        assert_that(len(allPaths), equal_to(3))
-        # Order is important
-#        assert_that(allPaths[0], equal_to(ams))
-#        assert_that(allPaths[1], equal_to(bru))
-#        assert_that(allPaths[2], equal_to(lon))
-
+#        # Order is important
+##        assert_that(allPaths[0], equal_to(ams))
+##        assert_that(allPaths[1], equal_to(bru))
+##        assert_that(allPaths[2], equal_to(lon))
+#        assert_that(1, equal_to(0))
 
 if __name__ == '__main__':
     unittest.main()

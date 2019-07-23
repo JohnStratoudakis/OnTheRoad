@@ -27,6 +27,7 @@ class TravelCostsTests(unittest.TestCase):
         # GIVEN
         ams = Location.Location("Amsterdam", "Amsterdam, Netherlands")
         brussels = Location.Location("Brussels", "Brussels, Belgium")
+        london = Location.Location("London", "London, United Kingdom")
 
         # WHEN
 
