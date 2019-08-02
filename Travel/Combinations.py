@@ -20,7 +20,8 @@ class Combinations:
         if len(cities) == 1:
             return [ Path.Path( (cities[0], ) ) ] 
         elif len(cities) == 2:
-            result = [ Path.Path( (cities[0], cities[1]) ) ]
+            result = [ Path.Path( (cities[0], cities[1]) ),
+                    Path.Path( (cities[1], cities[0]) ) ]
             return result
 
         # 3 cities
