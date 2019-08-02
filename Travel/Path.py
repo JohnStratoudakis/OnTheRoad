@@ -1,9 +1,17 @@
 
 class Path(object):
 
-    def __init__(self, startCity, stopCity):
-        self.startCity = startCity
-        self.stopCity = stopCity
+    allStops = None
+
+    def __init__(self, stops):
+        print("STOPS: {}, LEN(STOPS): {}".format( stops, len(stops)  ))
+        if len(stops) == 1:
+            self.startCity = stops[0]
+            self.stopCity = stops[0]
+        else:
+            self.startCity = stops[0]
+            self.stopCity = stops[ len(stops)-1 ]
+        self.allStops = stops
 
     def getStartCity(self):
         return self.startCity

@@ -7,25 +7,40 @@ def log( line ):
 
 class Combinations:
 
+    cities = []
+    def __init__(self, cities=[]):
+        self.cities = cities
+
     @staticmethod
     def calcSinglePath( cities ):
         """ This is intended to calculate all paths
             between all cities passed in
         """
+        print("CITIES: {}".format( cities ))
         if len(cities) == 1:
-            return [ Path.Path(cities[0], cities[0]) ] 
+            return [ Path.Path( (cities[0], ) ) ] 
         elif len(cities) == 2:
-            result = [ Path.Path(cities[0], cities[1]), Path.Path(cities[1], cities[0]) ]
+            result = [ Path.Path( (cities[0], cities[1]) ) ]
             return result
 
         # 3 cities
         #  pick 1 city as starting point
-        print("DEBUG")
-        for city in cities:
-            print(f"Starting point {city}")
-            remainingCities = sorted(set(cities) - set(city))
-            print(f"Remaining cities: {', '.join(remainingCities)}")
-        #
+        #import logging
+        logging.err("DEBUG")
+        res = []
+        from itertools import permutations
+        subSet = permutations( cities )
+        for sub in subSet:
+            newRes = Path.Path( sub )
+            res += newRes
+            print("type(sub): {}".format(type(sub)))
+            print("sub: {}".format( sub ))
+        #for city in cities:
+        #    print(f"Starting point {city}")
+        #    remainingCities = sorted(set(cities) - set(city))
+        #    print(f"Remaining cities: {', '.join(remainingCities)}")
+
+        return res
 
     @staticmethod
     def calc( guests ):

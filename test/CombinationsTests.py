@@ -152,9 +152,7 @@ class CombinationsTests(unittest.TestCase):
         assert_that(allPaths[1].getStartCity(), equal_to(bru))
         assert_that(allPaths[1].getStopCity(), equal_to(ams))
 
-        assert_that(1, equal_to(0))
-
-    def test_3_cities(self):
+    def DISABLED_test_3_cities(self):
         # GIVEN
         ams = "Amsterdam"
         bru = "Brussels"
@@ -164,9 +162,10 @@ class CombinationsTests(unittest.TestCase):
         allPaths = Combinations.Combinations.calcSinglePath( [ ams, bru, lon ] )
 
         # THEN
-#        assert_that(len(allPaths), equal_to(3))
-#        # Order is important
-##        assert_that(allPaths[0], equal_to(ams))
+        assert_that(len(allPaths), equal_to(3))
+        # Order is important
+        assert_that(allPaths[0].getStartCity(), equal_to(ams))
+        assert_that(allPaths[0].getStopCity(), equal_to(lon))
 ##        assert_that(allPaths[1], equal_to(bru))
 ##        assert_that(allPaths[2], equal_to(lon))
 #        assert_that(1, equal_to(0))
