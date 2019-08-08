@@ -26,16 +26,16 @@ class Combinations:
 
         # 3 cities
         #  pick 1 city as starting point
-        #import logging
-        logging.err("DEBUG")
+        import logging
+        logging.error("LOGGING STATEMENT")
         res = []
         from itertools import permutations
         subSet = permutations( cities )
         for sub in subSet:
             newRes = Path.Path( sub )
-            res += newRes
-            print("type(sub): {}".format(type(sub)))
-            print("sub: {}".format( sub ))
+            res.append(newRes)
+            #print("type(sub): {}".format(type(sub)))
+            #print("sub: {}".format( sub ))
         #for city in cities:
         #    print(f"Starting point {city}")
         #    remainingCities = sorted(set(cities) - set(city))
