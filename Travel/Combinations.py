@@ -12,7 +12,7 @@ class Combinations:
         self.cities = cities
 
     @staticmethod
-    def calcSinglePath( cities ):
+    def getAllPaths( cities ):
         """ This is intended to calculate all paths
             between all cities passed in
         """

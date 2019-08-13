@@ -23,15 +23,17 @@ class TravelCostsTests(unittest.TestCase):
         self.assertEqual(distance_meters, 202828)
         self.assertEqual(duration_seconds, 8372)
 
-    def test_fill_out_matrix(self):
+    def test_best_path_may_2019(self):
         # GIVEN
         ams = Location.Location("Amsterdam", "Amsterdam, Netherlands")
         brussels = Location.Location("Brussels", "Brussels, Belgium")
         london = Location.Location("London", "London, United Kingdom")
 
         # WHEN
+        allCosts = TravelCost.TravelCost.allCosts([ams, brussels, london])
 
         # THEN
+        assert_that(1, equal_to(2))
 
 if __name__ == '__main__':
     unittest.main()

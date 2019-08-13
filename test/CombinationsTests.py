@@ -1,10 +1,9 @@
-from Travel import Combinations, TravelCost, Location, Path
+from Travel import Combinations, TravelCost, Path
+
+from Travel import Location
 
 import unittest
 from hamcrest import *
-
-#def dumpPath( path ):
-#    print("Dumping path")
 
 class CombinationsTests(unittest.TestCase):
 
@@ -124,10 +123,11 @@ class CombinationsTests(unittest.TestCase):
 
     def test_1_city(self):
         # GIVEN
-        ams = "Amsterdam"
+        ams = Location.Location("Amsterdam", "Amsterdam, Netherlands")
+        #ams = "amsterdam"
 
         # WHEN
-        allPaths = Combinations.Combinations.calcSinglePath( [ ams ] )
+        allPaths = Combinations.Combinations.getAllPaths( [ ams ] )
 
         # THEN
         assert_that(len(allPaths), equal_to(1))
@@ -137,11 +137,11 @@ class CombinationsTests(unittest.TestCase):
 
     def test_2_cities(self):
         # GIVEN
-        ams = "Amsterdam"
-        bru = "Brussels"
+        ams = Location.Location("Amsterdam", "Amsterdam, Netherlands")
+        bru = Location.Location("Brussels", "Brussels, Belgium")
 
         # WHEN
-        allPaths = Combinations.Combinations.calcSinglePath( [ ams, bru ] )
+        allPaths = Combinations.Combinations.getAllPaths( [ ams, bru ] )
 
         # THEN
         assert_that(len(allPaths), equal_to(2))
@@ -154,21 +154,20 @@ class CombinationsTests(unittest.TestCase):
 
     def test_3_cities(self):
         # GIVEN
-        ams = "Amsterdam"
-        bru = "Brussels"
-        lon = "London"
+        ams = Location.Location("Amsterdam", "Amsterdam, Netherlands")
+        bru = Location.Location("Brussels", "Brussels, Belgium")
+        lon = Location.Location("London", "London, United Kingdom")
 
         # WHEN
-        allPaths = Combinations.Combinations.calcSinglePath( [ ams, bru, lon ] )
+        allPaths = Combinations.Combinations.getAllPaths( [ ams, bru, lon ] )
 
         # THEN
         assert_that(len(allPaths), equal_to(6))
         # Order is important
         assert_that(allPaths[0].getStartCity(), equal_to(ams))
         assert_that(allPaths[0].getStopCity(), equal_to(lon))
-##        assert_that(allPaths[1], equal_to(bru))
-##        assert_that(allPaths[2], equal_to(lon))
-#        assert_that(1, equal_to(0))
+        assert_that(allPaths[5].getStartCity(), equal_to(lon))
+        assert_that(allPaths[5].getStopCity(), equal_to(ams))
 
 if __name__ == '__main__':
     unittest.main()
