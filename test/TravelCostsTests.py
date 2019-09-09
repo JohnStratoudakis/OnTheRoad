@@ -33,7 +33,8 @@ class TravelCostsTests(unittest.TestCase):
         allCosts = TravelCost.TravelCost.allCosts([ams, brussels, london])
 
         # THEN
-        assert_that(1, equal_to(2))
+        print("allCosts: {}".format(allCosts))
+        assert_that(len(allCosts), equal_to(6))
 
 if __name__ == '__main__':
     unittest.main()
