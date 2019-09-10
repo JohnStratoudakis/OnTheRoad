@@ -34,7 +34,10 @@ class TravelCostsTests(unittest.TestCase):
 
         # THEN
         print("allCosts: {}".format(allCosts))
+        print("path[0]: {}".format(allCosts[0].getStartCity()))
         assert_that(len(allCosts), equal_to(6))
+
+        assert_that(1, equal_to(2))
 
 if __name__ == '__main__':
     unittest.main()

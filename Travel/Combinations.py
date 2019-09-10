@@ -12,7 +12,7 @@ class Combinations:
         self.cities = cities
 
     @staticmethod
-    def getAllPaths( cities ):
+    def getAllPaths( cities : Location.Location):
         """ This is intended to calculate all paths
             between all cities passed in
         """
@@ -27,7 +27,7 @@ class Combinations:
         # 3 cities
         #  pick 1 city as starting point
         import logging
-        logging.error("LOGGING STATEMENT")
+        logging.error("3 or more CITIES")
         res = []
         from itertools import permutations
         subSet = permutations( cities )

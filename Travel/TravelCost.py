@@ -1,4 +1,5 @@
 from Travel import Combinations
+from Travel import Location
 
 class TravelCost:
     def __init__(self, startLoc, endLoc):
@@ -18,12 +19,13 @@ class TravelCost:
         return self.getDistanceBetween(self.startLoc.getAddress(), self.endLoc.getAddress())
 
     @staticmethod
-    def allCosts(inCities):
+    def allCosts(inCities : Location.Location):
         allPaths = Combinations.Combinations.getAllPaths( inCities )
 
         allCosts = []
         for path in allPaths:
-            cost = TravelCost(path)
+            #cost = TravelCost(path)
+            print("Adding path: {}".format(path))
             allCosts.append(path)
 
         return allCosts

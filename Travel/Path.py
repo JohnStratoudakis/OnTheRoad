@@ -4,7 +4,7 @@ class Path(object):
     allStops = None
 
     def __init__(self, stops):
-        print("PATH: {}, LEN(STOPS): {}".format( stops, len(stops)  ))
+        #print("PATH: {}, LEN(STOPS): {}".format( stops, len(stops)  ))
         if len(stops) == 1:
             self.startCity = stops[0]
             self.stopCity = stops[0]
@@ -18,3 +18,6 @@ class Path(object):
 
     def getStopCity(self):
         return self.stopCity
+
+    def __str__(self):
+        return "TO_STRING"
