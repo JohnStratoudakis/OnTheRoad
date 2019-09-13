@@ -16,7 +16,7 @@ class TravelCost:
         return travelCost.cost()
 
     def cost(self):
-        return self.getDistanceBetween(self.startLoc.getAddress(), self.endLoc.getAddress())
+        return TravelCost.getDistanceBetween(self.startLoc, self.endLoc)
 
     @staticmethod
     def allCosts(inCities : Location.Location):
@@ -30,7 +30,11 @@ class TravelCost:
 
         return allCosts
 
-    def getDistanceBetween(self, source_address, dest_address):
+    @staticmethod
+    def getDistanceBetween(startLoc, endLoc):
+        source_address = startLoc.getAddress()
+        dest_address = endLoc.getAddress()
+
         # Prepare Caching Directory
         import os
         temp_dir = "./data_tmp/"
