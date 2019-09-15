@@ -1,5 +1,9 @@
 PYTHON?=python3.7
 
+.PHONY: clean
+clean:
+	find . -name "__pycache__" | xargs rm -rf
+
 .PHONY: freeze
 freeze:
 	${PYTHON} -m pip freeze > requirements.txt
@@ -11,6 +15,6 @@ install-deps:
 .PHONY: test
 test:
 	echo "Running tests"
-	${PYTHON} -m pytest  -v ./test/*
+	${PYTHON} -m pytest  -v ./tests/*
 	#${PYTHON} -m pytest --show-capture all -v ./test/*
 
