@@ -69,24 +69,29 @@ class TravelCost:
             #print(type(data))
             import json
             j = json.loads(resData)
-            if 'error_message' in j or j['status'] == 'ZERO_RESULTS':
-                print("ERROR")
-                print(f"There is an error message embedded in the response:\n\t {j['error_message']}")
+            dumpToScreen(j)
+
+            if 'error_message' in j:
+                print("There is an error message embedded in the response.")
+                return [TravelCost.MAX_VAL, TravelCost.MAX_VAL]
+            elif j['status'] == 'ZERO_RESULTS':
+                print("ZERO_RESULTS.")
                 return [TravelCost.MAX_VAL, TravelCost.MAX_VAL]
             else:
                 print("NO ERROR")
                 dumpObj(j, filename)
-        #dumpToScreen(j)
 
         dist_meters = j['routes'][0]['legs'][0]['distance']['value']
         duration_seconds = j['routes'][0]['legs'][0]['duration']['value']
+        print(f"[{dist_meters}, {duration_seconds}]")
         return [dist_meters, duration_seconds]
 
 def dumpToScreen(json_obj):
         print(80 * "-")
-        print("DUMP OF DATA")
+        print("DUMP OF DATA____________2")
         print("type(j): {}".format(type(json_obj)))
-        print(json_obj)
+        import json
+        print(json.dumps(json_obj, indent=4))
         print(80 * "-")
 
 def dumpObj(obj, filename):

@@ -41,9 +41,9 @@ class MLRoseTests(unittest.TestCase):
         assert_that(dist_list[2][1], equal_to(2))
         assert_that(dist_list[2][2], equal_to(375174))
 
-    def test_three_cities(self):
+    def DISABLED_test_may_trip(self):
         # GIVEN
-        allCities = [ self.ams, self.bru, self.lon ]
+        allCities = [self.ams, self.bru, self.lon]
 
         # WHEN
         mlRose = MLRose.MLRose()
@@ -55,5 +55,26 @@ class MLRoseTests(unittest.TestCase):
         assert_that(best_state[2], equal_to(0))
         #assert_that(1, equal_to(2))
         print("TSP Best State: {}".format(best_state))
+        for city in best_state:
+            print(f"{allCities[city]}")
         print("BEST FITNESS: {}".format(best_fitness))
+
+    def test_nov_trip(self):
+        # GIVEN
+        allCities = [self.vie, self.bud, self.bra]
+
+        # WHEN
+        mlRose = MLRose.MLRose()
+        best_state, best_fitness = mlRose.calcTsp(allCities)
+
+        # THEN
+        assert_that(best_state[0], equal_to(2))
+        assert_that(best_state[1], equal_to(1))
+        assert_that(best_state[2], equal_to(0))
+        #assert_that(1, equal_to(2))
+        print("TSP Best State: {}".format(best_state))
+        for city in best_state:
+            print(f"{allCities[city]}")
+        print("BEST FITNESS: {}".format(best_fitness))
+        assert_that(2, equal_to(0))
 

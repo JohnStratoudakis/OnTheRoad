@@ -21,3 +21,5 @@ class Location:
         self.ceremony = getDistanceBetween(self.address, ceremony.address)
         print("\tCeremony: {} meters {} seconds".format(self.ceremony[0], self.ceremony[1]))
 
+    def __str__(self):
+        return f"{self.name}"
