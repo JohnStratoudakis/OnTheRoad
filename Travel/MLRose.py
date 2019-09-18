@@ -25,11 +25,12 @@ class MLRose:
         tsp_fit = TSPOpt(length = len(allCities), fitness_fn = fitness_dists, maximize = False)
 
         # Solve using genetic algorithm
-        best_state, best_fitness, fit_curve = genetic_alg(problem = tsp_fit,
+        best_state, best_fitness = genetic_alg(problem = tsp_fit,
+                                                    pop_size = 400,
                                                     mutation_prob = 0.1,
-                                                    max_attempts = 20000,
+                                                    max_attempts = 200,
                                                     #max_iters = 2000,
-                                                    curve = True,
+                                                    curve = False,
                                                     random_state = 2)
         #for i in range(len(fit_curve)-2, len(fit_curve)):
         #    print(f"[{i}] = {fit_curve}")

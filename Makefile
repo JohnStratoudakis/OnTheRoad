@@ -1,5 +1,9 @@
 PYTHON?=python3.7
 
+.PHONY: help
+help:
+	echo "make test-filter filter=John"
+
 .PHONY: clean
 clean:
 	find . -name "__pycache__" | xargs rm -rf
@@ -18,3 +22,7 @@ test:
 	${PYTHON} -m pytest  -v ./tests/*
 	#${PYTHON} -m pytest --show-capture all -v ./test/*
 
+.PHONY: test-filter
+test-filter:
+	echo "Running tests with filter ${filter}"
+	${PYTHON} -m pytest -v ./tests/* -k ${filter}
