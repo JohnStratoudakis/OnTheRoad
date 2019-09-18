@@ -5,22 +5,34 @@ class MLRose:
         pass
 
     def calcTsp(self, allCities):
-        import mlrose
+        from mlrose import TravellingSales, TSPOpt, genetic_alg
+        import numpy as np
 
-        dist_list = self.genDistList(allCities)
+        dists = self.genDistList(allCities)
+        print("Dumping dist_list")
+        for i in range(len(dists)):
+            index_1 = dists[i][0]
+            index_2 = dists[i][1]
+            city_1 = allCities[ index_1 ].getShortName() + f"({index_1})"
+            city_2 = allCities[ index_2 ].getShortName() + f"({index_2})"
+            varType = type(dists[i])
+            print(f"type: {varType} - [{i}] = {city_1} - {city_2} - {dists[i][2]}")
 
-        # Initialize fitness function object using dist_list
-        fitness_dists = mlrose.TravellingSales(distances = dist_list)
+        # Initialize fitness function object using dists
+        fitness_dists = TravellingSales(distances=dists)
 
         # Define optimization problem object
-        problem_fit2 = mlrose.TSPOpt(length = len(dist_list), fitness_fn = fitness_dists, maximize = False)
+        tsp_fit = TSPOpt(length = len(allCities), fitness_fn = fitness_dists, maximize = False)
 
         # Solve using genetic algorithm
-        best_state, best_fitness = mlrose.genetic_alg(problem_fit2,
-                                                    mutation_prob = 0.01,
-                                                    max_attempts = 200,
+        best_state, best_fitness, fit_curve = genetic_alg(problem = tsp_fit,
+                                                    mutation_prob = 0.1,
+                                                    max_attempts = 20000,
+                                                    #max_iters = 2000,
+                                                    curve = True,
                                                     random_state = 2)
-
+        #for i in range(len(fit_curve)-2, len(fit_curve)):
+        #    print(f"[{i}] = {fit_curve}")
         return best_state, best_fitness
 
     def genDistList(self, allCities):
@@ -29,7 +41,9 @@ class MLRose:
         for i in range(len(allCities)):
             for j in range(i, len(allCities)):
                 if i != j:
-                    print(f"i {i}, j {j}")
-                    dist_list.append((i, j, TravelCost.TravelCost.getDistanceBetween(allCities[i], allCities[j])[0]))
+                    cost = TravelCost.TravelCost.getDistanceBetween(allCities[i], allCities[j]) [0]
+                    print(f"(i {i}, j {j}, {cost})")
+                    dist_list.append((i, j, cost/10000))
 
         return dist_list
+

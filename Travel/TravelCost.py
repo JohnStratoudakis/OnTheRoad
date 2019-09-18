@@ -34,16 +34,26 @@ class TravelCost:
 
     @staticmethod
     def getDistanceBetween(startLoc, endLoc):
+        travelMode = "transit"
+        [dist_meters, duration_seconds] = TravelCost.getDistanceByMode(startLoc, endLoc, travelMode)
+        if dist_meters == TravelCost.MAX_VAL:
+            travelMode = "driving"
+            [dist_meters, duration_seconds] = TravelCost.getDistanceByMode(startLoc, endLoc, travelMode)
+        return [dist_meters, duration_seconds]
+
+    @staticmethod
+    def getDistanceByMode(startLoc, endLoc, travelMode):
         source_address = startLoc.getAddress()
         dest_address = endLoc.getAddress()
-        mode = "transit"
+        #mode = "transit"
 
         # Prepare Caching Directory
         import os
         temp_dir = "./data_cache/"
         if not os.path.exists(temp_dir):
             os.makedirs(temp_dir)
-        filename = temp_dir + source_address.replace(" ", "_") + "-" + dest_address.replace(" ", "_") + ".obj"
+        filename = temp_dir + startLoc.getShortName() + "-" + endLoc.getShortName() + ".obj"
+        #filename = temp_dir + source_address.replace(" ", "_") + "-" + dest_address.replace(" ", "_") + ".obj"
 
         import urllib.parse
         import urllib.request
@@ -58,18 +68,18 @@ class TravelCost:
             source_address = urllib.parse.quote_plus(source_address)
             dest_address = urllib.parse.quote_plus(dest_address)
 
-            my_url = f"/maps/api/directions/json?origin={source_address}&destination={dest_address}&sensor=false&mode={mode}" 
+            my_url = f"/maps/api/directions/json?origin={source_address}&destination={dest_address}&sensor=false&mode={travelMode}" 
             url_addr = "https://maps.googleapis.com%s" % my_url
             url_addr += "&key=" + API_KEY
 
             # Make actual request
             data = urllib.request.urlopen(url_addr)
-            print(f'Request data.status = {data.status}')
+            #print(f'Request data.status = {data.status}')
             resData = data.read()
             #print(type(data))
             import json
             j = json.loads(resData)
-            dumpToScreen(j)
+            #dumpToScreen(j)
 
             if 'error_message' in j:
                 print("There is an error message embedded in the response.")
@@ -77,9 +87,9 @@ class TravelCost:
             elif j['status'] == 'ZERO_RESULTS':
                 print("ZERO_RESULTS.")
                 return [TravelCost.MAX_VAL, TravelCost.MAX_VAL]
-            else:
-                print("NO ERROR")
-                dumpObj(j, filename)
+            #else:
+                #print("NO ERROR")
+                #dumpObj(j, filename)
 
         dist_meters = j['routes'][0]['legs'][0]['distance']['value']
         duration_seconds = j['routes'][0]['legs'][0]['duration']['value']

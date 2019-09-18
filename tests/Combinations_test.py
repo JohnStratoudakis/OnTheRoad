@@ -123,7 +123,7 @@ class CombinationsTests(unittest.TestCase):
 
     def test_1_city(self):
         # GIVEN
-        ams = Location.Location("Amsterdam", "Amsterdam, Netherlands")
+        ams = Location.Location("Amsterdam", "ams", "Amsterdam, Netherlands")
         #ams = "amsterdam"
 
         # WHEN
@@ -137,8 +137,8 @@ class CombinationsTests(unittest.TestCase):
 
     def test_2_cities(self):
         # GIVEN
-        ams = Location.Location("Amsterdam", "Amsterdam, Netherlands")
-        bru = Location.Location("Brussels", "Brussels, Belgium")
+        ams = Location.Location("Amsterdam", "ams", "Amsterdam, Netherlands")
+        bru = Location.Location("Brussels", "bru", "Brussels, Belgium")
 
         # WHEN
         allPaths = Combinations.Combinations.getAllPaths( [ ams, bru ] )
@@ -154,9 +154,9 @@ class CombinationsTests(unittest.TestCase):
 
     def test_3_cities(self):
         # GIVEN
-        ams = Location.Location("Amsterdam", "Amsterdam, Netherlands")
-        bru = Location.Location("Brussels", "Brussels, Belgium")
-        lon = Location.Location("London", "London, United Kingdom")
+        ams = Location.Location("Amsterdam", "ams", "Amsterdam, Netherlands")
+        bru = Location.Location("Brussels", "bru", "Brussels, Belgium")
+        lon = Location.Location("London", "lon", "London, United Kingdom")
 
         # WHEN
         allPaths = Combinations.Combinations.getAllPaths( [ ams, bru, lon ] )

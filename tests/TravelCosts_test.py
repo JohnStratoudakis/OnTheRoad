@@ -13,8 +13,8 @@ class TravelCostsTests(unittest.TestCase):
     def test_amsterdam_to_brussels(self, mock_input):
         # GIVEN
         mock_input.return_value = [202828, 8372]
-        ams = Location.Location("amsterdam", "amsterdam, netherlands")
-        brussels = Location.Location("brussels", "brussels, belgium")
+        ams = Location.Location("Amsterdam", "ams", "amsterdam, netherlands")
+        brussels = Location.Location("Brussels", "bru", "brussels, belgium")
 
         # WHEN
         [distance_meters, duration_seconds] = TravelCost.TravelCost.cost(ams, brussels)
@@ -25,9 +25,9 @@ class TravelCostsTests(unittest.TestCase):
 
     def test_best_path_may_2019(self):
         # GIVEN
-        ams = Location.Location("Amsterdam", "Amsterdam, Netherlands")
-        brussels = Location.Location("Brussels", "Brussels, Belgium")
-        london = Location.Location("London", "London, United Kingdom")
+        ams = Location.Location("Amsterdam", "ams", "Amsterdam, Netherlands")
+        brussels = Location.Location("Brussels", "bru", "Brussels, Belgium")
+        london = Location.Location("London", "lon", "London, United Kingdom")
 
         # WHEN
         allCosts = TravelCost.TravelCost.allCosts([ams, brussels, london])
