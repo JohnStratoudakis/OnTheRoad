@@ -1,38 +1,33 @@
-from Travel import MLRose, Location, TravelCost
+from Travel import BestPath, Location, TravelCost
 
 import unittest
 from unittest import mock
 from hamcrest import *
 
-class MLRoseTests(unittest.TestCase):
+class BestPathTests(unittest.TestCase):
+    # nyc is home for me, so optimal use of this algorithm is for me to
+    # start there
     nyc = Location.Location("New York", "nyc", "New York City, USA")
 
+    # An actual Euro Trip I did in May of 2019
+    # I flew in to Amsterdam, and flew out from London
     ams = Location.Location("Amsterdam", "ams", "Amsterdam, Netherlands")
     bru = Location.Location("Brussels", "bru", "Brussels, Belgium")
     lon = Location.Location("London", "lon", "London, United Kingdom")
 
+    # I want to figure out which of the following cities I should
+    # travel to on my next Euro Trip
     vie = Location.Location("Vienna", "vie", "Vienna, Austria")
     bra = Location.Location("Bratislava", "bra", "Bratislava, Slovakia")
     bud = Location.Location("Budapest", "bud", "Budapest, Hungary")
     pra = Location.Location("Prague", "pra", "Prague, Czechia")
 
-    def test_getDistance_BetweenJohn(self):
-        # GIVEN
-
-        # WHEN
-        distance, duration = TravelCost.TravelCost.getDistanceBetween(self.ams, self.bru)
-
-        # THEN
-        assert_that(distance, equal_to(204027))
-        assert_that(duration, equal_to(6300))
-
-    def test_genDistList(self):
+    def test_generate_Distances_List(self):
         # GIVEN
         allCities = [ self.ams, self.bru, self.lon ]
 
         # WHEN
-        mlRose = MLRose.MLRose()
-        dist_list = mlRose.genDistList(allCities)
+        dist_list = BestPath.genDistList(allCities)
 
         # THEN
         assert_that(len(dist_list), equal_to(3))
@@ -49,8 +44,7 @@ class MLRoseTests(unittest.TestCase):
         allCities = [self.ams, self.bru, self.lon]
 
         # WHEN
-        mlRose = MLRose.MLRose()
-        best_state, best_fitness = mlRose.calcTsp(allCities)
+        best_state, best_fitness = BestPath.calcTsp(allCities)
 
         # THEN
         assert_that(best_state[0], equal_to(2))
@@ -62,13 +56,12 @@ class MLRoseTests(unittest.TestCase):
             print(f"{allCities[city]}")
         print("BEST FITNESS: {}".format(best_fitness))
 
-    def test_nov_trip(self):
+    def DISABLED_test_nov_trip(self):
         # GIVEN
         allCities = [self.nyc, self.vie, self.bud, self.bra, self.pra]
 
         # WHEN
-        mlRose = MLRose.MLRose()
-        best_state, best_fitness = mlRose.calcTsp(allCities)
+        best_state, best_fitness = BestPath.calcTsp(allCities)
 
         # THEN
 #        assert_that(best_state[0], equal_to(2))

@@ -1,8 +1,12 @@
 from Travel import Combinations
 from Travel import Location
 
+import numpy as np
+
+# TODO: Have to incorporate Google Flights API
+
 class TravelCost:
-    MAX_VAL = 9999999
+    MAX_VAL = np.inf
 
     def __init__(self, startLoc, endLoc):
         self.startLoc = startLoc

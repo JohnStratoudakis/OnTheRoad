@@ -5,9 +5,21 @@ from unittest import mock
 from hamcrest import *
 
 class TravelCostsTests(unittest.TestCase):
+    ams = Location.Location("Amsterdam", "ams", "Amsterdam, Netherlands")
+    bru = Location.Location("Brussels", "bru", "Brussels, Belgium")
 
     def test_smoke(self):
         assert_that("Sugar is bad", equal_to("Sugar is bad"))
+
+    def test_getDistance_Between_Amsterdam_and_Brussels(self):
+        # GIVEN
+
+        # WHEN
+        distance, duration = TravelCost.TravelCost.getDistanceBetween(self.ams, self.bru)
+
+        # THEN
+        assert_that(distance, equal_to(204027))
+        assert_that(duration, equal_to(6300))
 
     @mock.patch.object(TravelCost.TravelCost, 'cost')
     def test_amsterdam_to_brussels(self, mock_input):
