@@ -22,6 +22,19 @@ class BestPathTests(unittest.TestCase):
     bud = Location.Location("Budapest", "bud", "Budapest, Hungary")
     pra = Location.Location("Prague", "pra", "Prague, Czechia")
 
+    def mock_getDistanceBetween(city_1, city_2):
+        allCosts = {
+                'ams': {
+                    'bru': [212132, 6780],
+                    'lon': [212132, 6780]
+                    },
+                'bru': {
+                    'lon': [375174, 6780]
+                    }
+                }
+        return allCosts[city_1.getShortName()][city_2.getShortName()]
+
+    #@mock.patch('Travel.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
     def test_generate_Distances_List(self):
         # GIVEN
         allCities = [ self.ams, self.bru, self.lon ]
@@ -34,6 +47,10 @@ class BestPathTests(unittest.TestCase):
         assert_that(dist_list[0][0], equal_to(0))
         assert_that(dist_list[0][1], equal_to(1))
         assert_that(dist_list[0][2], equal_to(212132))
+
+        assert_that(dist_list[1][0], equal_to(0))
+        assert_that(dist_list[1][1], equal_to(2))
+        assert_that(dist_list[1][2], equal_to(587306))
 
         assert_that(dist_list[2][0], equal_to(1))
         assert_that(dist_list[2][1], equal_to(2))

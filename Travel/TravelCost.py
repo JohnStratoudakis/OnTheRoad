@@ -8,33 +8,14 @@ import numpy as np
 class TravelCost:
     MAX_VAL = np.inf
 
-    def __init__(self, startLoc, endLoc):
-        self.startLoc = startLoc
-        self.endLoc = endLoc
-
-    def __init__(self, paths):
-        print("Add paths")
-        print("type(paths): " + str(type(paths)) )
-
     @staticmethod
     def getTravelCost(startLoc, endLoc):
         travelCost = TravelCost(startLoc, endLoc)
         return travelCost.cost()
 
-    def cost(self):
-        return TravelCost.getDistanceBetween(self.startLoc, self.endLoc)
-
     @staticmethod
-    def allCosts(inCities : Location.Location):
-        allPaths = Combinations.Combinations.getAllPaths( inCities )
-
-        allCosts = []
-        for path in allPaths:
-            #cost = TravelCost(path)
-            print("Adding path: {}".format(path))
-            allCosts.append(path)
-
-        return allCosts
+    def cost(startLoc, endLoc):
+        return TravelCost.getDistanceBetween(startLoc, endLoc)
 
     @staticmethod
     def getDistanceBetween(startLoc, endLoc):

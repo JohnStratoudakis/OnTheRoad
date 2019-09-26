@@ -11,20 +11,30 @@ class TravelCostsTests(unittest.TestCase):
     def test_smoke(self):
         assert_that("Sugar is bad", equal_to("Sugar is bad"))
 
+    def mock_getDistanceBetween(city_1, city_2):
+        allCosts = {
+                'ams': {
+                    'bru': [212132, 6780]
+                    }
+                }
+        return allCosts[city_1.getShortName()][city_2.getShortName()]
+
+    @mock.patch('Travel.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
     def test_getDistance_Between_Amsterdam_and_Brussels(self):
         # GIVEN
-
         # WHEN
         distance, duration = TravelCost.TravelCost.getDistanceBetween(self.ams, self.bru)
 
         # THEN
-        assert_that(distance, equal_to(204027))
-        assert_that(duration, equal_to(6300))
+        assert_that(distance, equal_to(212132))
+        assert_that(duration, equal_to(6780))
 
-    @mock.patch.object(TravelCost.TravelCost, 'cost')
-    def test_amsterdam_to_brussels(self, mock_input):
+    #@mock.patch.object(TravelCost.TravelCost, 'cost')
+    #def test_amsterdam_to_brussels(self, mock_input):
+    @mock.patch('Travel.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
+    def test_amsterdam_to_brussels(self):
         # GIVEN
-        mock_input.return_value = [202828, 8372]
+        #mock_input.return_value = [202828, 8372]
         ams = Location.Location("Amsterdam", "ams", "amsterdam, netherlands")
         brussels = Location.Location("Brussels", "bru", "brussels, belgium")
 
@@ -32,24 +42,8 @@ class TravelCostsTests(unittest.TestCase):
         [distance_meters, duration_seconds] = TravelCost.TravelCost.cost(ams, brussels)
 
         # THEN
-        self.assertEqual(distance_meters, 202828)
-        self.assertEqual(duration_seconds, 8372)
-
-    def test_best_path_may_2019(self):
-        # GIVEN
-        ams = Location.Location("Amsterdam", "ams", "Amsterdam, Netherlands")
-        brussels = Location.Location("Brussels", "bru", "Brussels, Belgium")
-        london = Location.Location("London", "lon", "London, United Kingdom")
-
-        # WHEN
-        allCosts = TravelCost.TravelCost.allCosts([ams, brussels, london])
-
-        # THEN
-        print("allCosts: {}".format(allCosts))
-        print("path[0]: {}".format(allCosts[0].getStartCity()))
-        assert_that(len(allCosts), equal_to(6))
-
-#        assert_that(1, equal_to(2))
+        self.assertEqual(distance_meters, 212132)
+        self.assertEqual(duration_seconds, 6780)
 
 if __name__ == '__main__':
     unittest.main()
