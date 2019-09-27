@@ -26,7 +26,7 @@ class BestPathTests(unittest.TestCase):
         allCosts = {
                 'ams': {
                     'bru': [212132, 6780],
-                    'lon': [212132, 6780]
+                    'lon': [587306, 6780]
                     },
                 'bru': {
                     'lon': [375174, 6780]
@@ -34,7 +34,8 @@ class BestPathTests(unittest.TestCase):
                 }
         return allCosts[city_1.getShortName()][city_2.getShortName()]
 
-    #@mock.patch('Travel.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
+    @mock.patch('Travel.TravelCost.TravelCost.getDistanceBetween', 
+                 new=mock_getDistanceBetween)
     def test_generate_Distances_List(self):
         # GIVEN
         allCities = [ self.ams, self.bru, self.lon ]
@@ -56,6 +57,8 @@ class BestPathTests(unittest.TestCase):
         assert_that(dist_list[2][1], equal_to(2))
         assert_that(dist_list[2][2], equal_to(375174))
 
+    @mock.patch('Travel.TravelCost.TravelCost.getDistanceBetween', 
+                 new=mock_getDistanceBetween)
     def DISABLED_test_may_trip(self):
         # GIVEN
         allCities = [self.ams, self.bru, self.lon]
