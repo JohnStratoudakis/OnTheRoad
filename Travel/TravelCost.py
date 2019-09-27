@@ -1,4 +1,3 @@
-from Travel import Combinations
 from Travel import Location
 
 import numpy as np
