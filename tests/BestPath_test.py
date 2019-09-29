@@ -4,7 +4,7 @@ import unittest
 from unittest import mock
 from hamcrest import *
 
-class BestPathTests(unittest.TestCase):
+class BestPathTest(unittest.TestCase):
     # nyc is home for me, so optimal use of this algorithm is for me to
     # start there
     nyc = Location.Location("New York", "nyc", "New York City, USA")
@@ -37,7 +37,7 @@ class BestPathTests(unittest.TestCase):
     @mock.patch('Travel.TravelCost.TravelCost.getDistanceBetween', 
                  new=mock_getDistanceBetween)
     def test_generate_Distances_List(self):
-        # GIVEN
+        # GIVEN--
         allCities = [ self.ams, self.bru, self.lon ]
 
         # WHEN
