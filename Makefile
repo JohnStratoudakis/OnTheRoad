@@ -1,3 +1,4 @@
+#PYTHON?=python.exe
 PYTHON?=python3.7
 
 .PHONY: help
@@ -19,6 +20,7 @@ install-deps:
 .PHONY: test
 test:
 	echo "Running tests"
+#	${PYTHON} -m pytest  -v ./tests
 	${PYTHON} -m pytest  -v ./tests/*
 	#${PYTHON} -m pytest --show-capture all -v ./test/*
 
