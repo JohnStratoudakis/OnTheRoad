@@ -1,5 +1,44 @@
 from Travel import Location, TravelCost
 
+# state is an array of cities to visit
+def tsp_fitness(state, c):
+    total_cost = 0
+
+    #print(f"state={state}")
+    #print(f"c={c}")
+    for i in range(0, len(state)-1):
+        shortA = c[i]
+        shortB = c[i+1]
+        cost = TravelCost.TravelCost.getDistanceBetween(shortA, shortB) [0] / 1000
+        #print(f"[{i}] -> [{i+1}] => {cost}")
+        total_cost += cost
+
+    return total_cost
+
+def calcTspNew(allCities):
+    from mlrose import TravellingSales, TSPOpt, genetic_alg, CustomFitness
+    import numpy as np
+
+    best_state = []
+    best_fitness = []
+
+    # Initialize custom fitness function object
+    kwargs = {'c': allCities}
+    fitness_cust = CustomFitness(tsp_fitness, problem_type='tsp', **kwargs)
+
+    # Define optimization problem object
+    tsp_fit = TSPOpt(length = len(allCities), fitness_fn = fitness_cust, maximize = False)
+
+    # Solve using genetic algorithm
+    best_state, best_fitness = genetic_alg(problem = tsp_fit,
+                                                     pop_size = 100,
+                                                     mutation_prob = 0.1,
+                                                     max_attempts = 100,
+                                                     #max_iters = 2000,
+                                                     curve = False,
+                                                     random_state = 2)
+
+    return [best_state, best_fitness]
 
 def calcTsp(allCities):
     from mlrose import TravellingSales, TSPOpt, genetic_alg

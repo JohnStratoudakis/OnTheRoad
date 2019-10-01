@@ -29,15 +29,22 @@ class BestPathTest(unittest.TestCase):
                     'lon': [587306, 6780]
                     },
                 'bru': {
+                    'ams': [212132, 6780],
                     'lon': [375174, 6780]
+                    },
+                'lon': {
+                    'ams': [587306, 6780],
+                    'bru': [375174, 6780]
                     }
                 }
-        return allCosts[city_1.getShortName()][city_2.getShortName()]
+        if city_1.getShortName() in allCosts:
+            return allCosts[city_1.getShortName()][city_2.getShortName()]
+        elif city_2.getShortName() in allCosts:
+            return allCosts[city_2.getShortName()][city_1.getShortName()]
 
-    @mock.patch('Travel.TravelCost.TravelCost.getDistanceBetween', 
-                 new=mock_getDistanceBetween)
+    @mock.patch('Travel.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
     def test_generate_Distances_List(self):
-        # GIVEN--
+        # GIVEN
         allCities = [ self.ams, self.bru, self.lon ]
 
         # WHEN
@@ -57,24 +64,37 @@ class BestPathTest(unittest.TestCase):
         assert_that(dist_list[2][1], equal_to(2))
         assert_that(dist_list[2][2], equal_to(375174))
 
-    @mock.patch('Travel.TravelCost.TravelCost.getDistanceBetween', 
-                 new=mock_getDistanceBetween)
-    def DISABLED_test_may_trip(self):
+    @mock.patch('Travel.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
+    def test_may_trip_fitness(self):
         # GIVEN
         allCities = [self.ams, self.bru, self.lon]
+        state = [0, 1, 2]
 
         # WHEN
-        best_state, best_fitness = BestPath.calcTsp(allCities)
+        fitness = BestPath.tsp_fitness(state, allCities)
 
         # THEN
-        assert_that(best_state[0], equal_to(2))
-        assert_that(best_state[1], equal_to(1))
-        assert_that(best_state[2], equal_to(0))
-        #assert_that(1, equal_to(2))
+        assert_that(fitness, equal_to(587306))
+
+    @mock.patch('Travel.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
+    def test_may_trip(self):
+        # GIVEN
+        allCities = [self.lon, self.bru, self.ams]
+
+        # WHEN
+        best_state, best_fitness = BestPath.calcTspNew(allCities)
+#        best_state, best_fitness = BestPath.calcTsp(allCities)
+
+        # THEN
         print("TSP Best State: {}".format(best_state))
         for city in best_state:
-            print(f"{allCities[city]}")
+            print(f"{allCities[city]}({city})")
         print("BEST FITNESS: {}".format(best_fitness))
+        assert_that(best_state[0], equal_to(2))
+        assert_that(best_state[1], equal_to(0))
+        assert_that(best_state[2], equal_to(1))
+        #assert_that(1, equal_to(2))
+        #assert_that(1, equal_to(0))
 
     def DISABLED_test_nov_trip(self):
         # GIVEN
