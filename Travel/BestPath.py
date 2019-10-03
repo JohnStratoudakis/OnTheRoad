@@ -1,37 +1,49 @@
 from Travel import Location, TravelCost
 
+# state is an array of cities to visit
+def tsp_fitness(state, c):
+    total_cost = 0
+    try:
+#    print(f"state={state}")
+    #print(f"c     =  {c[0]} -> {c[1]} -> {c[2]} -> {c[3]}")
+#        print(f"state =  {state[0]} -> {state[1]} -> {state[2]} -> {state[3]}")
+    #print(f"c={c}")
+        for i in range(0, len(state)-1):
+            shortA = c[state[i]]
+            shortB = c[state[i+1]]
+            cost = TravelCost.TravelCost.getDistanceBetween(shortA, shortB) [0]
+        #print(f"[{i}] -> [{i+1}] => {cost}")
+            total_cost += cost
+
+    except Exception as ex:
+        print("Exception caught!")
+#    print(f"Total cost: {total_cost}")
+    return total_cost
 
 def calcTsp(allCities):
-    from mlrose import TravellingSales, TSPOpt, genetic_alg
+    from mlrose import TravellingSales, TSPOpt, genetic_alg, CustomFitness
     import numpy as np
 
-    dists = genDistList(allCities)
-    print("Dumping dist_list")
-    for i in range(len(dists)):
-        index_1 = dists[i][0]
-        index_2 = dists[i][1]
-        city_1 = allCities[ index_1 ].getShortName() + f"({index_1})"
-        city_2 = allCities[ index_2 ].getShortName() + f"({index_2})"
-        varType = type(dists[i])
-        print(f"type: {varType} - [{i}] = {city_1} - {city_2} - {dists[i][2]}")
+    best_state = []
+    best_fitness = []
+    print("CALC_TSP_NEW")
 
-    # Initialize fitness function object using dists
-    fitness_dists = TravellingSales(distances=dists)
+    # Initialize custom fitness function object
+    kwargs = {'c': allCities}
+    fitness_cust = CustomFitness(tsp_fitness, problem_type='tsp', **kwargs)
 
     # Define optimization problem object
-    tsp_fit = TSPOpt(length = len(allCities), fitness_fn = fitness_dists, maximize = False)
+    tsp_fit = TSPOpt(length = len(allCities), fitness_fn = fitness_cust, maximize = False)
 
     # Solve using genetic algorithm
     best_state, best_fitness = genetic_alg(problem = tsp_fit,
-                                                     pop_size = 400,
+                                                     pop_size = 20,
                                                      mutation_prob = 0.1,
-                                                     max_attempts = 200,
+                                                     max_attempts = 20,
                                                      #max_iters = 2000,
-                                                     curve = False,
-                                                     random_state = 2)
-    #for i in range(len(fit_curve)-2, len(fit_curve)):
-    #    print(f"[{i}] = {fit_curve}")
-    return best_state, best_fitness
+                                                     random_state = 3)
+
+    return [best_state, best_fitness]
 
 def genDistList(allCities):
     dist_list = []
@@ -40,7 +52,7 @@ def genDistList(allCities):
         for j in range(i, len(allCities)):
             if i != j:
                 cost = TravelCost.TravelCost.getDistanceBetween(allCities[i], allCities[j]) [0]
-                print(f"(i {i}, j {j}, {cost})")
+                print(f"(i {allCities[i].getShortName()}, j {allCities[j].getShortName()}, {cost})")
                 # TODO: Make this in to hours or minutes
                 # Make sure distance is in miles or kilometers
                 # vs meters or feet
