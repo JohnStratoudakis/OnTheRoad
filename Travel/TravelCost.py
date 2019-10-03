@@ -25,6 +25,7 @@ class TravelCost:
             travelMode = "driving"
             [dist_meters, duration_seconds] = TravelCost.getDistanceByMode(startLoc, endLoc, travelMode)
 #            print(f"DRIVING: {startLoc} -> {endLoc} = {dist_meters}")
+        print(f"RETURNING: {startLoc} -> {endLoc} = {dist_meters}")
         return [dist_meters, duration_seconds]
 
     @staticmethod

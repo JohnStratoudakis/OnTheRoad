@@ -4,19 +4,23 @@ from Travel import Location, TravelCost
 def tsp_fitness(state, c):
     total_cost = 0
     try:
-#    print(f"state={state}")
-    #print(f"c     =  {c[0]} -> {c[1]} -> {c[2]} -> {c[3]}")
-#        print(f"state =  {state[0]} -> {state[1]} -> {state[2]} -> {state[3]}")
-    #print(f"c={c}")
+        #print(f"c     =  {c[0]} -> {c[1]} -> {c[2]} -> {c[3]}")
+        #print(f"state =  {state[0]} -> {state[1]} -> {state[2]} -> {state[3]}")
         for i in range(0, len(state)-1):
+            print("CCCCCC")
             shortA = c[state[i]]
             shortB = c[state[i+1]]
+            print(f"typeof shortA: {type(shortA)}")
+            print(f"shortA={shortA}")
+            print(f"shortE={shortB}")
+            print(f"{c[state[i]]} -> {c[state[i+1]]}")
             cost = TravelCost.TravelCost.getDistanceBetween(shortA, shortB) [0]
-        #print(f"[{i}] -> [{i+1}] => {cost}")
+            print(f"[{i}] -> [{i+1}] => {cost}")
+            print("EEEEE")
             total_cost += cost
-
     except Exception as ex:
         print("Exception caught!")
+        print(f"Exception: {ex}")
 #    print(f"Total cost: {total_cost}")
     return total_cost
 

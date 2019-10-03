@@ -45,12 +45,19 @@ class BestPathTest(unittest.TestCase):
                     'pra': [357049, 6780],
                     'vie': [587306, 6780],
                     },
+                'pra': {
+                    'bud': [538613, 6780],
+                    'bra': [357049, 6780],
+                    'vie': [587306, 6780],
+                    },
                 'vie': {
                     'bra': [62070, 6780],
                     'bud': [219301, 6780],
-                    'pra': [255681, 6780],
+                    'pra': [402558, 6780],
                     }
                 }
+        shortA = city_1.getShortName()
+        shortB = city_2.getShortName()
         if city_1.getShortName() in allCosts:
             return allCosts[city_1.getShortName()][city_2.getShortName()]
         elif city_2.getShortName() in allCosts:
@@ -60,6 +67,7 @@ class BestPathTest(unittest.TestCase):
     def test_generate_Distances_List(self):
         # GIVEN
         allCities = [self.ams, self.bru, self.lon]
+        #allCities = [self.bru, self.bud]
 
         # WHEN
         dist_list = BestPath.genDistList(allCities)
@@ -178,9 +186,9 @@ class BestPathTest(unittest.TestCase):
         best_state, best_fitness = BestPath.calcTsp(allCities)
 
         # THEN
-        assert_that(best_fitness, equal_to(520059))
+        assert_that(best_fitness, equal_to(638420))
 
         assert_that(best_state[0], equal_to(1))
-        assert_that(best_state[1], equal_to(2))
-        assert_that(best_state[2], equal_to(0))
+        assert_that(best_state[1], equal_to(0))
+        assert_that(best_state[2], equal_to(2))
         assert_that(best_state[3], equal_to(3))

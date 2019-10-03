@@ -19,8 +19,7 @@ install-deps:
 
 .PHONY: test
 test:
-	echo "Running tests"
-#	${PYTHON} -m pytest  -v ./tests
+	@echo "Running tests"
 	${PYTHON} -m pytest  -v ./tests/*
 	#${PYTHON} -m pytest --show-capture all -v ./test/*
 
