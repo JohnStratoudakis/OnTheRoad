@@ -5,10 +5,6 @@ from unittest import mock
 from hamcrest import *
 
 class BestPathTest(unittest.TestCase):
-    # nyc is home for me, so optimal use of this algorithm is for me to
-    # start there
-    nyc = Location.Location("New York", "nyc", "New York City, USA")
-
     # An actual Euro Trip I did in May of 2019
     # I flew in to Amsterdam, and flew out from London
     ams = Location.Location("Amsterdam", "ams", "Amsterdam, Netherlands")
@@ -134,7 +130,7 @@ class BestPathTest(unittest.TestCase):
         allCities = [self.lon, self.bru, self.ams]
 
         # WHEN
-        best_state, best_fitness = BestPath.calcTspNew(allCities)
+        best_state, best_fitness = BestPath.calcTsp(allCities)
 
         # THEN
         assert_that(best_fitness, equal_to(587306))
@@ -149,7 +145,7 @@ class BestPathTest(unittest.TestCase):
         allCities = [self.lon, self.bud, self.bru, self.ams]
 
         # WHEN
-        best_state, best_fitness = BestPath.calcTspNew(allCities)
+        best_state, best_fitness = BestPath.calcTsp(allCities)
 
         # THEN
         assert_that(best_fitness, equal_to(1983021))
@@ -164,7 +160,7 @@ class BestPathTest(unittest.TestCase):
         allCities = [self.vie, self.bud, self.bra, self.pra]
 
         # WHEN
-        best_state, best_fitness = BestPath.calcTspNew(allCities)
+        best_state, best_fitness = BestPath.calcTsp(allCities)
 
         # THEN
         assert_that(best_fitness, equal_to(520059))

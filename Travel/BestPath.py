@@ -20,7 +20,7 @@ def tsp_fitness(state, c):
 #    print(f"Total cost: {total_cost}")
     return total_cost
 
-def calcTspNew(allCities):
+def calcTsp(allCities):
     from mlrose import TravellingSales, TSPOpt, genetic_alg, CustomFitness
     import numpy as np
 
@@ -44,38 +44,6 @@ def calcTspNew(allCities):
                                                      random_state = 3)
 
     return [best_state, best_fitness]
-
-def calcTsp(allCities):
-    from mlrose import TravellingSales, TSPOpt, genetic_alg
-    import numpy as np
-
-    dists = genDistList(allCities)
-    print("Dumping dist_list")
-    for i in range(len(dists)):
-        index_1 = dists[i][0]
-        index_2 = dists[i][1]
-        city_1 = allCities[ index_1 ].getShortName() + f"({index_1})"
-        city_2 = allCities[ index_2 ].getShortName() + f"({index_2})"
-        varType = type(dists[i])
-        print(f"type: {varType} - [{i}] = {city_1} - {city_2} - {dists[i][2]}")
-
-    # Initialize fitness function object using dists
-    fitness_dists = TravellingSales(distances=dists)
-
-    # Define optimization problem object
-    tsp_fit = TSPOpt(length = len(allCities), fitness_fn = fitness_dists, maximize = False)
-
-    # Solve using genetic algorithm
-    best_state, best_fitness = genetic_alg(problem = tsp_fit,
-                                                     pop_size = 400,
-                                                     mutation_prob = 0.1,
-                                                     max_attempts = 200,
-                                                     #max_iters = 2000,
-                                                     curve = False,
-                                                     random_state = 2)
-    #for i in range(len(fit_curve)-2, len(fit_curve)):
-    #    print(f"[{i}] = {fit_curve}")
-    return best_state, best_fitness
 
 def genDistList(allCities):
     dist_list = []
