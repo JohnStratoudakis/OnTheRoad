@@ -59,8 +59,7 @@ class BestPathTest(unittest.TestCase):
     @mock.patch('Travel.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
     def test_generate_Distances_List(self):
         # GIVEN
-        allCities = [self.vie, self.bud, self.bra, self.pra]
-        #allCities = [self.ams, self.bru, self.lon]
+        allCities = [self.ams, self.bru, self.lon]
 
         # WHEN
         dist_list = BestPath.genDistList(allCities)
