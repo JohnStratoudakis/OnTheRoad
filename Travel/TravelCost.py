@@ -20,9 +20,11 @@ class TravelCost:
     def getDistanceBetween(startLoc, endLoc):
         travelMode = "transit"
         [dist_meters, duration_seconds] = TravelCost.getDistanceByMode(startLoc, endLoc, travelMode)
+#        print(f"TRANSIT: {startLoc} -> {endLoc} = {dist_meters}")
         if dist_meters == TravelCost.MAX_VAL:
             travelMode = "driving"
             [dist_meters, duration_seconds] = TravelCost.getDistanceByMode(startLoc, endLoc, travelMode)
+#            print(f"DRIVING: {startLoc} -> {endLoc} = {dist_meters}")
         return [dist_meters, duration_seconds]
 
     @staticmethod
@@ -44,7 +46,7 @@ class TravelCost:
         import os.path
 
         if os.path.isfile(filename):
-            print(f"LOADING FROM CACHE: {filename}")
+#            print(f"LOADING FROM CACHE: {filename}")
             j = loadObj(filename)
         else:
             import os
@@ -63,21 +65,21 @@ class TravelCost:
             #print(type(data))
             import json
             j = json.loads(resData)
-            #dumpToScreen(j)
 
             if 'error_message' in j:
                 print("There is an error message embedded in the response.")
                 return [TravelCost.MAX_VAL, TravelCost.MAX_VAL]
             elif j['status'] == 'ZERO_RESULTS':
                 print("ZERO_RESULTS.")
+                #dumpToScreen(j)
                 return [TravelCost.MAX_VAL, TravelCost.MAX_VAL]
             #else:
                 #print("NO ERROR")
-                #dumpObj(j, filename)
 
+        dumpObj(j, filename)
         dist_meters = j['routes'][0]['legs'][0]['distance']['value']
         duration_seconds = j['routes'][0]['legs'][0]['duration']['value']
-        print(f"[{dist_meters}, {duration_seconds}]")
+        #print(f"[{dist_meters}, {duration_seconds}]")
         return [dist_meters, duration_seconds]
 
 def dumpToScreen(json_obj):

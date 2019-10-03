@@ -3,16 +3,21 @@ from Travel import Location, TravelCost
 # state is an array of cities to visit
 def tsp_fitness(state, c):
     total_cost = 0
-
-    #print(f"state={state}")
+    try:
+#    print(f"state={state}")
+    #print(f"c     =  {c[0]} -> {c[1]} -> {c[2]} -> {c[3]}")
+#        print(f"state =  {state[0]} -> {state[1]} -> {state[2]} -> {state[3]}")
     #print(f"c={c}")
-    for i in range(0, len(state)-1):
-        shortA = c[i]
-        shortB = c[i+1]
-        cost = TravelCost.TravelCost.getDistanceBetween(shortA, shortB) [0] / 1000
+        for i in range(0, len(state)-1):
+            shortA = c[state[i]]
+            shortB = c[state[i+1]]
+            cost = TravelCost.TravelCost.getDistanceBetween(shortA, shortB) [0]
         #print(f"[{i}] -> [{i+1}] => {cost}")
-        total_cost += cost
+            total_cost += cost
 
+    except Exception as ex:
+        print("Exception caught!")
+#    print(f"Total cost: {total_cost}")
     return total_cost
 
 def calcTspNew(allCities):
@@ -21,6 +26,7 @@ def calcTspNew(allCities):
 
     best_state = []
     best_fitness = []
+    print("CALC_TSP_NEW")
 
     # Initialize custom fitness function object
     kwargs = {'c': allCities}
@@ -31,12 +37,11 @@ def calcTspNew(allCities):
 
     # Solve using genetic algorithm
     best_state, best_fitness = genetic_alg(problem = tsp_fit,
-                                                     pop_size = 100,
+                                                     pop_size = 20,
                                                      mutation_prob = 0.1,
-                                                     max_attempts = 100,
+                                                     max_attempts = 20,
                                                      #max_iters = 2000,
-                                                     curve = False,
-                                                     random_state = 2)
+                                                     random_state = 3)
 
     return [best_state, best_fitness]
 
@@ -79,7 +84,7 @@ def genDistList(allCities):
         for j in range(i, len(allCities)):
             if i != j:
                 cost = TravelCost.TravelCost.getDistanceBetween(allCities[i], allCities[j]) [0]
-                print(f"(i {i}, j {j}, {cost})")
+                print(f"(i {allCities[i].getShortName()}, j {allCities[j].getShortName()}, {cost})")
                 # TODO: Make this in to hours or minutes
                 # Make sure distance is in miles or kilometers
                 # vs meters or feet
