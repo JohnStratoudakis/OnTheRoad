@@ -35,6 +35,21 @@ class BestPathTest(unittest.TestCase):
                     'bru': [ 375174, 6780],
                     'bud': [1843672, 6780]
                     },
+                'bud': {
+                    'bra': [199311, 6780],
+                    'pra': [538613, 6780],
+                    'vie': [219301, 6780]
+                    },
+                'bra': {
+                    'bud': [199311, 6780],
+                    'pra': [357049, 6780],
+                    'vie': [587306, 6780],
+                    },
+                'vie': {
+                    'bra': [62070, 6780],
+                    'bud': [219301, 6780],
+                    'pra': [255681, 6780],
+                    }
                 }
         if city_1.getShortName() in allCosts:
             return allCosts[city_1.getShortName()][city_2.getShortName()]
@@ -44,8 +59,8 @@ class BestPathTest(unittest.TestCase):
     @mock.patch('Travel.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
     def test_generate_Distances_List(self):
         # GIVEN
-        #allCities = [self.vie, self.bud, self.bra, self.pra]
-        allCities = [self.ams, self.bru, self.lon]
+        allCities = [self.vie, self.bud, self.bra, self.pra]
+        #allCities = [self.ams, self.bru, self.lon]
 
         # WHEN
         dist_list = BestPath.genDistList(allCities)
@@ -155,6 +170,7 @@ class BestPathTest(unittest.TestCase):
         assert_that(best_state[2], equal_to(2))
         assert_that(best_state[3], equal_to(0))
 
+    @mock.patch('Travel.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
     def test_nov_trip(self):
         # GIVEN
         allCities = [self.vie, self.bud, self.bra, self.pra]
