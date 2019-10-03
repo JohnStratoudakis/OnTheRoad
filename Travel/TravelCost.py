@@ -20,12 +20,9 @@ class TravelCost:
     def getDistanceBetween(startLoc, endLoc):
         travelMode = "transit"
         [dist_meters, duration_seconds] = TravelCost.getDistanceByMode(startLoc, endLoc, travelMode)
-#        print(f"TRANSIT: {startLoc} -> {endLoc} = {dist_meters}")
         if dist_meters == TravelCost.MAX_VAL:
             travelMode = "driving"
             [dist_meters, duration_seconds] = TravelCost.getDistanceByMode(startLoc, endLoc, travelMode)
-#            print(f"DRIVING: {startLoc} -> {endLoc} = {dist_meters}")
-        print(f"RETURNING: {startLoc} -> {endLoc} = {dist_meters}")
         return [dist_meters, duration_seconds]
 
     @staticmethod
@@ -61,9 +58,7 @@ class TravelCost:
 
             # Make actual request
             data = urllib.request.urlopen(url_addr)
-            #print(f'Request data.status = {data.status}')
             resData = data.read()
-            #print(type(data))
             import json
             j = json.loads(resData)
 
@@ -80,7 +75,6 @@ class TravelCost:
         dumpObj(j, filename)
         dist_meters = j['routes'][0]['legs'][0]['distance']['value']
         duration_seconds = j['routes'][0]['legs'][0]['duration']['value']
-        #print(f"[{dist_meters}, {duration_seconds}]")
         return [dist_meters, duration_seconds]
 
 def dumpToScreen(json_obj):

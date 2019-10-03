@@ -4,24 +4,13 @@ from Travel import Location, TravelCost
 def tsp_fitness(state, c):
     total_cost = 0
     try:
-        #print(f"c     =  {c[0]} -> {c[1]} -> {c[2]} -> {c[3]}")
-        #print(f"state =  {state[0]} -> {state[1]} -> {state[2]} -> {state[3]}")
         for i in range(0, len(state)-1):
-            print("CCCCCC")
             shortA = c[state[i]]
             shortB = c[state[i+1]]
-            print(f"typeof shortA: {type(shortA)}")
-            print(f"shortA={shortA}")
-            print(f"shortE={shortB}")
-            print(f"{c[state[i]]} -> {c[state[i+1]]}")
             cost = TravelCost.TravelCost.getDistanceBetween(shortA, shortB) [0]
-            print(f"[{i}] -> [{i+1}] => {cost}")
-            print("EEEEE")
             total_cost += cost
     except Exception as ex:
-        print("Exception caught!")
-        print(f"Exception: {ex}")
-#    print(f"Total cost: {total_cost}")
+        print(f"Exception caught in tsp_fitness: {ex}")
     return total_cost
 
 def calcTsp(allCities):
@@ -30,7 +19,6 @@ def calcTsp(allCities):
 
     best_state = []
     best_fitness = []
-    print("CALC_TSP_NEW")
 
     # Initialize custom fitness function object
     kwargs = {'c': allCities}
@@ -56,12 +44,6 @@ def genDistList(allCities):
         for j in range(i, len(allCities)):
             if i != j:
                 cost = TravelCost.TravelCost.getDistanceBetween(allCities[i], allCities[j]) [0]
-                print(f"(i {allCities[i].getShortName()}, j {allCities[j].getShortName()}, {cost})")
-                # TODO: Make this in to hours or minutes
-                # Make sure distance is in miles or kilometers
-                # vs meters or feet
-                # TODO: Add unit validation
                 dist_list.append((i, j, cost))
 
     return dist_list
-

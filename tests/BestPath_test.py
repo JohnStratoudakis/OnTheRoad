@@ -58,16 +58,15 @@ class BestPathTest(unittest.TestCase):
                 }
         shortA = city_1.getShortName()
         shortB = city_2.getShortName()
-        if city_1.getShortName() in allCosts:
+        if shortA in allCosts and shortB in allCosts[shortA]:
             return allCosts[city_1.getShortName()][city_2.getShortName()]
-        elif city_2.getShortName() in allCosts:
+        elif shortB in allCosts and shortA in allCosts[shortB]:
             return allCosts[city_2.getShortName()][city_1.getShortName()]
 
     @mock.patch('Travel.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
     def test_generate_Distances_List(self):
         # GIVEN
         allCities = [self.ams, self.bru, self.lon]
-        #allCities = [self.bru, self.bud]
 
         # WHEN
         dist_list = BestPath.genDistList(allCities)
