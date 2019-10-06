@@ -1,4 +1,4 @@
-from Travel import Location
+from OnTheRoad import Location
 
 import numpy as np
 

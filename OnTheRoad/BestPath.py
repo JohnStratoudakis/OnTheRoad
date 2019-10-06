@@ -1,4 +1,4 @@
-from Travel import Location, TravelCost
+from OnTheRoad import Location, TravelCost
 
 # state is an array of cities to visit
 def tsp_fitness(state, c):

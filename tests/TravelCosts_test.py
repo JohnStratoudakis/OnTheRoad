@@ -1,4 +1,4 @@
-from Travel import TravelCost, Location
+from OnTheRoad import TravelCost, Location
 
 import unittest
 from unittest import mock
@@ -19,7 +19,7 @@ class TravelCostsTests(unittest.TestCase):
                 }
         return allCosts[city_1.getShortName()][city_2.getShortName()]
 
-    @mock.patch('Travel.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
+    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
     def test_getDistance_Between_Amsterdam_and_Brussels(self):
         # GIVEN
         # WHEN
@@ -31,7 +31,7 @@ class TravelCostsTests(unittest.TestCase):
 
     #@mock.patch.object(TravelCost.TravelCost, 'cost')
     #def test_amsterdam_to_brussels(self, mock_input):
-    @mock.patch('Travel.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
+    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
     def test_amsterdam_to_brussels(self):
         # GIVEN
         #mock_input.return_value = [202828, 8372]
