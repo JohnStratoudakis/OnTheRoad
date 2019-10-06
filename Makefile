@@ -27,3 +27,8 @@ test:
 test-filter:
 	echo "Running tests with filter ${filter}"
 	${PYTHON} -m pytest -v ./tests/* -k ${filter}
+
+.PHONY: package
+package:
+	${PYTHON} setup.py sdist bdist_wheel
+
