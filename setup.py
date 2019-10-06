@@ -5,15 +5,15 @@ from setuptools import setup
 VERSION = "0.0.2"
 
 setup(
-    name="Travel",
+    name="OnTheRoad",
     version=VERSION,
     author="John Stratoudakis",
     author_email="johnstratoudakis@gmail.com",
     license="",
-    packages=["Travel"],
+    packages=["OnTheRoad"],
     entry_points={
         "console_scripts": [
-            "travel=Travel.travel_main:main"
+            "onTheRoad=OnTheRoad.travel_main:main"
             ]
         },
 )
