@@ -32,3 +32,7 @@ test-filter:
 package:
 	${PYTHON} setup.py sdist bdist_wheel
 
+.PHONY: publish
+publish:
+	 ${PYTHON} -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+
