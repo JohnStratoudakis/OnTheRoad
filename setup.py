@@ -2,11 +2,9 @@
 
 from setuptools import setup
 
-VERSION = "0.0.3"
-
 setup(
     name="OnTheRoad",
-    version=VERSION,
+    version="0.0.3",
     author="John Stratoudakis",
     author_email="johnstratoudakis@gmail.com",
     license="",
