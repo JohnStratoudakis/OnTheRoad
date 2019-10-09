@@ -11,4 +11,4 @@ install:
 script: "make test"
 
 after_success:
-  - python continuous_integration/increment_version.py
+  - bumpversion --config-file .bumpversion.cfg patch
