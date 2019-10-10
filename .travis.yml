@@ -12,3 +12,4 @@ script: "make test"
 
 after_success:
   - bumpversion --config-file .bumpversion.cfg --verbose patch
+  - git push
