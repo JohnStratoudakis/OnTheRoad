@@ -32,7 +32,10 @@ test-filter:
 package:
 	${PYTHON} setup.py sdist bdist_wheel
 
-.PHONY: publish
-publish:
-	 ${PYTHON} -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+.PHONY: publish-test
+publish-test:
+	 ${PYTHON} -m twine upload --verbose --config-file .pypirc-bot -r testpypi dist/*
 
+.PHONY: publish-prod
+publish-prod:
+	 ${PYTHON} -m twine upload --verbose --config-file .pypirc-bot -r pypi dist/*
