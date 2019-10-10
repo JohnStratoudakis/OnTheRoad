@@ -11,4 +11,4 @@ install:
 script: "make test"
 
 after_success:
-  - bumpversion --config-file .bumpversion.cfg patch
+  - bumpversion --config-file .bumpversion.cfg --verbose patch
