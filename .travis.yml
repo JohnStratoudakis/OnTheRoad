@@ -1,15 +1,25 @@
 dist: xenail
 language: python
 python:
-  - "3.7"
-
-# command to install dependencies
+- '3.7'
 install:
-  - pip install -r requirements.txt
-
-# command to run tests
-script: "make test"
-
+- pip install -r requirements.txt
+script: make test
 after_success:
-  - bumpversion --config-file .bumpversion.cfg --verbose patch
-  - git push
+- git config --global user.email "johnstratoudakis@egmail.com"
+- git config --global user.name "Bumpversion after CI"
+- bumpversion --config-file .bumpversion.cfg --verbose patch
+- chmod 600 travis_deploy_key
+- eval `ssh-agent -s`
+- ssh-add travis_deploy_key
+- git config --global push.default simple
+- git remote add deploy $(git remote -v | sed -nre 's#^origin.*https://([^/]*)/([^
+        ]*) *.*push.*#git@\1:\2#p')
+- git push deploy HEAD:master
+- python setup.py sdist
+- pip install twine
+- twine upload --config-file .pypirc-bot dist/*
+#- git push
+dd:
+- openssl aes-256-cbc -K $encrypted_6e40d781b1b3_key -iv $encrypted_6e40d781b1b3_iv
+  -in secret-files.tar.enc -out secret-files.tar -d
