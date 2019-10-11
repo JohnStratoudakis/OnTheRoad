@@ -3,3 +3,5 @@ data_tmp
 Session.vim
 data_cache/
 .pytest_cache/.vscode/settings.json
+secret-files.tar
+travis_deploy_key
