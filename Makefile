@@ -23,6 +23,11 @@ test:
 	${PYTHON} -m pytest  -v ./tests/*
 	#${PYTHON} -m pytest --show-capture all -v ./test/*
 
+.PHONY: itest
+itest:
+	@echo "Running Integration Tests"
+	${PYTHON} -m pytest  -v ./tests/integration/*
+
 .PHONY: test-filter
 test-filter:
 	echo "Running tests with filter ${filter}"
@@ -39,3 +44,8 @@ publish-test:
 .PHONY: publish-prod
 publish-prod:
 	 ${PYTHON} -m twine upload --verbose --config-file .pypirc-bot -r pypi dist/*
+
+# Test via make itest
+.PHONY: start_server
+start_server:
+	${PYTHON} app.py
