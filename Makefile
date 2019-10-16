@@ -17,16 +17,15 @@ freeze:
 install-deps:
 	${PYTHON} -m pip install -r requirements.txt
 
-.PHONY: test
-test:
+.PHONY: utest
+utest:
 	@echo "Running tests"
-	${PYTHON} -m pytest  -v ./tests/*
-	#${PYTHON} -m pytest --show-capture all -v ./test/*
+	${PYTHON} -m pytest --show-capture all -v ./tests/unit/*
 
 .PHONY: itest
 itest:
 	@echo "Running Integration Tests"
-	${PYTHON} -m pytest  -v ./tests/integration/*
+	${PYTHON} -m pytest --show-capture all -v ./tests/integration/*
 
 .PHONY: test-filter
 test-filter:

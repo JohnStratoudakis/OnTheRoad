@@ -7,13 +7,14 @@ from hamcrest import *
 class ServiceTests(unittest.TestCase):
     ams = Location.Location("Amsterdam", "ams", "Amsterdam, Netherlands")
     bru = Location.Location("Brussels", "bru", "Brussels, Belgium")
+    lon = Location.Location("London", "lon", "London, England")
 
     def test_smoke(self):
         assert_that("Sugar is bad", equal_to("Sugar is bad"))
 
     def test_hello(self):
         # GIVEN
-        locations = [self.ams, self.bru]
+        locations = [self.ams, self.bru, self.lon]
 
         # WHEN
         import requests
@@ -26,11 +27,12 @@ class ServiceTests(unittest.TestCase):
         resp = requests.post('http://127.0.0.1:5000/onTheRoad', json=post_data)
 
         # THEN
-        print(f"resp: {resp}")
-        assert_that(1, equal_to(2))
+        resp_json = resp.json()
+        print(f"resp_json: {resp_json}")
 
-    #@mock.patch.object(TravelCost.TravelCost, 'cost')
-    #def test_amsterdam_to_brussels(self, mock_input):
+        assert_that(resp_json['status'], equal_to(200))
+        assert_that(resp_json['best_path'], has_length(3))
+
 #    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
     def DISABLED_test_amsterdam_to_brussels(self):
         # GIVEN

@@ -186,6 +186,9 @@ class BestPathTest(unittest.TestCase):
 
         # THEN
         assert_that(best_fitness, equal_to(638420))
+        for s in best_state:
+            print(f"type: {type(s)}")
+        assert_that(best_state[0], equal_to(0))
 
         assert_that(best_state[0], equal_to(1))
         assert_that(best_state[1], equal_to(0))
