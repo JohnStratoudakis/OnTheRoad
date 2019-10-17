@@ -1,18 +1,32 @@
 from OnTheRoad import TravelCost, Location
 
+#from tests.unit.BestPath_test import BestPathTest
+import tests.unit.MockDistance
+
 import unittest
 from unittest import mock
 from hamcrest import *
 
 class ServiceTests(unittest.TestCase):
+
+    # An actual Euro Trip I did in May of 2019
+    # I flew in to Amsterdam, and flew out from London
     ams = Location.Location("Amsterdam", "ams", "Amsterdam, Netherlands")
     bru = Location.Location("Brussels", "bru", "Brussels, Belgium")
-    lon = Location.Location("London", "lon", "London, England")
+    lon = Location.Location("London", "lon", "London, United Kingdom")
+
+    # I want to figure out which of the following cities I should
+    # travel to on my next Euro Trip
+    vie = Location.Location("Vienna", "vie", "Vienna, Austria")
+    bra = Location.Location("Bratislava", "bra", "Bratislava, Slovakia")
+    bud = Location.Location("Budapest", "bud", "Budapest, Hungary")
+    pra = Location.Location("Prague", "pra", "Prague, Czechia")
 
     def test_smoke(self):
         assert_that("Sugar is bad", equal_to("Sugar is bad"))
 
-    def test_hello(self):
+    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=tests.unit.MockDistance.mock_getDistanceBetween)
+    def test_ams_bru_lon(self):
         # GIVEN
         locations = [self.ams, self.bru, self.lon]
 
@@ -32,16 +46,6 @@ class ServiceTests(unittest.TestCase):
 
         assert_that(resp_json['status'], equal_to(200))
         assert_that(resp_json['best_path'], has_length(3))
-
-#    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
-    def DISABLED_test_amsterdam_to_brussels(self):
-        # GIVEN
-        #mock_input.return_value = [202828, 8372]
-        ams = Location.Location("Amsterdam", "ams", "amsterdam, netherlands")
-        brussels = Location.Location("Brussels", "bru", "brussels, belgium")
-
-        # WHEN
-        #[distance_meters, duration_seconds] = TravelCost.TravelCost.cost(ams, brussels)
 
         # THEN
         #self.assertEqual(distance_meters, 212132)
