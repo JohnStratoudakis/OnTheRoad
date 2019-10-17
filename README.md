@@ -1,8 +1,6 @@
 # OnTheRoad
 
-[![Build Status](https://travis-ci.org/JohnStratoudakis/OnTheRoad.svg?branch=master)](https://travis-ci.org/JohnStratoudakis/OnTheRoad)
-
-[PyPi](https://pypi.org/project/OnTheRoad/)
+[![Build Status](https://travis-ci.org/JohnStratoudakis/OnTheRoad.svg?branch=master)](https://travis-ci.org/JohnStratoudakis/OnTheRoad) [![PyPI version](https://badge.fury.io/py/OnTheRoad.svg)](https://badge.fury.io/py/OnTheRoad)
 
 # Fedora Core 27
 I had to install pip3.7 by running:
