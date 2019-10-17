@@ -17,11 +17,15 @@ freeze:
 install-deps:
 	${PYTHON} -m pip install -r requirements.txt
 
-.PHONY: test
-test:
+.PHONY: utest
+utest:
 	@echo "Running tests"
-	${PYTHON} -m pytest  -v ./tests/*
-	#${PYTHON} -m pytest --show-capture all -v ./test/*
+	${PYTHON} -m pytest --show-capture all -s -v ./tests/unit/
+
+.PHONY: itest
+itest:
+	@echo "Running Integration Tests"
+	${PYTHON} -m pytest --show-capture all -s -v ./tests/integration/
 
 .PHONY: test-filter
 test-filter:
@@ -39,3 +43,8 @@ publish-test:
 .PHONY: publish-prod
 publish-prod:
 	 ${PYTHON} -m twine upload --verbose --config-file .pypirc-bot -r pypi dist/*
+
+# Test via make itest
+.PHONY: start_server
+start_server:
+	${PYTHON} app.py
