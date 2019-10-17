@@ -20,12 +20,12 @@ install-deps:
 .PHONY: utest
 utest:
 	@echo "Running tests"
-	${PYTHON} -m pytest --show-capture all -v ./tests/unit/*
+	${PYTHON} -m pytest --show-capture all -s -v ./tests/unit/
 
 .PHONY: itest
 itest:
 	@echo "Running Integration Tests"
-	${PYTHON} -m pytest --show-capture all -v ./tests/integration/*
+	${PYTHON} -m pytest --show-capture all -s -v ./tests/integration/
 
 .PHONY: test-filter
 test-filter:

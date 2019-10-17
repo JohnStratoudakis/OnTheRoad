@@ -1,5 +1,7 @@
 from OnTheRoad import BestPath, Location, TravelCost
 
+import tests.unit.MockDistance
+
 import unittest
 from unittest import mock
 from hamcrest import *
@@ -18,52 +20,7 @@ class BestPathTest(unittest.TestCase):
     bud = Location.Location("Budapest", "bud", "Budapest, Hungary")
     pra = Location.Location("Prague", "pra", "Prague, Czechia")
 
-    def mock_getDistanceBetween(city_1, city_2):
-        allCosts = {
-                'ams': {
-                    'bru': [ 212132, 6780],
-                    'bud': [1395715, 6780],
-                    'lon': [ 587306, 6780]
-                    },
-                'bru': {
-                    'ams': [ 212132, 6780],
-                    'bud': [1353099, 6780],
-                    'lon': [ 375174, 6780]
-                    },
-                'lon': {
-                    'ams': [ 587306, 6780],
-                    'bru': [ 375174, 6780],
-                    'bud': [1843672, 6780]
-                    },
-                'bud': {
-                    'bra': [199311, 6780],
-                    'pra': [538613, 6780],
-                    'vie': [219301, 6780]
-                    },
-                'bra': {
-                    'bud': [199311, 6780],
-                    'pra': [357049, 6780],
-                    'vie': [587306, 6780],
-                    },
-                'pra': {
-                    'bud': [538613, 6780],
-                    'bra': [357049, 6780],
-                    'vie': [587306, 6780],
-                    },
-                'vie': {
-                    'bra': [62070, 6780],
-                    'bud': [219301, 6780],
-                    'pra': [402558, 6780],
-                    }
-                }
-        shortA = city_1.getShortName()
-        shortB = city_2.getShortName()
-        if shortA in allCosts and shortB in allCosts[shortA]:
-            return allCosts[city_1.getShortName()][city_2.getShortName()]
-        elif shortB in allCosts and shortA in allCosts[shortB]:
-            return allCosts[city_2.getShortName()][city_1.getShortName()]
-
-    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
+    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=tests.unit.MockDistance.mock_getDistanceBetween)
     def test_generate_Distances_List(self):
         # GIVEN
         allCities = [self.ams, self.bru, self.lon]
@@ -85,7 +42,7 @@ class BestPathTest(unittest.TestCase):
         assert_that(dist_list[2][1], equal_to(2))
         assert_that(dist_list[2][2], equal_to(375174))
 
-    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
+    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=tests.unit.MockDistance.mock_getDistanceBetween)
     def test_may_trip_fitness(self):
         # GIVEN
         allCities = [self.ams, self.bru, self.lon]
@@ -97,7 +54,7 @@ class BestPathTest(unittest.TestCase):
         # THEN
         assert_that(fitness, equal_to(587306))
 
-    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
+    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=tests.unit.MockDistance.mock_getDistanceBetween)
     def test_ams_bud_lon_bru(self):
         # GIVEN
         allCities = [self.lon, self.bud, self.bru, self.ams]
@@ -109,7 +66,7 @@ class BestPathTest(unittest.TestCase):
         # THEN
         assert_that(fitness, equal_to(3614561))
 
-    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
+    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=tests.unit.MockDistance.mock_getDistanceBetween)
     def test_lon_ams_bru_bud(self):
         # GIVEN
         allCities = [self.lon, self.bud, self.bru, self.ams]
@@ -121,7 +78,7 @@ class BestPathTest(unittest.TestCase):
         # THEN
         assert_that(fitness, equal_to(3408903))
 
-    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
+    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=tests.unit.MockDistance.mock_getDistanceBetween)
     def test_lon_bru_ams_bud(self):
         # GIVEN
         allCities = [self.lon, self.bud, self.bru, self.ams]
@@ -133,7 +90,7 @@ class BestPathTest(unittest.TestCase):
         # THEN
         assert_that(fitness, equal_to(1983021))
 
-    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
+    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=tests.unit.MockDistance.mock_getDistanceBetween)
     def test_lon_ams_bru_bud(self):
         # GIVEN
         allCities = [self.lon, self.bud, self.bru, self.ams]
@@ -145,7 +102,7 @@ class BestPathTest(unittest.TestCase):
         # THEN
         assert_that(fitness, equal_to(2152537))
 
-    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
+    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=tests.unit.MockDistance.mock_getDistanceBetween)
     def test_may_trip(self):
         # GIVEN
         allCities = [self.lon, self.bru, self.ams]
@@ -160,7 +117,7 @@ class BestPathTest(unittest.TestCase):
         assert_that(best_state[1], equal_to(1))
         assert_that(best_state[2], equal_to(0))
 
-    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
+    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=tests.unit.MockDistance.mock_getDistanceBetween)
     def test_may_trip_with_Budapest(self):
         # GIVEN
         allCities = [self.lon, self.bud, self.bru, self.ams]
@@ -176,7 +133,7 @@ class BestPathTest(unittest.TestCase):
         assert_that(best_state[2], equal_to(2))
         assert_that(best_state[3], equal_to(0))
 
-    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=mock_getDistanceBetween)
+    @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=tests.unit.MockDistance.mock_getDistanceBetween)
     def test_nov_trip(self):
         # GIVEN
         allCities = [self.vie, self.bud, self.bra, self.pra]
@@ -186,9 +143,9 @@ class BestPathTest(unittest.TestCase):
 
         # THEN
         assert_that(best_fitness, equal_to(638420))
-        for s in best_state:
-            print(f"type: {type(s)}")
-        assert_that(best_state[0], equal_to(0))
+        # TODO: remove these lines
+#        for s in best_state:
+#            print(f"{allCities[s]}")
 
         assert_that(best_state[0], equal_to(1))
         assert_that(best_state[1], equal_to(0))
