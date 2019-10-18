@@ -7,6 +7,8 @@ install:
 - pip install -r requirements.txt
 script:
 - make utest
+- pwd
+- ls -lR
 - cd ontheroad_ui && yarn install
 - cd ontheroad_ui && yarn run build
 after_success:
