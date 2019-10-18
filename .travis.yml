@@ -20,7 +20,6 @@ after_success:
 - python setup.py sdist
 - pip install twine
 - twine upload --verbose --config-file .pypirc-bot -r pypi dist/*
-- cd ontheroad_ui && yarn run deploy
 before_install:
 - openssl aes-256-cbc -K $encrypted_3bc2bd3e7847_key -iv $encrypted_3bc2bd3e7847_iv
   -in secret-files.tar.enc -out secret-files.tar -d
@@ -28,7 +27,7 @@ before_install:
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  gitub_token: $github_token # Set in the settings page of your repository, as a secure variable
   keep_history: true
   local_dir: ontheroad_ui
   on:
