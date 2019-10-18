@@ -27,7 +27,7 @@ before_install:
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN 
+  github_token: $github_token
   keep_history: true
   local_dir: ontheroad_ui
   on:
