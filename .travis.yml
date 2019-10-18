@@ -5,7 +5,9 @@ python:
 install:
 - pip install .
 - pip install -r requirements.txt
-script: make utest
+script:
+- make utest
+- cd ontheroad_ui && yarn run build
 after_success:
 - git config --global user.email "johnstratoudakis@egmail.com"
 - git config --global user.name "Bumpversion after CI"
@@ -20,6 +22,7 @@ after_success:
 - python setup.py sdist
 - pip install twine
 - twine upload --verbose --config-file .pypirc-bot -r pypi dist/*
+- ls -lR
 before_install:
 - openssl aes-256-cbc -K $encrypted_3bc2bd3e7847_key -iv $encrypted_3bc2bd3e7847_iv
   -in secret-files.tar.enc -out secret-files.tar -d
@@ -29,6 +32,6 @@ deploy:
   skip_cleanup: true
   github_token: $github_token
   keep_history: true
-  local_dir: ontheroad_ui
+  local_dir: ontheroad_ui/build
   on:
     branch: master
