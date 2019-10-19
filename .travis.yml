@@ -11,7 +11,7 @@ script:
 - echo "Hello 003"
 - ls -lR
 - cd ontheroad_ui && yarn install
-- yarn run build
+  #- yarn run build
 - cd
 - echo "Hello 004"
 after_success:
