@@ -7,17 +7,10 @@ install:
 - pip install -r requirements.txt
 script:
 - make utest
-- pwd
-- echo "Hello 003"
-- ls -lR
-- pwd
 - cd ontheroad_ui
 - yarn install
 - yarn run build
 - cd ..
-- pwd
-  #- cd
-- echo "Hello 004"
 after_success:
 - git config --global user.email "johnstratoudakis@egmail.com"
 - git config --global user.name "Bumpversion after CI"
