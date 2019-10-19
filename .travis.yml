@@ -8,11 +8,12 @@ install:
 script:
 - make utest
 - pwd
-- echo "Hello 001"
+- echo "Hello 003"
 - ls -lR
 - cd ontheroad_ui && yarn install
-- cd ontheroad_ui && yarn run build
-- echo "Hello 002"
+- yarn run build
+- cd
+- echo "Hello 004"
 after_success:
 - git config --global user.email "johnstratoudakis@egmail.com"
 - git config --global user.name "Bumpversion after CI"
