@@ -10,7 +10,11 @@ script:
 - pwd
 - echo "Hello 003"
 - ls -lR
-  #- cd ontheroad_ui && yarn install
+- pwd
+- cd ontheroad_ui
+- cd
+- pwd
+#- cd ontheroad_ui && yarn install
   #- yarn run build
   #- cd
 - echo "Hello 004"
