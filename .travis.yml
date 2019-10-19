@@ -10,9 +10,9 @@ script:
 - pwd
 - echo "Hello 003"
 - ls -lR
-- cd ontheroad_ui && yarn install
-- yarn run build
-- cd
+  #- cd ontheroad_ui && yarn install
+  #- yarn run build
+  #- cd
 - echo "Hello 004"
 after_success:
 - git config --global user.email "johnstratoudakis@egmail.com"
