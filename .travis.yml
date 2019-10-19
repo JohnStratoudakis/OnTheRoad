@@ -8,9 +8,11 @@ install:
 script:
 - make utest
 - pwd
+- echo "Hello 001"
 - ls -lR
 - cd ontheroad_ui && yarn install
 - cd ontheroad_ui && yarn run build
+- echo "Hello 002"
 after_success:
 - git config --global user.email "johnstratoudakis@egmail.com"
 - git config --global user.name "Bumpversion after CI"
@@ -25,8 +27,6 @@ after_success:
 - python setup.py sdist
 - pip install twine
 - twine upload --verbose --config-file .pypirc-bot -r pypi dist/*
-- cd ontheroad_ui && yarn run build
-- ls -lR
 before_install:
 - openssl aes-256-cbc -K $encrypted_3bc2bd3e7847_key -iv $encrypted_3bc2bd3e7847_iv
   -in secret-files.tar.enc -out secret-files.tar -d
