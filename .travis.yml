@@ -12,7 +12,7 @@ script:
 - ls -lR
 - pwd
 - cd ontheroad_ui
-- cd
+- cd ..
 - pwd
 #- cd ontheroad_ui && yarn install
   #- yarn run build
