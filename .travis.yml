@@ -12,10 +12,10 @@ script:
 - ls -lR
 - pwd
 - cd ontheroad_ui
+- yarn install
+- yarn run build
 - cd ..
 - pwd
-#- cd ontheroad_ui && yarn install
-  #- yarn run build
   #- cd
 - echo "Hello 004"
 after_success:
