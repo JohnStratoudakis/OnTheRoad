@@ -25,7 +25,8 @@ password: <my-password>
 [testpypi]
 repository_url: https://test.pypi.org/legacy
 username: <my-username>
-password: <my-password>```
+password: <my-password>
+```
 
 ## I created a public-private key pair
 ```ssh-keygen -f travis_deploy_key```
