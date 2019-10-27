@@ -15,7 +15,7 @@ freeze:
 
 .PHONY: install-deps
 install-deps:
-	${PYTHON} -m pip install -r requirements.txt
+	${PYTHON} -m pip install --user -r requirements.txt
 
 .PHONY: utest
 utest:
@@ -48,3 +48,7 @@ publish-prod:
 .PHONY: start_server
 start_server:
 	${PYTHON} app.py
+
+.PHONY: start_uwsgi
+start_uwsgi:
+	uwsgi --socket 0.0.0.0:5000 --protocol=http -w flaskapp:app
