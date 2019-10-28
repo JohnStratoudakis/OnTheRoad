@@ -15,4 +15,4 @@ class Location:
         return self.address
 
     def __str__(self):
-        return f"{self.name}"
+        return "{}".format(self.name)
