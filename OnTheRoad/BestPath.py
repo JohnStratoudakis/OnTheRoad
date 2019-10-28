@@ -10,7 +10,7 @@ def tsp_fitness(state, c):
             cost = TravelCost.TravelCost.getDistanceBetween(shortA, shortB) [0]
             total_cost += cost
     except Exception as ex:
-        print(f"Exception caught in tsp_fitness: {ex}")
+        print("Exception caught in tsp_fitness: {}".format(ex))
     return total_cost
 
 def calcTsp(allCities):

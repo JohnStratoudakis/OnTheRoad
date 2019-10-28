@@ -44,7 +44,7 @@ class TravelCost:
         import os.path
 
         if os.path.isfile(filename):
-#            print(f"LOADING FROM CACHE: {filename}")
+#            print("LOADING FROM CACHE: {}".format(filename))
             j = loadObj(filename)
         else:
             import os
@@ -52,7 +52,7 @@ class TravelCost:
             source_address = urllib.parse.quote_plus(source_address)
             dest_address = urllib.parse.quote_plus(dest_address)
 
-            my_url = f"/maps/api/directions/json?origin={source_address}&destination={dest_address}&sensor=false&mode={travelMode}" 
+            my_url = "/maps/api/directions/json?origin={}&destination={}&sensor=false&mode={}".format(source_address, dest_address, travelMode)
             url_addr = "https://maps.googleapis.com%s" % my_url
             url_addr += "&key=" + API_KEY
 
