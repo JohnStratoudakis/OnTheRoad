@@ -47,7 +47,7 @@ publish-prod:
 # Test via make itest
 .PHONY: start_server
 start_server:
-	${PYTHON} app.py
+	${PYTHON} flaskapp.py
 
 .PHONY: start_uwsgi
 start_uwsgi:
