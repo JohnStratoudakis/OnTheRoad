@@ -52,3 +52,8 @@ start_server:
 .PHONY: start_uwsgi
 start_uwsgi:
 	uwsgi --socket 0.0.0.0:5000 --protocol=http -w flaskapp:app
+
+.PHONY: start_client
+start_client:
+	cd ontheroad_ui && yarn start
+
