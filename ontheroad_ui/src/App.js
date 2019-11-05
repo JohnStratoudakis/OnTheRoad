@@ -1,14 +1,32 @@
 import React from 'react';
 
+
 import axios from 'axios';
 
 import './App.css';
+
+require('dotenv').config();
 
 class App extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {results: ''};
+
+        var serverHost = process.env.REACT_APP_HOST_IP;
+        if(serverHost)
+        {
+            console.log(`REACT_APP_HOST_IP=${process.env.REACT_APP_HOST_IP}`);
+        }
+        else
+        {
+            serverHost="johnstratoudakis.github.io";
+        }
+
+        console.log(`REACT_APP_HOST_IP=${serverHost}`);
+        //var serverHost = process.env.ONTHEROAD_HOST;
+        console.log(`Calling host at ${serverHost}`);
+        console.log(process.env);
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -86,7 +104,6 @@ class App extends React.Component {
                 results_text = res.data['best_path'];
                 //console.log("RESULTS OF TSP: " + res);
                 this.setState({results: results_text});
-
             });
 
 
