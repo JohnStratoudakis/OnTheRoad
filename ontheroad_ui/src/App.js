@@ -75,14 +75,20 @@ class App extends React.Component {
         console.log(request);
 
         axios.post(`http://${serverHost}:5000/onTheRoad`, request )
-              .then(res => {
-                      console.log(res);
-                              console.log(res.data);
-                                    });
+            .then(res => {
+                console.log("DUMPING res");
+                console.log(res);
+                console.log("DUMPING res.data");
+                console.log(res.data);
+                console.log("DUMPING res.data.best_path");
+                console.log(res.data['best_path']);
+                var results_text = "Results of TSP";
+                results_text = res.data['best_path'];
+                //console.log("RESULTS OF TSP: " + res);
+                this.setState({results: results_text});
 
-        var results_text = "Results of TSP";
-        console.log("RESULTS OF TSP: " + res);
-        this.setState({results: results});
+            });
+
 
         event.preventDefault();
     }
