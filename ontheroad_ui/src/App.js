@@ -20,7 +20,7 @@ class App extends React.Component {
         this.serverHost = process.env.REACT_APP_HOST_IP;
         this.serverPort = "5000";
         
-        if(serverHost)
+        if(this.serverHost)
         {
             console.log(`REACT_APP_HOST_IP=${process.env.REACT_APP_HOST_IP}`);
         }
