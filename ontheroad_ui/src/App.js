@@ -26,13 +26,13 @@ class App extends React.Component {
         }
         else
         {
-            serverHost="www.johnstratoudakis.com";
-            serverPort="80";
+            this.serverHost="www.johnstratoudakis.com";
+            this.serverPort="80";
         }
 
-        console.log(`REACT_APP_HOST_IP=${serverHost}`);
+        console.log(`REACT_APP_HOST_IP=${this.serverHost}`);
         //var serverHost = process.env.ONTHEROAD_HOST;
-        console.log(`Calling host at ${serverHost}`);
+        console.log(`Calling host at ${this.serverHost}`);
         console.log(process.env);
 
         this.handleChange = this.handleChange.bind(this);
@@ -99,7 +99,7 @@ class App extends React.Component {
         console.log(`Sending the following request ${request}`);
         console.log(request);
 
-        axios.post(`http://${serverHost}:${serverPort}/onTheRoad`, request )
+        axios.post(`http://${this.serverHost}:${this.serverPort}/onTheRoad`, request )
             .then(res => {
                 console.log("DUMPING res");
                 console.log(res);
