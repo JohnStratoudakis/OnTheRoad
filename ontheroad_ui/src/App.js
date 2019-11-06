@@ -9,18 +9,25 @@ require('dotenv').config();
 
 class App extends React.Component {
 
+    var serverHost = process.env.REACT_APP_HOST_IP;
+    var serverPort = "5000";
+
     constructor(props) {
         super(props);
         this.state = {results: ''};
 
-        var serverHost = process.env.REACT_APP_HOST_IP;
+        
+        serverHost = process.env.REACT_APP_HOST_IP;
+        serverPort = "5000";
+        
         if(serverHost)
         {
             console.log(`REACT_APP_HOST_IP=${process.env.REACT_APP_HOST_IP}`);
         }
         else
         {
-            serverHost="johnstratoudakis.github.io";
+            serverHost="www.johnstratoudakis.com";
+            serverPort="80";
         }
 
         console.log(`REACT_APP_HOST_IP=${serverHost}`);
@@ -61,7 +68,7 @@ class App extends React.Component {
         //console.log("this.state: " + typeof(this.state));
         //console.log(`typeof(this.state): ${typeof(this.state.toString())}`);
         // TODO: Read this from config or env var
-        var serverHost = "127.0.0.1";
+//        var serverHost = "127.0.0.1";
         //console.log(`Server Host Name: ${serverHost}`);
 
         // TODO: Read this from form
@@ -92,7 +99,7 @@ class App extends React.Component {
         console.log(`Sending the following request ${request}`);
         console.log(request);
 
-        axios.post(`http://${serverHost}:5000/onTheRoad`, request )
+        axios.post(`http://${serverHost}:${serverPort}/onTheRoad`, request )
             .then(res => {
                 console.log("DUMPING res");
                 console.log(res);
