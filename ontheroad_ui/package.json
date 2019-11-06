@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "https://johnstratoudakis.github.io/OnTheRoad",
   "dependencies": {
+    "axios": "^0.19.0",
+    "dotenv": "^8.2.0",
     "gh-pages": "^2.1.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",

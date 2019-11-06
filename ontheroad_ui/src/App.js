@@ -1,27 +1,113 @@
 import React from 'react';
+
+
+import axios from 'axios';
+
 import './App.css';
+
+require('dotenv').config();
 
 class App extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {value: ''};
+        this.state = {results: ''};
+
+        var serverHost = process.env.REACT_APP_HOST_IP;
+        if(serverHost)
+        {
+            console.log(`REACT_APP_HOST_IP=${process.env.REACT_APP_HOST_IP}`);
+        }
+        else
+        {
+            serverHost="johnstratoudakis.github.io";
+        }
+
+        console.log(`REACT_APP_HOST_IP=${serverHost}`);
+        //var serverHost = process.env.ONTHEROAD_HOST;
+        console.log(`Calling host at ${serverHost}`);
+        console.log(process.env);
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event) {
-        console.log('handleChange(event)');
-        this.setState({value: event.target.value});
+//        console.log('handleChange(event)');
+//        console.log("this.state: " + this.state);
+//        console.log("this.state['results']: " + this.state['results']);
+//        console.log("this.state: " + typeof(this.state));
+//        console.log(`typeof(this.state): ${typeof(this.state.toString())}`);
+//        console.log("=======");
+        var addr_array = [];
+
+        var addresses = event.target.value.split('\n');
+        addresses.forEach(function(val,index,array){
+            var name = array[index].split(',')[0];
+            var address = array[index];
+            var new_location = [name, address];
+            addr_array.push( new_location );
+            console.log(`Address[${index}]: ` + new_location);
+        });
+        this.setState({results: addr_array});
     }
 
     handleSubmit(event) {
-        console.log("Handle Submit Event");
-        console.log("this.state: {this.state}");
-        console.log("event: {typeof(event)}");
+        console.log("handleSubmit()...");
+        console.log(`this.state: ${this.state}`);
+        console.log(`event: ${typeof(event)}`);
+
+        //console.log("this.state: " + this.state);
+        //console.log("this.state: " + typeof(this.state));
+        //console.log(`typeof(this.state): ${typeof(this.state.toString())}`);
+        // TODO: Read this from config or env var
+        var serverHost = "127.0.0.1";
+        //console.log(`Server Host Name: ${serverHost}`);
+
+        // TODO: Read this from form
+        var results = this.state['results'];
+        var request = {
+            "locations": results
+//                ["Amsterdam", "Amsterdam, The Netherlands"],
+//                ["London", "London, England"],
+//                ["Brussels", "Brussels, Belgium"]
+//            ]
+        };
+
+        console.log("RESULTS: " + results);
+        console.log("RESULTS: " + results.length);
+        //var addresses = results.split('\n');
+        /*
+        addresses.forEach(function(val,index,array){
+            var name = array[index].split(',')[0];
+            var address = array[index];
+            var new_location = new Array(name, address);
+            //addr_array.push( new_location );
+            console.log(`Address[${index}]: ` + new_location);
+        });
+*/
+        console.log("this.state['results']: " + this.state['results']);
+//        request['locations'].push( ["Amsterdam", "--------Amsterdam, The Netherlands"] );
+        console.log("Sending the following request: " + request);
+        console.log(`Sending the following request ${request}`);
+        console.log(request);
+
+        axios.post(`http://${serverHost}:5000/onTheRoad`, request )
+            .then(res => {
+                console.log("DUMPING res");
+                console.log(res);
+                console.log("DUMPING res.data");
+                console.log(res.data);
+                console.log("DUMPING res.data.best_path");
+                console.log(res.data['best_path']);
+                var results_text = "Results of TSP";
+                results_text = res.data['best_path'];
+                //console.log("RESULTS OF TSP: " + res);
+                this.setState({results: results_text});
+            });
+
+
         event.preventDefault();
-        //this.out.value = "DDDD";
     }
 
     render() {
@@ -41,7 +127,7 @@ class App extends React.Component {
                     </form>
                     Recommended Trip Order:
                     <br />
-                    {this.state.value}
+                    {this.state.results}
                 </header>
             </div>
         );
