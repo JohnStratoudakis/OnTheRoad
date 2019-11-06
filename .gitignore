@@ -7,3 +7,5 @@ secret-files.tar
 travis_deploy_key
 .pypirc-bot
 travis-deploy-token
+.env
+node_modules
