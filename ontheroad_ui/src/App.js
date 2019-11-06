@@ -9,8 +9,8 @@ require('dotenv').config();
 
 class App extends React.Component {
 
-    var serverHost = process.env.REACT_APP_HOST_IP;
-    var serverPort = "5000";
+    serverHost = process.env.REACT_APP_HOST_IP;
+    serverPort = "5000";
 
     constructor(props) {
         super(props);
