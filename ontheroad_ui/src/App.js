@@ -99,7 +99,7 @@ class App extends React.Component {
         console.log(`Sending the following request ${request}`);
         console.log(request);
 
-        axios.post(`http://${this.serverHost}:${this.serverPort}/onTheRoad`, request )
+        axios.post(`https://${this.serverHost}:${this.serverPort}/onTheRoad`, request )
             .then(res => {
                 console.log("DUMPING res");
                 console.log(res);
