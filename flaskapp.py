@@ -31,7 +31,7 @@ def post():
         # TODO: Use python logger with appropriate log leves
         #print(f"Content: {content}")
         locations = content['locations']
-        print(f"Locations: {locations}")
+        #print(f"Locations: {locations}")
 
         allCities = []
         for location in locations:
