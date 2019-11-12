@@ -110,7 +110,7 @@ class App extends React.Component {
     }
 
     render() {
-        var placeholder = "Amsterdam, The Netherlands\nBrussels, Belgium\nLondon, England";
+        var placeholder = "Amsterdam, The Netherlands\nLondon, England\nBrussels, Belgium\nFrankfurt, Germany\nParis, France";
         return (
             <div className="App">
                 <header className="App-header">
