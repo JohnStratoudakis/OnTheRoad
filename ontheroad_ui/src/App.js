@@ -27,12 +27,10 @@ class App extends React.Component {
         else
         {
             this.serverHost="www.johnstratoudakis.com";
-            this.serverPort="80";
+            this.serverPort="443";
         }
 
-        console.log(`REACT_APP_HOST_IP=${this.serverHost}`);
-        //var serverHost = process.env.ONTHEROAD_HOST;
-        console.log(`Calling host at ${this.serverHost}`);
+        console.log(`Setting this.serverHost: ${this.serverHost}.`);
         console.log(process.env);
 
         this.handleChange = this.handleChange.bind(this);
@@ -40,12 +38,6 @@ class App extends React.Component {
     }
 
     handleChange(event) {
-//        console.log('handleChange(event)');
-//        console.log("this.state: " + this.state);
-//        console.log("this.state['results']: " + this.state['results']);
-//        console.log("this.state: " + typeof(this.state));
-//        console.log(`typeof(this.state): ${typeof(this.state.toString())}`);
-//        console.log("=======");
         var addr_array = [];
 
         var addresses = event.target.value.split('\n');
@@ -54,7 +46,7 @@ class App extends React.Component {
             var address = array[index];
             var new_location = [name, address];
             addr_array.push( new_location );
-            console.log(`Address[${index}]: ` + new_location);
+            console.log(`Adding address[${index}]: ` + new_location);
         });
         this.setState({results: addr_array});
     }
