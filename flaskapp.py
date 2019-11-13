@@ -2,6 +2,7 @@
 
 from flask import Flask
 from flask import request
+from flask_cors import CORS
 
 from flask import jsonify
 
@@ -14,6 +15,7 @@ LINE_LENGTH = 90
 logger = logging.getLogger(__name__.split('.')[0])
 
 app = Flask(__name__)
+CORS(app)
 
 #def set_up_logging():
 #    logger.setLevel(logging.DEBUG)
