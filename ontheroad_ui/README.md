@@ -66,3 +66,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## Running on Windows
+I open the folder 'ontheroad_ui' in Visual Studio Code.
+I let VSC install all of the plugins that it detects...etc
+The first time I run this application, I run plain old 'yarn'
+Then I run 'yarn start' in a Terminal window.
+Then I click the Debug icon from VSC.
+
