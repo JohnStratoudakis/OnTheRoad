@@ -1,12 +1,12 @@
 import React from 'react';
 //import axios from 'axios';
 
-//import PlacesAutocomplete from 'react-places-autocomplete';
-//import {
-//    geocodeByAddress,
-//    geocodeByPlaceId,
-//    getLatLng
-//} from 'react-places-autocomplete';
+import PlacesAutocomplete from 'react-places-autocomplete';
+import {
+    geocodeByAddress,
+    geocodeByPlaceId,
+    getLatLng
+} from 'react-places-autocomplete';
 
 //import {add_guest} from '../../store/reducers';
 //import MapWithRestaurant from '../destination/map.js';
@@ -58,9 +58,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          address: '',
-          results: '',
-          value: ''
+          address: ''
         };
 //        this.state = {results: '', address: '731 Lexington Avenuew, New York, NY', value: 'Default_Value'};
 //        this.onChange = (address) => this.setState({ address, placeID: null, latlng: null, guest: null })
@@ -85,18 +83,18 @@ class App extends React.Component {
 //        this.handleSelect = this.handleSelect2.bind(this);
     }
 
-//    handleChange2 = address => {
-//        console.log(`handleChange2(event)`);
-//        this.setState({ address });
-//    };
-//
-//    handleSelect2 = address => {
-//        console.log(`handleSelect2(event)`);
-//        geocodeByAddress(address)
-//            .then(results => getLatLng(results[0]))
-//            .then(latLng => console.log('Success', latLng))
-//            .catch(error => console.error('Error', error));
-//    };
+    onChange = address => {
+        console.log('handleChange()');
+        this.setState({ address });
+    };
+
+    onSelect = address => {
+        console.log(`handleSelect2(event)`);
+        geocodeByAddress(address)
+            .then(results => getLatLng(results[0]))
+            .then(latLng => console.log('Success', latLng))
+            .catch(error => console.error('Error', error));
+    };
 
 //    handleChange(event) {
 //        var addr_array = [];
@@ -197,12 +195,11 @@ class App extends React.Component {
                     <br />
                     My custom areas:
                     <div style={{ position: 'relative'}}>
-{/*
+
                         <PlacesAutocomplete
                             value={this.state.address}
                             onChange={this.onChange}
-                            onSelect={this.handleSelect2}
-                            styles={ defaultStyles }>
+                            onSelect={this.onSelect}>
                         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
             <input
@@ -236,7 +233,7 @@ class App extends React.Component {
           </div>
                         )}
                         </PlacesAutocomplete>
-*/}
+
                     </div>
                 </header>
             </div>
