@@ -102,7 +102,7 @@ class Location extends React.Component {
                         location={ this.state.latlng }
                         markers={ <Marker position={ {lat: parseFloat(lat), lng: parseFloat(lng)} } /> }
                     />
-    }
+                    }
                 </div>
             </div>
         );

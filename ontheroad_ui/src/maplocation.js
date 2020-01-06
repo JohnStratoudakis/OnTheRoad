@@ -6,6 +6,8 @@ import {
   Marker,
 } from "react-google-maps";
 
+// lat: 40.7127753
+// lng: -74.0059728
 const MapWithRestaurant = withGoogleMap(props => {
   const {lat, lng} = props.location
   console.log("lat: " + lat)
