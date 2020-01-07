@@ -1,17 +1,7 @@
-
 import React from 'react';
 
 //import axios from 'axios';
 
-//import PlacesAutocomplete from 'react-places-autocomplete';
-//import {
-//    geocodeByAddress,
-//    geocodeByPlaceId,
-//    getLatLng
-//} from 'react-places-autocomplete';
-
-//import {add_guest} from '../../store/reducers';
-//import MapWithRestaurant from '../destination/map.js';
 import Location from './Location.js';
 
 import './App.css';

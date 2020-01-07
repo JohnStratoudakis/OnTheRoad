@@ -1,14 +1,19 @@
-
 import React from 'react';
 
+import Button from 'react-bootstrap/Button';
+//import ButtonGroup from 'react-bootstrap/Button';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import {
     geocodeByAddress,
-    geocodeByPlaceId,
+//    geocodeByPlaceId,
     getLatLng
 } from 'react-places-autocomplete';
 
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import {
+//  withScriptjs,
+//  withGoogleMap,
+//  GoogleMap,
+  Marker } from "react-google-maps";
 import MapWithRestaurant from './maplocation.js';
 
 const defaultStyles = {
@@ -55,23 +60,12 @@ class Location extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { address: '', latlng: [1,1], name: '', placeID: null, guest: null }
+        this.state = { address: '', latlng: {lat:"0", lng:"0"}, name: '', placeID: null, guest: null }
         this.getPlace = this.getPlace.bind(this)
-        this.onChange = (address) => this.setState({ address, placeID: null, latlng: null, guest: null })
+        this.onChange = (address) => this.setState({ address, placeID: null, latlng: {lat:"0", lng:"0"}, guest: null })
         this.saveAddress = (address, placeID) => this.setState({ address, placeID })
         this.saveLocation = (latlng) => this.setState({...this.state, latlng: latlng})
     }
-
-    handleChange = address => {
-        this.setState({ address });
-    };
-
-    handleSelect = address => {
-        geocodeByAddress(address)
-            .then(results => getLatLng(results[0]))
-            .then(latLng => console.log('Success', latLng))
-            .catch(error => console.error('Error', error));
-    };
 
     getPlace(address, placeID) {
         this.saveAddress(address, placeID)
@@ -87,6 +81,10 @@ class Location extends React.Component {
             value: this.state.address,
             onChange: this.onChange
         }
+        if(this.state.latlng) {
+          console.log(`lat: ${this.state.latlng.lat}`);
+          console.log(`lng: ${this.state.latlng.lng}`);
+        }
         return (
             <div className={"location.style"} >
                 <div className="container no-padding">
@@ -94,14 +92,23 @@ class Location extends React.Component {
                     <hr />
                     <PlacesAutocomplete inputProps={inputProps} onSelect={this.getPlace} styles={ defaultStyles }/>
                     <hr />
-                    { this.state.latlng && !this.state.guest &&
-                    <MapWithRestaurant
+                    {
+                    this.state.latlng && this.state.latlng.lat !== "0"
+                                      && this.state.latlng.lng !== "0" &&
+                    <div>
+                      <h3>Lat: {this.state.latlng.lat}</h3>
+                      <h3>Lng: {this.state.latlng.lng}</h3>
+                      {
+                      <MapWithRestaurant
                         loadingElement={<div style={{ height: `100%` }} />}
                         containerElement={<div style={{ height: `200px` }} />}
                         mapElement={<div style={{ height: `100%` }} />}
                         location={ this.state.latlng }
                         markers={ <Marker position={ {lat: parseFloat(lat), lng: parseFloat(lng)} } /> }
-                    />
+                      />
+                      }
+                      <Button variant="secondary">Add</Button>
+                    </div>
                     }
                 </div>
             </div>
