@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import {
-  withScriptjs,
+//  withScriptjs,
   withGoogleMap,
   GoogleMap,
   Marker,
 } from "react-google-maps";
 
+// NYC Lat-Lng:
 // lat: 40.7127753
 // lng: -74.0059728
 const MapWithRestaurant = withGoogleMap(props => {
   const {lat, lng} = props.location
-  console.log("lat: " + lat)
-  console.log("lng: " + lng)
+  console.log("MapWithRestaurant(lat:" + lat + ", lng:" + lng + ")");
+
   return(
   <GoogleMap
     defaultZoom={16}
