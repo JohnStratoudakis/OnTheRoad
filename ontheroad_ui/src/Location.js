@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Button from 'react-bootstrap/Button';
-//import ButtonGroup from 'react-bootstrap/Button';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import {
     geocodeByAddress,
@@ -65,6 +64,12 @@ class Location extends React.Component {
         this.onChange = (address) => this.setState({ address, placeID: null, latlng: {lat:"0", lng:"0"}, guest: null })
         this.saveAddress = (address, placeID) => this.setState({ address, placeID })
         this.saveLocation = (latlng) => this.setState({...this.state, latlng: latlng})
+        this.onAdd = this.onAdd.bind(this);
+    }
+
+    onAdd() {
+      console.log("onAdd called.");
+      console.log(`New latlng: ${this.state}`);
     }
 
     getPlace(address, placeID) {
@@ -81,7 +86,7 @@ class Location extends React.Component {
             value: this.state.address,
             onChange: this.onChange
         }
-        if(this.state.latlng) {
+        if(this.state.latlng && (this.state.latlng.lat !== 0 && this.state.latlng.lng !== 0)) {
           console.log(`lat: ${this.state.latlng.lat}`);
           console.log(`lng: ${this.state.latlng.lng}`);
         }
@@ -107,7 +112,7 @@ class Location extends React.Component {
                         markers={ <Marker position={ {lat: parseFloat(lat), lng: parseFloat(lng)} } /> }
                       />
                       }
-                      <Button variant="secondary">Add</Button>
+                      <Button variant="secondary" onClick={this.onAdd} size="sm">Add</Button>
                     </div>
                     }
                 </div>
