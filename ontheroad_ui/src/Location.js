@@ -59,7 +59,16 @@ class Location extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { address: '', latlng: {lat:"0", lng:"0"}, name: '', placeID: null, guest: null }
+        this.state = {
+            address: '',
+            latlng: {
+                lat:"0",
+                lng:"0"
+            },
+            name: '',
+            placeID: null,
+            guest: null
+        }
         this.getPlace = this.getPlace.bind(this)
         this.onChange = (address) => this.setState({ address, placeID: null, latlng: {lat:"0", lng:"0"}, guest: null })
         this.saveAddress = (address, placeID) => this.setState({ address, placeID })
