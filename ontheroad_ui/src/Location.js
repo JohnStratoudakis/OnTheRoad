@@ -65,6 +65,7 @@ class Location extends React.Component {
                 lat:"0",
                 lng:"0"
             },
+            allAddresses: [],
             name: '',
             placeID: null,
             guest: null
@@ -78,7 +79,10 @@ class Location extends React.Component {
 
     onAdd() {
       console.log("onAdd called.");
-      console.log(`New latlng: ${this.state}`);
+      console.log(`New latlng: ${this.state.latlng}`);
+      this.setState({
+        allAddresses: this.state.allAddresses.concat(`new value ${this.state.latlng}`)
+      });
     }
 
     getPlace(address, placeID) {
@@ -95,10 +99,12 @@ class Location extends React.Component {
             value: this.state.address,
             onChange: this.onChange
         }
-        if(this.state.latlng && (this.state.latlng.lat !== 0 && this.state.latlng.lng !== 0)) {
+        if(this.state.latlng && (this.state.latlng.lat !== "0" &&
+                                 this.state.latlng.lng !== "0")) {
           console.log(`lat: ${this.state.latlng.lat}`);
           console.log(`lng: ${this.state.latlng.lng}`);
         }
+
         return (
             <div className={"location.style"} >
                 <div className="container no-padding">
@@ -124,6 +130,18 @@ class Location extends React.Component {
                       <Button variant="secondary" onClick={this.onAdd} size="sm">Add</Button>
                     </div>
                     }
+                    <hr />
+                    <div>
+                        <h3>All Addresses:</h3>
+                        {
+                            <ul>
+                                {this.state.allAddresses.map(function(name, index){
+                                                    return <li key={ index }>{name.toString()}</li>;
+                                })
+                                }
+                            </ul>
+                        }
+                    </div>
                 </div>
             </div>
         );
