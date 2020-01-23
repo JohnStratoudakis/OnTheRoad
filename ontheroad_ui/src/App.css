@@ -20,3 +20,13 @@
 .App-link {
   color: #09d3ac;
 }
+
+.row {
+  display:flex;
+  background-color:#fff;
+  margin:10px 0px;
+  padding:5px 10px;
+}
+.row h4 {
+  font:400 15px Roboto;
+}

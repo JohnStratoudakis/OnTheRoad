@@ -1,6 +1,8 @@
 import React from 'react';
 
 import Button from 'react-bootstrap/Button';
+import Table from 'react-bootstrap/Table';
+
 import PlacesAutocomplete from 'react-places-autocomplete';
 import {
     geocodeByAddress,
@@ -79,10 +81,16 @@ class Location extends React.Component {
 
     onAdd() {
       console.log("onAdd called.");
-      console.log(`New latlng: ${this.state.latlng}`);
+      console.log(`New lat: ${this.state.latlng.lat}`);
+      console.log(`New lng: ${this.state.latlng.lng}`);
+      console.log(`New address: ${this.state.address}`);
       this.setState({
-        allAddresses: this.state.allAddresses.concat(`new value ${this.state.latlng}`)
+        allAddresses: this.state.allAddresses.concat(`{lng:${this.state.latlng.lng}}`)
       });
+      console.log(`this.state.allAddresses.length: ${this.state.allAddresses.length}`);
+      for(var i=0; i < this.state.allAddresses.length; i++) {
+        console.log(`this.state.allAddresses[${i}]: ${this.state.allAddresses[i]}`);
+      }
     }
 
     getPlace(address, placeID) {
@@ -134,12 +142,29 @@ class Location extends React.Component {
                     <div>
                         <h3>All Addresses:</h3>
                         {
+                          <Table bordered hover variant="dark">
+                            <thead>
+                              <th>Location</th>
+                              <th>Remove</th>
+                            </thead>
+                            <tbody>
+                                {this.state.allAddresses.map(function(name, index){
+                                  return  <tr>
+                                            <td>{name[index].toString()}</td>
+                                            <td>{index}</td>
+                                          </tr>;
+                                })
+                                }
+                            </tbody>
+                          </Table>
+                          /*
                             <ul>
                                 {this.state.allAddresses.map(function(name, index){
                                                     return <li key={ index }>{name.toString()}</li>;
                                 })
                                 }
                             </ul>
+                            */
                         }
                     </div>
                 </div>

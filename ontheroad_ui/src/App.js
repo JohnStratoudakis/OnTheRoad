@@ -51,7 +51,12 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          address: ''
+          results: 'res',
+          guests: [
+              {name:'Paris', address:'Paris, France'},
+              {name:'Amsterdam', address:'Amsterdam, The Netherlands'},
+              {name:'Brussels', address:'Brussels, Belgium'},
+          ]
         };
 //        this.state = {results: '', address: '731 Lexington Avenuew, New York, NY', value: 'Default_Value'};
 //        this.onChange = (address) => this.setState({ address, placeID: null, latlng: null, guest: null })
@@ -172,7 +177,18 @@ class App extends React.Component {
 */}
                     Recommended Trip Order:
                     <br />
-                    {/*this.state.results*/}
+                    {
+                        this.state.results
+                    }
+                    <div>
+                    {this.state.guests.map((guest, idx) => 
+                        <div className={ App.row }>
+                            <div>
+                                <h4>{ guest.address }</h4>
+                            </div>
+                        </div>
+                    )}
+                    </div>
                     <br />
                     My custom areas:
                     <div style={{ position: 'relative'}}>
