@@ -1,5 +1,8 @@
 import React from 'react';
 
+import Button from 'react-bootstrap/Button';
+import Table from 'react-bootstrap/Table';
+
 //import axios from 'axios';
 
 import Location from './Location.js';
@@ -58,30 +61,13 @@ class App extends React.Component {
               {name:'Brussels', address:'Brussels, Belgium'},
           ]
         };
-//        this.state = {results: '', address: '731 Lexington Avenuew, New York, NY', value: 'Default_Value'};
-//        this.onChange = (address) => this.setState({ address, placeID: null, latlng: null, guest: null })
-//        this.serverHost = process.env.REACT_APP_HOST_IP;
-//        this.serverPort = "5000";
-
-//        this.getPlace = this.getPlace.bind(this)
-
-//        if(this.serverHost) {
-//            console.log(`REACT_APP_HOST_IP=${process.env.REACT_APP_HOST_IP}`);
-//        } else {
-//            this.serverHost="www.johnstratoudakis.com";
-//            this.serverPort="443";
-//        }
-
-//        console.log(`Setting this.serverHost: ${this.serverHost}.`);
-//        console.log(process.env);
-
-        //this.handleChange = this.handleChange.bind(this);
-//        this.handleSubmit = this.handleSubmit.bind(this);
-//        this.handleChange = this.handleChange2.bind(this);
-//        this.handleSelect = this.handleSelect2.bind(this);
+        this.onCalculate = this.onCalculate.bind(this);
     }
 
-
+    onCalculate(event) {
+        console.log("onCalculate()");
+        console.log(`${event.toString()}`);
+    }
 //    handleChange(event) {
 //        var addr_array = [];
 //
@@ -106,7 +92,7 @@ class App extends React.Component {
 //        var request = {
 //            "locations": results
 //        };
-//
+
 //        console.log("RESULTS: " + results);
 //        console.log("RESULTS: " + results.length);
 //        //var addresses = results.split('\n');
@@ -152,29 +138,9 @@ class App extends React.Component {
 //    }
 
     render() {
-//        var placeholder = "Amsterdam, The Netherlands\nLondon, England\nBrussels, Belgium\nFrankfurt, Germany\nParis, France";
-
-//        const {lat, lng} = this.state.latlng || {}
-//        const inputProps = {
-//            value: this.state.address,
-//            onChange: this.onChange
-//        }
-
         return (
-            <div className="App">
+            <div className="App" style={{width: '100%'}}>
                 <header className="App-header">
-{/*
-                    <form onSubmit={this.handleSubmit}>
-                        <label>Euro Trip Calculator</label>
-                        <br />
-                        <textarea placeholder={placeholder}
-                                  onBlur={this.handleChange.bind(this)}
-                                  rows='8'
-                                  cols='30'
-                            ></textarea>
-                        <input type="submit" value="Submit" />
-                    </form>
-*/}
                     Recommended Trip Order:
                     <br />
                     {
@@ -190,10 +156,20 @@ class App extends React.Component {
                     )}
                     </div>
                     <br />
-                    My custom areas:
-                    <div style={{ position: 'relative'}}>
-                    </div>
+                    <div style={{ position: 'relative', width: '100%'}}>
                     <Location />
+                    </div>
+                    <div>
+                        <Table bordered hover variant="dark">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <Button variant="secondary" onClick={this.onCalculate} size="me">Calculate Best Path</Button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </Table>
+                    </div>
                 </header>
             </div>
         );

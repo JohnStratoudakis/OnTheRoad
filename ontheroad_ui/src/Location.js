@@ -75,29 +75,49 @@ class Location extends React.Component {
         this.getPlace = this.getPlace.bind(this)
         this.onChange = (address) => this.setState({ address, placeID: null, latlng: {lat:"0", lng:"0"}, guest: null })
         this.saveAddress = (address, placeID) => this.setState({ address, placeID })
-        this.saveLocation = (latlng) => this.setState({...this.state, latlng: latlng})
+        this.saveLocation = (latlng, address) =>  {
+          console.log(`latlng: ${latlng}, address: ${address}`)
+          this.setState({...this.state, latlng: latlng, address: address})
+        }
         this.onAdd = this.onAdd.bind(this);
+//        {allAddresses} = this.state
+    }
+
+    dump_addresses(addresses) {
+      console.log(`addresses.length: ${addresses.length}`);
+      for(var i=0; i < addresses.length; i++) {
+        var element = addresses[i];
+        console.log(`element.length: ${element.length}`)
+        for(var j=0; j < element.length; j++) {
+          console.log(`addresses[${i}][${j}]: ${addresses[i][j]}`);
+        }
+      }
     }
 
     onAdd() {
       console.log("onAdd called.");
-      console.log(`New lat: ${this.state.latlng.lat}`);
-      console.log(`New lng: ${this.state.latlng.lng}`);
+      console.log(`lat: ${this.state.latlng.lat}, lng: ${this.state.latlng.lng}`);
       console.log(`New address: ${this.state.address}`);
+
+      var allAddresses = this.state.allAddresses;
+      this.dump_addresses(allAddresses);
+      allAddresses.push(new Array(this.state.latlng.lat, this.state.latlng.lng, this.state.address))
+      this.dump_addresses(allAddresses);
+
       this.setState({
-        allAddresses: this.state.allAddresses.concat(`{lng:${this.state.latlng.lng}}`)
+        allAddresses: allAddresses
       });
-      console.log(`this.state.allAddresses.length: ${this.state.allAddresses.length}`);
-      for(var i=0; i < this.state.allAddresses.length; i++) {
-        console.log(`this.state.allAddresses[${i}]: ${this.state.allAddresses[i]}`);
-      }
+//      console.log(`this.state.allAddresses.length: ${this.state.allAddresses.length}`);
+//      for(var i=0; i < this.state.allAddresses.length; i++) {
+//        console.log(`this.state.allAddresses[${i}]: ${this.state.allAddresses[i]}`);
+//      }
     }
 
     getPlace(address, placeID) {
         this.saveAddress(address, placeID)
         geocodeByAddress(address)
             .then(results => getLatLng(results[0]) )
-            .then(latlng => this.saveLocation(latlng) )
+            .then(latlng => this.saveLocation(latlng, address) )
             .catch(error => console.error('Error', error))
     }
 
@@ -115,48 +135,39 @@ class Location extends React.Component {
 
         return (
             <div className={"location.style"} >
-                <div className="container no-padding">
-                    <h1>Location</h1>
-                    <hr />
-                    <PlacesAutocomplete inputProps={inputProps} onSelect={this.getPlace} styles={ defaultStyles }/>
-                    <hr />
-                    {
-                    this.state.latlng && this.state.latlng.lat !== "0"
-                                      && this.state.latlng.lng !== "0" &&
-                    <div>
-                      <h3>Lat: {this.state.latlng.lat}</h3>
-                      <h3>Lng: {this.state.latlng.lng}</h3>
-                      {
-                      <MapWithRestaurant
-                        loadingElement={<div style={{ height: `100%` }} />}
-                        containerElement={<div style={{ height: `200px` }} />}
-                        mapElement={<div style={{ height: `100%` }} />}
-                        location={ this.state.latlng }
-                        markers={ <Marker position={ {lat: parseFloat(lat), lng: parseFloat(lng)} } /> }
-                      />
-                      }
-                      <Button variant="secondary" onClick={this.onAdd} size="sm">Add</Button>
-                    </div>
-                    }
-                    <hr />
-                    <div>
-                        <h3>All Addresses:</h3>
+                <div className="container no-padding border">
+                  <Table bordered hover variant="dark" style={{width: '100%'}}>
+                    <tbody>
+
+                    <tr>
+                      <td >
+                        <h1>Enter Address</h1>
+                        <hr />
+                          <PlacesAutocomplete inputProps={inputProps} onSelect={this.getPlace} styles={ defaultStyles }/>
+                      </td>
+                      <td>
+                        <div>
+                          <h3>All Addresses:</h3>
+                        <hr />
                         {
-                          <Table bordered hover variant="dark">
-                            <thead>
-                              <th>Location</th>
-                              <th>Remove</th>
-                            </thead>
-                            <tbody>
-                                {this.state.allAddresses.map(function(name, index){
-                                  return  <tr>
-                                            <td>{name[index].toString()}</td>
-                                            <td>{index}</td>
-                                          </tr>;
-                                })
-                                }
-                            </tbody>
-                          </Table>
+                        this.state.latlng && this.state.latlng.lat !== "0"
+                                          && this.state.latlng.lng !== "0" &&
+                        <div>
+                          <h3>Lat: {this.state.latlng.lat}</h3>
+                          <h3>Lng: {this.state.latlng.lng}</h3>
+                          {
+                          <MapWithRestaurant
+                              loadingElement={<div style={{ height: `100%` }} />}
+                              containerElement={<div style={{ height: `200px` }} />}
+                              mapElement={<div style={{ height: `100%` }} />}
+                              location={ this.state.latlng }
+                              markers={ <Marker position={ {lat: parseFloat(lat), lng: parseFloat(lng)} } /> }
+                          />
+                          }
+                          <Button variant="secondary" onClick={this.onAdd} size="sm">Add</Button>
+                          </div>
+                        }
+                          {
                           /*
                             <ul>
                                 {this.state.allAddresses.map(function(name, index){
@@ -165,8 +176,46 @@ class Location extends React.Component {
                                 }
                             </ul>
                             */
-                        }
-                    </div>
+                          }
+                        </div>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </Table>
+                  <Table bordered hover variant="dark">
+                    <thead>
+                      <tr>
+                        <th>Selected Locations</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr>
+                      <td>
+                          <Table bordered hover variant="dark">
+                            <thead>
+                              <tr>
+                                <th>Address</th>
+                                <th>Remove</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                this.state.allAddresses.map(function(name, index){
+                                  return  <tr>
+                                            <td>{name[2].toString()}</td>
+                                            <td>{index}</td>
+                                          </tr>;
+                                })
+                                }
+                            </tbody>
+                          </Table>
+
+                      </td>
+                      </tr>
+                    </tbody>
+                    </Table>
+                    <hr />
                 </div>
             </div>
         );
