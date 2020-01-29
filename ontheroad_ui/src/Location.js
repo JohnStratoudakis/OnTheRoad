@@ -73,8 +73,12 @@ class Location extends React.Component {
             guest: null
         }
         this.getPlace = this.getPlace.bind(this)
-        this.onChange = (address) => this.setState({ address, placeID: null, latlng: {lat:"0", lng:"0"}, guest: null })
-        this.saveAddress = (address, placeID) => this.setState({ address, placeID })
+        this.onChange = (address) => {
+          this.setState({ address, placeID: null, latlng: {lat:"0", lng:"0"}, guest: null })
+        }
+        this.saveAddress = (address, placeID) => {
+          this.setState({ address, placeID })
+        }
         this.saveLocation = (latlng, address) =>  {
           console.log(`latlng: ${latlng}, address: ${address}`)
           this.setState({...this.state, latlng: latlng, address: address})
@@ -125,6 +129,8 @@ class Location extends React.Component {
     }
 
     getPlace(address, placeID) {
+      console.log(`Location.getPlace(): address=${address}`);
+      console.log(`Location.getPlace(): placeID=${placeID}`);
         this.saveAddress(address, placeID)
         geocodeByAddress(address)
             .then(results => getLatLng(results[0]) )
@@ -146,19 +152,19 @@ class Location extends React.Component {
 
         return (
             <div className={"location.style"} >
-                <div className="container no-padding border">
+                <div className="container no-padding">
                   <Table bordered hover variant="dark" style={{width: '100%'}}>
                     <tbody>
 
                     <tr>
                       <td >
-                        <h1>Enter Address</h1>
+                        <h1>Enter an Address:</h1>
                         <hr />
                           <PlacesAutocomplete inputProps={inputProps} onSelect={this.getPlace} styles={ defaultStyles }/>
                       </td>
                       <td>
                         <div>
-                          <h3>All Addresses:</h3>
+                          <h3>Verification:</h3>
                         <hr />
                         {
                         this.state.latlng && this.state.latlng.lat !== "0"
@@ -196,7 +202,7 @@ class Location extends React.Component {
                   <Table bordered hover variant="dark">
                     <thead>
                       <tr>
-                        <th>Selected Locations</th>
+                        <th>You Entered the Following Addresses:</th>
                       </tr>
                     </thead>
                     <tbody>

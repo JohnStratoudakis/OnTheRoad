@@ -3,7 +3,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 
-import {hello_world} from './helpers';
+import { hello_world, sum } from './helpers';
 //import axios from 'axios';
 
 import Location from './Location.js';
@@ -174,11 +174,16 @@ class App extends React.Component {
         return (
             <div className="App" style={{width: '100%'}}>
                 <header className="App-header">
+                    {/*
                     Recommended Trip Order:
+                    <br />
+                    Paris, France -> Amsterdam, The Netherlands
                     <br />
                     {
                         this.state.results
                     }
+                    */}
+                    {/*
                     <div>
                     {this.state.guests.map((guest, idx) => 
                         <div className={ App.row }>
@@ -188,6 +193,7 @@ class App extends React.Component {
                         </div>
                     )}
                     </div>
+                    */}
                     <br />
                     <div style={{ position: 'relative', width: '100%'}}>
                     <Location
