@@ -149,13 +149,13 @@ class App extends React.Component {
 
     onCalculate(event) {
         console.log("onCalculate()");
-        console.log(`${event.toString()}`);
+        //console.log(`${event.toString()}`);
 
         this.dump_test(this.Location.state.allAddresses);
     }
 
     handleOnAddressesChange(new_addresses) {
-        console.log("APP->handleOnAddressesChange");
+        console.log("App.handleOnAddressesChange()");
         console.log(`new_addresses.length: ${new_addresses.length}`);
         for(var i=0; i < new_addresses.length; i++) {
             var element = new_addresses[i];
