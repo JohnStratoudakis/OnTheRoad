@@ -3,6 +3,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 
+import {hello_world} from './helpers';
 //import axios from 'axios';
 
 import Location from './Location.js';
@@ -51,23 +52,6 @@ class App extends React.Component {
     serverHost = process.env.REACT_APP_HOST_IP;
     serverPort = "5000";
 
-    constructor(props) {
-        super(props);
-        this.state = {
-          results: 'res',
-          guests: [
-              {name:'Paris', address:'Paris, France'},
-              {name:'Amsterdam', address:'Amsterdam, The Netherlands'},
-              {name:'Brussels', address:'Brussels, Belgium'},
-          ]
-        };
-        this.onCalculate = this.onCalculate.bind(this);
-    }
-
-    onCalculate(event) {
-        console.log("onCalculate()");
-        console.log(`${event.toString()}`);
-    }
 //    handleChange(event) {
 //        var addr_array = [];
 //
@@ -136,8 +120,57 @@ class App extends React.Component {
 //          .then(latlng => this.saveLocation(latlng) )
 //          .catch(error => console.error('Error', error))
 //    }
+    constructor(props) {
+        super(props);
+        this.onCalculate = this.onCalculate.bind(this);
+        this.handleOAddressesChange = this.handleOnAddressesChange.bind(this);
+        //this.dump_test = this.dump_test.bind(this);
+        this.state = {
+          results: 'res',
+          addresses: [],
+          guests: [
+              {name:'Paris', address:'Paris, France'},
+              {name:'Amsterdam', address:'Amsterdam, The Netherlands'},
+              {name:'Brussels', address:'Brussels, Belgium'},
+          ]
+        };
+    }
+
+    dump_test(addresses) {
+      console.log(`addresses.length: ${addresses.length}`);
+      for(var i=0; i < addresses.length; i++) {
+        var element = addresses[i];
+        console.log(`element.length: ${element.length}`)
+        for(var j=0; j < element.length; j++) {
+          console.log(`addresses[${i}][${j}]: ${addresses[i][j]}`);
+        }
+      }
+    }
+
+    onCalculate(event) {
+        console.log("onCalculate()");
+        console.log(`${event.toString()}`);
+
+        this.dump_test(this.Location.state.allAddresses);
+    }
+
+    handleOnAddressesChange(new_addresses) {
+        console.log("APP->handleOnAddressesChange");
+        console.log(`new_addresses.length: ${new_addresses.length}`);
+        for(var i=0; i < new_addresses.length; i++) {
+            var element = new_addresses[i];
+            console.log(`element.length: ${element.length}`)
+            for(var j=0; j < element.length; j++) {
+                console.log(`new_addresses[${i}][${j}]: ${new_addresses[i][j]}`);
+            }
+        }
+        hello_world();
+        //this.dump_test(new_addresses);
+        //this.setState({addresses: addresses});
+    }
 
     render() {
+        const addresses = this.state.addresseses;
         return (
             <div className="App" style={{width: '100%'}}>
                 <header className="App-header">
@@ -157,7 +190,10 @@ class App extends React.Component {
                     </div>
                     <br />
                     <div style={{ position: 'relative', width: '100%'}}>
-                    <Location />
+                    <Location
+                        addresses={addresses}
+                        onAddressesChange={this.handleOnAddressesChange}
+                     />
                     </div>
                     <div>
                         <Table bordered hover variant="dark">

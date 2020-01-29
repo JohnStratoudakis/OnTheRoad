@@ -67,7 +67,7 @@ class Location extends React.Component {
                 lat:"0",
                 lng:"0"
             },
-            allAddresses: [],
+            addresses: [],
             name: '',
             placeID: null,
             guest: null
@@ -81,6 +81,14 @@ class Location extends React.Component {
         }
         this.onAdd = this.onAdd.bind(this);
 //        {allAddresses} = this.state
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(e) {
+        console.log("LOCATION->HANDLE_CHANGE");
+        console.log(`e.toString(): ${e.toString()}`);
+        console.log(typeof e);
+        this.props.onAddressesChange(e);
     }
 
     dump_addresses(addresses) {
@@ -94,12 +102,12 @@ class Location extends React.Component {
       }
     }
 
-    onAdd() {
+    onAdd(e) {
       console.log("onAdd called.");
       console.log(`lat: ${this.state.latlng.lat}, lng: ${this.state.latlng.lng}`);
       console.log(`New address: ${this.state.address}`);
 
-      var allAddresses = this.state.allAddresses;
+      var allAddresses = this.state.addresses;
       this.dump_addresses(allAddresses);
       allAddresses.push(new Array(this.state.latlng.lat, this.state.latlng.lng, this.state.address))
       this.dump_addresses(allAddresses);
@@ -111,6 +119,10 @@ class Location extends React.Component {
 //      for(var i=0; i < this.state.allAddresses.length; i++) {
 //        console.log(`this.state.allAddresses[${i}]: ${this.state.allAddresses[i]}`);
 //      }
+      console.log("LOCATION->ON_ADD");
+      console.log(`e: ${e}`);
+      console.log(`e.length: ${e.toString()}`);
+      this.handleChange(allAddresses);
     }
 
     getPlace(address, placeID) {
@@ -127,6 +139,7 @@ class Location extends React.Component {
             value: this.state.address,
             onChange: this.onChange
         }
+        const addresses = this.props.addresses;
         if(this.state.latlng && (this.state.latlng.lat !== "0" &&
                                  this.state.latlng.lng !== "0")) {
           console.log(`lat: ${this.state.latlng.lat}`);
@@ -201,7 +214,7 @@ class Location extends React.Component {
                             </thead>
                             <tbody>
                                 {
-                                this.state.allAddresses.map(function(name, index){
+                                this.state.addresses.map(function(name, index){
                                   return  <tr>
                                             <td>{name[2].toString()}</td>
                                             <td>{index}</td>
