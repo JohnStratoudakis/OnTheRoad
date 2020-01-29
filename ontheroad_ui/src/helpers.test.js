@@ -1,4 +1,4 @@
-import {sum} from './helpers';
+import {sum} from './helpers.js';
 //const helpers = require('./helpers');
 
 test('adds 1 + 2 to equal 3', () => {
