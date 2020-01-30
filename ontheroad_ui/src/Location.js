@@ -64,8 +64,8 @@ class Location extends React.Component {
         this.state = {
             address: '',
             latlng: {
-                lat:"0",
-                lng:"0"
+                lat:"40.7643574",
+                lng:"-73.92346189999999"
             },
             addresses: [],
             name: '',
@@ -167,8 +167,8 @@ class Location extends React.Component {
                           <h3>Verification:</h3>
                           <hr />
                           {
-                          this.state.latlng && this.state.latlng.lat !== "0"
-                                            && this.state.latlng.lng !== "0" &&
+                          //this.state.latlng && this.state.latlng.lat !== "0"
+                          //                  && this.state.latlng.lng !== "0" &&
                           <div>
                             <h3>Lat: {this.state.latlng.lat}</h3>
                             <h3>Lng: {this.state.latlng.lng}</h3>
