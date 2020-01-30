@@ -165,6 +165,7 @@ class App extends React.Component {
             }
         }
         hello_world();
+        sum();
         //this.dump_test(new_addresses);
         //this.setState({addresses: addresses});
     }
