@@ -165,25 +165,25 @@ class Location extends React.Component {
                       <td>
                         <div>
                           <h3>Verification:</h3>
-                        <hr />
-                        {
-                        this.state.latlng && this.state.latlng.lat !== "0"
-                                          && this.state.latlng.lng !== "0" &&
-                        <div>
-                          <h3>Lat: {this.state.latlng.lat}</h3>
-                          <h3>Lng: {this.state.latlng.lng}</h3>
+                          <hr />
                           {
-                          <MapWithRestaurant
+                          this.state.latlng && this.state.latlng.lat !== "0"
+                                            && this.state.latlng.lng !== "0" &&
+                          <div>
+                            <h3>Lat: {this.state.latlng.lat}</h3>
+                            <h3>Lng: {this.state.latlng.lng}</h3>
+                            {
+                            <MapWithRestaurant
                               loadingElement={<div style={{ height: `100%` }} />}
                               containerElement={<div style={{ height: `200px` }} />}
                               mapElement={<div style={{ height: `100%` }} />}
                               location={ this.state.latlng }
                               markers={ <Marker position={ {lat: parseFloat(lat), lng: parseFloat(lng)} } /> }
-                          />
-                          }
-                          <Button variant="secondary" onClick={this.onAdd} size="sm">Add</Button>
+                            />
+                            }
+                            <Button variant="secondary" onClick={this.onAdd} size="sm">Add</Button>
                           </div>
-                        }
+                          }
                           {
                           /*
                             <ul>

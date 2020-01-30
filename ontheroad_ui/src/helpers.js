@@ -1,6 +1,6 @@
 
 function sum(a, b) {
-      return a + b;
+    return a + b;
 }
 
 function hello_world() {
@@ -8,4 +8,3 @@ function hello_world() {
 }
 
 export { hello_world, sum };
-//module.exports = sum;
