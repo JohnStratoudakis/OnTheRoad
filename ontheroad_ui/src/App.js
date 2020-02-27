@@ -122,8 +122,6 @@ class App extends React.Component {
 //    }
     constructor(props) {
         super(props);
-        this.onCalculate = this.onCalculate.bind(this);
-        this.handleOAddressesChange = this.handleOnAddressesChange.bind(this);
         //this.dump_test = this.dump_test.bind(this);
         this.state = {
           results: 'res',
@@ -134,6 +132,8 @@ class App extends React.Component {
               {name:'Brussels', address:'Brussels, Belgium'},
           ]
         };
+        this.handleCalculate = this.handleCalculate.bind(this);
+        this.handleOnAddressesChange = this.handleOnAddressesChange.bind(this);
     }
 
     dump_test(addresses) {
@@ -147,12 +147,12 @@ class App extends React.Component {
       }
     }
 
-    onCalculate(event) {
-        console.log("onCalculate()");
+    handleCalculate(event) {
+        console.log("handleCalculate()");
         //console.log(`${event.toString()}`);
 
 //        this.dump_test(this.Location.state.allAddresses);
-      var addresses = this.state.Location.addresses;
+      var addresses = this.state.addresses;
       console.log(`addresses.length: ${addresses.length}`);
       for(var i=0; i < addresses.length; i++) {
         var element = addresses[i];
@@ -174,7 +174,7 @@ class App extends React.Component {
             }
         }
         //this.handleOAddressesChange = this.handleOnAddressesChange.bind(this);
-        //this.setState({addresses: new_addresses});
+        this.setState({addresses: new_addresses});
         hello_world();
         sum();
         //this.dump_test(new_addresses);
@@ -217,7 +217,7 @@ class App extends React.Component {
                             <tbody>
                                 <tr>
                                     <td>
-                                        <Button variant="secondary" onClick={this.onCalculate} size="me">Calculate Best Path</Button>
+                                        <Button variant="secondary" onClick={this.handleCalculate} size="me">Calculate Best Path</Button>
                                     </td>
                                 </tr>
                             </tbody>
