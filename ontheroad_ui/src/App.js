@@ -151,7 +151,16 @@ class App extends React.Component {
         console.log("onCalculate()");
         //console.log(`${event.toString()}`);
 
-        this.dump_test(this.Location.state.allAddresses);
+//        this.dump_test(this.Location.state.allAddresses);
+      var addresses = this.state.Location.addresses;
+      console.log(`addresses.length: ${addresses.length}`);
+      for(var i=0; i < addresses.length; i++) {
+        var element = addresses[i];
+        console.log(`element.length: ${element.length}`)
+        for(var j=0; j < element.length; j++) {
+          console.log(`addresses[${i}][${j}]: ${addresses[i][j]}`);
+        }
+      }
     }
 
     handleOnAddressesChange(new_addresses) {
@@ -164,10 +173,11 @@ class App extends React.Component {
                 console.log(`new_addresses[${i}][${j}]: ${new_addresses[i][j]}`);
             }
         }
+        //this.handleOAddressesChange = this.handleOnAddressesChange.bind(this);
+        //this.setState({addresses: new_addresses});
         hello_world();
         sum();
         //this.dump_test(new_addresses);
-        //this.setState({addresses: addresses});
     }
 
     render() {

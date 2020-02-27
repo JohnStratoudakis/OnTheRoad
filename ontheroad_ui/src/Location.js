@@ -118,6 +118,10 @@ class Location extends React.Component {
       this.setState({
         allAddresses: allAddresses
       });
+
+      // Reset PlacesAutoComplete
+      //var placesAutoComplete = document.getElementById("placesAutoComplete");
+      //placesAutoComplete.value = "";
 //      console.log(`this.state.allAddresses.length: ${this.state.allAddresses.length}`);
 //      for(var i=0; i < this.state.allAddresses.length; i++) {
 //        console.log(`this.state.allAddresses[${i}]: ${this.state.allAddresses[i]}`);
@@ -158,20 +162,19 @@ class Location extends React.Component {
 
                     <tr>
                       <td >
-                        <h1>Enter an Address:</h1>
+                        <h3>Enter an Address:</h3>
                         <hr />
-                          <PlacesAutocomplete inputProps={inputProps} onSelect={this.getPlace} styles={ defaultStyles }/>
+                          <PlacesAutocomplete
+                            inputProps={inputProps}
+                            onSelect={this.getPlace}
+                            styles={ defaultStyles }/>
                       </td>
                       <td>
                         <div>
-                          <h3>Verification:</h3>
+                          <h3>Verify and click add:</h3>
                           <hr />
                           {
-                          //this.state.latlng && this.state.latlng.lat !== "0"
-                          //                  && this.state.latlng.lng !== "0" &&
                           <div>
-                            <h3>Lat: {this.state.latlng.lat}</h3>
-                            <h3>Lng: {this.state.latlng.lng}</h3>
                             {
                             <MapWithRestaurant
                               loadingElement={<div style={{ height: `100%` }} />}
