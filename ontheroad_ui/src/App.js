@@ -53,11 +53,28 @@ class App extends React.Component {
 
     constructor(props) {
         super(props);
+        if(this.serverHost === undefined) {
+            this.serverHost = "localhost";
+        }
         //this.dump_test = this.dump_test.bind(this);
+        let addresses_storage = window.localStorage.getItem("addresses");
+        if(addresses_storage === null) {
+            addresses_storage = [];
+        } else {
+            console.log(`RAW_ADDRESSES: ${addresses_storage}`);
+            addresses_storage = JSON.parse(addresses_storage);
+            for(var i=0; i<addresses_storage.length; i++) {
+                console.log(`address_storage[${i}]: ${addresses_storage[i][2]}`);
+            }
+            //addresses_storage = [];
+            //window.localStorage.setItem("addresses", JSON.stringify(addresses_storage));
+        }
+        console.log(`ADDRESSES: ${addresses_storage}`);
         this.state = {
-          results: ['-', '-'],
-          addresses: []
+          results: ['', ''],
+          addresses: addresses_storage
         };
+        //window.localStorage.setItem("addresses", ++addresses);
         this.handleCalculate = this.handleCalculate.bind(this);
         this.handleOnAddressesChange = this.handleOnAddressesChange.bind(this);
     }
@@ -81,7 +98,7 @@ class App extends React.Component {
         console.log(`addresses.length: ${addresses.length}`);
         for(var i=0; i < addresses.length; i++) {
             console.log(`addresses[${i}][2]: ${addresses[i][2]}`);
-            request_addresses.push(addresses[i][2]);
+            request_addresses.push( [ addresses[i][2], addresses[i][2] ] );
         }
 /*
         // Now create request

@@ -119,6 +119,9 @@ class Location extends React.Component {
         allAddresses: allAddresses
       });
 
+      window.localStorage.setItem("addresses", JSON.stringify(allAddresses));
+      console.log(`Adding new address to state: ${allAddresses}`);
+
       // Reset PlacesAutoComplete
       //var placesAutoComplete = document.getElementById("placesAutoComplete");
       //placesAutoComplete.value = "";
