@@ -55,13 +55,8 @@ class App extends React.Component {
         super(props);
         //this.dump_test = this.dump_test.bind(this);
         this.state = {
-          results: 'res',
-          addresses: [],
-          guests: [
-              {name:'Paris', address:'Paris, France'},
-              {name:'Amsterdam', address:'Amsterdam, The Netherlands'},
-              {name:'Brussels', address:'Brussels, Belgium'},
-          ]
+          results: ['-', '-'],
+          addresses: []
         };
         this.handleCalculate = this.handleCalculate.bind(this);
         this.handleOnAddressesChange = this.handleOnAddressesChange.bind(this);
@@ -78,79 +73,53 @@ class App extends React.Component {
       }
     }
 
-//    handleSubmit(event) {
-//        console.log("handleSubmit()...");
-//        console.log(`this.state: ${this.state}`);
-//        console.log(`event: ${typeof(event)}`);
-//
-//        // TODO: Read this from form
-//        var results = this.state['results'];
-//        var request = {
-//            "locations": results
-//        };
-//        console.log("RESULTS: " + results);
-//        console.log("RESULTS: " + results.length);
-//        //var addresses = results.split('\n');
-//        /*
-//        addresses.forEach(function(val,index,array){
-//            var name = array[index].split(',')[0];
-//            var address = array[index];
-//            var new_location = new Array(name, address);
-//            //addr_array.push( new_location );
-//            console.log(`Address[${index}]: ` + new_location);
-//        });
-//*/
-//        console.log("this.state['results']: " + this.state['results']);
-////        request['locations'].push( ["Amsterdam", "--------Amsterdam, The Netherlands"] );
-//        console.log("Sending the following request: " + request);
-//        console.log(`Sending the following request ${request}`);
-//        console.log(request);
-//
-//        //axios.post(`https://${this.serverHost}:${this.serverPort}/onTheRoad`, request )
-//        axios.post(`https://${this.serverHost}/onTheRoad`, request )
-//            .then(res => {
-//                console.log("DUMPING res");
-//                console.log(res);
-//                console.log("DUMPING res.data");
-//                console.log(res.data);
-//                console.log("DUMPING res.data.best_path");
-//                console.log(res.data['best_path']);
-//                var results_text = "Results of TSP";
-//                results_text = res.data['best_path'];
-//                //console.log("RESULTS OF TSP: " + res);
-//                this.setState({results: results_text});
-//            });
-//
-//        event.preventDefault();
-//    }
     handleCalculate(event) {
         console.log("handleCalculate()");
-//        console.log(`${event.toString()}`);
 
         var request_addresses = [];
         var addresses = this.state.addresses;
         console.log(`addresses.length: ${addresses.length}`);
         for(var i=0; i < addresses.length; i++) {
-            var element = addresses[i];
             console.log(`addresses[${i}][2]: ${addresses[i][2]}`);
             request_addresses.push(addresses[i][2]);
-//            console.log(`element.length: ${element.length}`)
-//            for(var j=0; j < element.length; j++) {
-//                console.log(`addresses[${i}][${j}]: ${addresses[i][j]}`);
-//            }
         }
 
         // Now create request
         request_addresses = [];
+
+        request_addresses.push(["Astoria Bier", "31-14 Broadway, Astoria, NY"])
+        request_addresses.push(["Minos", "22-27 33rd Street, Astoria, NY"])
+        request_addresses.push(["Omonoia", "32-33 31st Street, Astoria, NY"])
+        request_addresses.push(["BxSci", "75 West 205th Street, Bronx, NY"])
+        request_addresses.push(["Lex", "731 Lexington Ave, New York, NY"])
+        request_addresses.push(["Apt", "31-36 28th Road, Astoria, NY"])
+        request_addresses.push(["Flushing", "40-20 195th Street, Flushing, NY"])
+
+/*
+        request_addresses.push(["Vienna", "Vienna, Austria"])
+        request_addresses.push(["Budapest", "Budapest, Hungary"])
+        request_addresses.push(["Bratislava", "Bratislava, Slovakia"])
+        request_addresses.push(["Zagreb", "Zagreb, Serbia"])
+        request_addresses.push(["Prague", "Prague, Czech Republic"])
+//        */
+
+        /*
         request_addresses.push(["Paris", "Paris, France"])
         request_addresses.push(["Amsterdam", "Amsterdam, The Netherlands"])
+        request_addresses.push(["Brussels", "Brussels, Belgium"])
+        request_addresses.push(["Prague", "Prague, Czech Republic"])
+        request_addresses.push(["Vienna", "Vienna, Austria"])
+        request_addresses.push(["Bratislava", "Bratislava, Slovakia"])
+        request_addresses.push(["Budapest", "Budapest, Hungary"])
+*/
+
         var request = {
             "locations": request_addresses
         };
-        console.log("REQUEST: " + request.locations);
+        console.log("Server Host: " + this.serverHost);
+        console.log("Sending request: " + request.locations);
 
         // Make request
-        //axios.post(`https://${this.serverHost}:${this.serverPort}/onTheRoad`, request )
         axios.post(`https://${this.serverHost}/onTheRoad`, request )
             .then(res => {
                 console.log("DUMPING res");
@@ -159,48 +128,20 @@ class App extends React.Component {
                 console.log(res.data);
                 console.log("DUMPING res.data.best_path");
                 console.log(res.data['best_path']);
-                var results_text = "Results of TSP";
-                results_text = res.data['best_path'];
-                console.log("RESULTS OF TSP: " + res);
-                this.setState({results: results_text});
+
+                var results_array = [];
+                for(var i=0; i < res.data['best_path'].length; i++) {
+                    results_array.push(res.data['best_path'][i]);
+                    console.log(`Path[${i}][0]: ${res.data['best_path'][i][0]}`)
+                    console.log(`Path[${i}][1]: ${res.data['best_path'][i][1]}`)
+                }
+
+                //var results_text = "Results of TSP";
+                //results_text = res.data['best_path'];
+                //console.log("RESULTS OF TSP: " + res);
+                this.setState({results: results_array});
             });
-
         event.preventDefault();
-
-        // Render Response
-//        console.log("RESULTS: " + results.length);
-//        //var addresses = results.split('\n');
-//        /*
-//        addresses.forEach(function(val,index,array){
-//            var name = array[index].split(',')[0];
-//            var address = array[index];
-//            var new_location = new Array(name, address);
-//            //addr_array.push( new_location );
-//            console.log(`Address[${index}]: ` + new_location);
-//        });
-//*/
-//        console.log("this.state['results']: " + this.state['results']);
-////        request['locations'].push( ["Amsterdam", "--------Amsterdam, The Netherlands"] );
-//        console.log("Sending the following request: " + request);
-//        console.log(`Sending the following request ${request}`);
-//        console.log(request);
-//
-//        //axios.post(`https://${this.serverHost}:${this.serverPort}/onTheRoad`, request )
-//        axios.post(`https://${this.serverHost}/onTheRoad`, request )
-//            .then(res => {
-//                console.log("DUMPING res");
-//                console.log(res);
-//                console.log("DUMPING res.data");
-//                console.log(res.data);
-//                console.log("DUMPING res.data.best_path");
-//                console.log(res.data['best_path']);
-//                var results_text = "Results of TSP";
-//                results_text = res.data['best_path'];
-//                //console.log("RESULTS OF TSP: " + res);
-//                this.setState({results: results_text});
-//            });
-//
-//        event.preventDefault();
     }
 
     handleOnAddressesChange(new_addresses) {
@@ -221,26 +162,6 @@ class App extends React.Component {
         return (
             <div className="App" style={{width: '100%'}}>
                 <header className="App-header">
-                    {/*
-                    Recommended Trip Order:
-                    <br />
-                    Paris, France -> Amsterdam, The Netherlands
-                    <br />
-                    {
-                        this.state.results
-                    }
-                    */}
-                    {/*
-                    <div>
-                    {this.state.guests.map((guest, idx) => 
-                        <div className={ App.row }>
-                            <div>
-                                <h4>{ guest.address }</h4>
-                            </div>
-                        </div>
-                    )}
-                    </div>
-                    */}
                     <br />
                     <div style={{ position: 'relative', width: '100%'}}>
                     <Location
@@ -259,6 +180,20 @@ class App extends React.Component {
                             </tbody>
                         </Table>
                     </div>
+
+                    <br />
+                    <h3>Recommended Trip Order:</h3>
+                    {
+                    <div>
+                    {this.state.results.map((city, idx) => 
+                        <div className={ App.row }>
+                            <div>
+                                <h4>{ city[0] }</h4><h6>{city[1]}</h6>
+                            </div>
+                        </div>
+                    )}
+                    </div>
+                    }
                 </header>
             </div>
         );
