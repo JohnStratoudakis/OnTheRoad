@@ -83,7 +83,7 @@ class App extends React.Component {
             console.log(`addresses[${i}][2]: ${addresses[i][2]}`);
             request_addresses.push(addresses[i][2]);
         }
-
+/*
         // Now create request
         request_addresses = [];
 
@@ -94,7 +94,7 @@ class App extends React.Component {
         request_addresses.push(["Lex", "731 Lexington Ave, New York, NY"])
         request_addresses.push(["Apt", "31-36 28th Road, Astoria, NY"])
         request_addresses.push(["Flushing", "40-20 195th Street, Flushing, NY"])
-
+// */
 /*
         request_addresses.push(["Vienna", "Vienna, Austria"])
         request_addresses.push(["Budapest", "Budapest, Hungary"])
@@ -122,12 +122,12 @@ class App extends React.Component {
         // Make request
         axios.post(`https://${this.serverHost}/onTheRoad`, request )
             .then(res => {
-                console.log("DUMPING res");
-                console.log(res);
-                console.log("DUMPING res.data");
-                console.log(res.data);
-                console.log("DUMPING res.data.best_path");
-                console.log(res.data['best_path']);
+//                console.log("DUMPING res");
+//                console.log(res);
+//                console.log("DUMPING res.data");
+//                console.log(res.data);
+//                console.log("DUMPING res.data.best_path");
+//                console.log(res.data['best_path']);
 
                 var results_array = [];
                 for(var i=0; i < res.data['best_path'].length; i++) {
