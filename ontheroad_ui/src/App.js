@@ -66,16 +66,14 @@ class App extends React.Component {
             for(var i=0; i<addresses_storage.length; i++) {
                 console.log(`address_storage[${i}]: ${addresses_storage[i][2]}`);
             }
-            //addresses_storage = [];
-            //window.localStorage.setItem("addresses", JSON.stringify(addresses_storage));
         }
         console.log(`ADDRESSES: ${addresses_storage}`);
         this.state = {
           results: ['', ''],
           addresses: addresses_storage
         };
-        //window.localStorage.setItem("addresses", ++addresses);
         this.handleCalculate = this.handleCalculate.bind(this);
+        this.handleClear = this.handleClear.bind(this);
         this.handleOnAddressesChange = this.handleOnAddressesChange.bind(this);
     }
 
@@ -88,6 +86,14 @@ class App extends React.Component {
           console.log(`addresses[${i}][${j}]: ${addresses[i][j]}`);
         }
       }
+    }
+
+    componentDidMount() {
+        console.log("componentDidMount()");
+        let addresses_storage = window.localStorage.getItem("addresses");
+        console.log(`RAW_ADDRESSES: ${addresses_storage}`);
+        addresses_storage = JSON.parse(addresses_storage);
+        this.setState({addresses: addresses_storage});
     }
 
     handleCalculate(event) {
@@ -161,6 +167,16 @@ class App extends React.Component {
         event.preventDefault();
     }
 
+    handleClear(event) {
+        console.log("handleClear() event");
+
+        console.log("Clearing local storage.");
+        window.localStorage.setItem("addresses", JSON.stringify([]));
+
+        console.log("Clearing addresses.");
+        this.setState({addresses: []});
+    }
+
     handleOnAddressesChange(new_addresses) {
         console.log("App.handleOnAddressesChange()");
         console.log(`new_addresses.length: ${new_addresses.length}`);
@@ -175,12 +191,18 @@ class App extends React.Component {
     }
 
     render() {
-        const addresses = this.state.addresseses;
+        console.log("render()");
+        let addresses_storage = window.localStorage.getItem("addresses");
+        console.log(`RAW_ADDRESSES: ${addresses_storage}`);
+        const addresses = this.state.addresses;
+        console.log(`ADDRESSES: ${addresses}`);
+        console.log(`ADDRESSES: ${this.state.addresses}`);
         return (
             <div className="App" style={{width: '100%'}}>
                 <header className="App-header">
                     <br />
                     <div style={{ position: 'relative', width: '100%'}}>
+                    <h5>Location</h5>
                     <Location
                         addresses={addresses}
                         onAddressesChange={this.handleOnAddressesChange}
@@ -192,6 +214,9 @@ class App extends React.Component {
                                 <tr>
                                     <td>
                                         <Button variant="secondary" onClick={this.handleCalculate} size="me">Calculate Best Path</Button>
+                                    </td>
+                                    <td>
+                                        <Button variant="secondary" onClick={this.handleClear} size="me">Clear</Button>
                                     </td>
                                 </tr>
                             </tbody>

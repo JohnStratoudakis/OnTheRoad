@@ -69,12 +69,12 @@ class Location extends React.Component {
             },
             addresses: [],
             name: '',
-            placeID: null,
-            guest: null
+            placeID: null
         }
         this.getPlace = this.getPlace.bind(this)
         this.onChange = (address) => {
-          this.setState({ address, placeID: null, latlng: {lat:"0", lng:"0"}, guest: null })
+          this.setState({ address, placeID: null, latlng: {lat:"0", lng:"0"}
+              t})
         }
         this.saveAddress = (address, placeID) => {
           this.setState({ address, placeID })
@@ -146,11 +146,16 @@ class Location extends React.Component {
     }
 
     render() {
+        const addresses = this.state.addresses;
         const {lat, lng} = this.state.latlng || {}
         const inputProps = {
             value: this.state.address,
             onChange: this.onChange
         }
+        console.log("Location.render()");
+        console.log(`addresses: ${addresses}`);
+        console.log(`this.state.addresses: ${this.state.addresses}`);
+        console.log(`this.state.address: ${this.state.address}`);
         if(this.state.latlng && (this.state.latlng.lat !== "0" &&
                                  this.state.latlng.lng !== "0")) {
           //console.log(`lat: ${this.state.latlng.lat}`);
@@ -225,6 +230,7 @@ class Location extends React.Component {
                             <tbody>
                                 {
                                 this.state.addresses.map(function(name, index){
+                                    console.log("Adding an address");
                                   return  <tr>
                                             <td>{name[2].toString()}</td>
                                             <td>{index}</td>
