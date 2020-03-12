@@ -145,7 +145,8 @@ class Location extends React.Component {
     }
 
     render() {
-        const addresses = this.state.addresses;
+        const addresses = this.props.addresses;
+        //const addresses = this.state.addresses;
         const {lat, lng} = this.state.latlng || {}
         const inputProps = {
             value: this.state.address,
@@ -228,7 +229,7 @@ class Location extends React.Component {
                             </thead>
                             <tbody>
                                 {
-                                this.state.addresses.map(function(name, index){
+                                addresses && addresses.map(function(name, index){
                                     console.log("Adding an address");
                                   return  <tr>
                                             <td>{name[2].toString()}</td>

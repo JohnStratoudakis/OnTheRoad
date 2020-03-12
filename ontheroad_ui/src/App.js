@@ -195,8 +195,8 @@ class App extends React.Component {
     }
 
     render() {
-        console.log("App::render()");
         const addresses = this.state.addresses;
+        console.log("App::render()");
         console.log(`App::render():addresses: ${addresses}`);
         return (
             <div className="App" style={{width: '100%'}}>
@@ -205,19 +205,17 @@ class App extends React.Component {
                     <div style={{ position: 'relative', width: '100%'}}>
                     <h5>Location</h5>
                     <h3>DEBUG INFO:</h3>
-                    {
                     <div>
                     {
-                        this.state.addresses.map((city, idx) => 
+                        addresses && addresses.map((city, idx) => 
                             <div className={ App.row }>
                                 <div>
-                                    <h4>{ city[0] }</h4><h6>{city[1]}</h6>
+                                    <h4>{ city[2] }</h4>
                                 </div>
                             </div>
                         )
                     }
                     </div>
-                    }
                     <Location
                         addresses={addresses}
                         onAddressesChange={this.handleOnAddressesChange}
