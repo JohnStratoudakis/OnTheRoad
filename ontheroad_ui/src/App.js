@@ -67,14 +67,26 @@ class App extends React.Component {
                 console.log(`address_storage[${i}]: ${addresses_storage[i][2]}`);
             }
         }
-        console.log(`ADDRESSES: ${addresses_storage}`);
+        this.handleCalculate = this.handleCalculate.bind(this);
+        this.handleClear = this.handleClear.bind(this);
+        this.handleOnAddressesChange = this.handleOnAddressesChange.bind(this);
+        console.log(`App:constructor(), addresses_storage: ${addresses_storage}`);
         this.state = {
           results: ['', ''],
           addresses: addresses_storage
         };
-        this.handleCalculate = this.handleCalculate.bind(this);
-        this.handleClear = this.handleClear.bind(this);
-        this.handleOnAddressesChange = this.handleOnAddressesChange.bind(this);
+    }
+
+    componentDidMount() {
+        console.log("componentDidMount()");
+        let addresses_storage = window.localStorage.getItem("addresses");
+        console.log(`RAW_ADDRESSES: ${addresses_storage}`);
+        addresses_storage = JSON.parse(addresses_storage);
+        this.setState({addresses: addresses_storage});
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log("componentDidUpdate");
     }
 
     dump_test(addresses) {
@@ -86,14 +98,6 @@ class App extends React.Component {
           console.log(`addresses[${i}][${j}]: ${addresses[i][j]}`);
         }
       }
-    }
-
-    componentDidMount() {
-        console.log("componentDidMount()");
-        let addresses_storage = window.localStorage.getItem("addresses");
-        console.log(`RAW_ADDRESSES: ${addresses_storage}`);
-        addresses_storage = JSON.parse(addresses_storage);
-        this.setState({addresses: addresses_storage});
     }
 
     handleCalculate(event) {
@@ -191,18 +195,29 @@ class App extends React.Component {
     }
 
     render() {
-        console.log("render()");
-        let addresses_storage = window.localStorage.getItem("addresses");
-        console.log(`RAW_ADDRESSES: ${addresses_storage}`);
+        console.log("App::render()");
         const addresses = this.state.addresses;
-        console.log(`ADDRESSES: ${addresses}`);
-        console.log(`ADDRESSES: ${this.state.addresses}`);
+        console.log(`App::render():addresses: ${addresses}`);
         return (
             <div className="App" style={{width: '100%'}}>
                 <header className="App-header">
                     <br />
                     <div style={{ position: 'relative', width: '100%'}}>
                     <h5>Location</h5>
+                    <h3>DEBUG INFO:</h3>
+                    {
+                    <div>
+                    {
+                        this.state.addresses.map((city, idx) => 
+                            <div className={ App.row }>
+                                <div>
+                                    <h4>{ city[0] }</h4><h6>{city[1]}</h6>
+                                </div>
+                            </div>
+                        )
+                    }
+                    </div>
+                    }
                     <Location
                         addresses={addresses}
                         onAddressesChange={this.handleOnAddressesChange}
@@ -227,13 +242,15 @@ class App extends React.Component {
                     <h3>Recommended Trip Order:</h3>
                     {
                     <div>
-                    {this.state.results.map((city, idx) => 
-                        <div className={ App.row }>
-                            <div>
-                                <h4>{ city[0] }</h4><h6>{city[1]}</h6>
+                    {
+                        this.state.results.map((city, idx) => 
+                            <div className={ App.row }>
+                                <div>
+                                    <h4>{ city[0] }</h4><h6>{city[1]}</h6>
+                                </div>
                             </div>
-                        </div>
-                    )}
+                        )
+                    }
                     </div>
                     }
                 </header>

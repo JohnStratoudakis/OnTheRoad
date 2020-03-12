@@ -56,7 +56,7 @@ const defaultStyles = {
 class Location extends React.Component {
     static defaultProps = {
         center: {lat: "48.8566", lng: "2.3522"},
-        zoom: 7
+        zoom: 9
     };
 
     constructor(props) {
@@ -73,18 +73,17 @@ class Location extends React.Component {
         }
         this.getPlace = this.getPlace.bind(this)
         this.onChange = (address) => {
-          this.setState({ address, placeID: null, latlng: {lat:"0", lng:"0"}
-              t})
+          this.setState({ address, placeID: null, latlng: {lat:"0", lng:"0"}})
         }
         this.saveAddress = (address, placeID) => {
           this.setState({ address, placeID })
         }
         this.saveLocation = (latlng, address) =>  {
-          console.log(`latlng: ${latlng}, address: ${address}`)
+//          console.log(`latlng: ${latlng}, address: ${address}`)
           this.setState({...this.state, latlng: latlng, address: address})
         }
-        this.onAdd = this.onAdd.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.onAdd = this.onAdd.bind(this);
     }
 
     handleChange(e) {
