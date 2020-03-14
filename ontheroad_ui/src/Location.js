@@ -105,6 +105,9 @@ class Location extends React.Component {
 
       var allAddresses = this.props.addresses;
 //      this.dump_addresses(allAddresses, "Location:PRE");
+      if(null === allAddresses) {
+          allAddresses = [];
+      }
       allAddresses.push([this.state.latlng.lat, this.state.latlng.lng, this.state.address]);
 //      this.dump_addresses(allAddresses, "Location:POST");
 
