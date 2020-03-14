@@ -58,11 +58,9 @@ class App extends React.Component {
             this.serverHost = "localhost";
         }
         Object.keys(process.env).forEach(function(key) {
-              console.log('export ' + key + '="' + env[key] +'"');
+              console.log('export ' + key + '="' + process.env[key] +'"');
         });
         console.log(`App.js:serverHost: ${this.serverHost}`);
-        console.log(`App.js:process.env: ${process.env}`);
-        console.log(`App.js:process.env.toString(): ${process.env.toString()}`);
         for(var en in process.env) {
             console.log(`App.js:.e: ${en}`);
         }
