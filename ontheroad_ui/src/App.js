@@ -57,6 +57,7 @@ class App extends React.Component {
         if(this.serverHost === undefined) {
             this.serverHost = "localhost";
         }
+        console.log(`App.js:serverHost: ${this.serverHost}`);
         let addresses_storage = window.localStorage.getItem("addresses");
         if(addresses_storage === null) {
             console.log(`No addresses found in localStorage...`);
