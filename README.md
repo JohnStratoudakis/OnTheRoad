@@ -6,6 +6,7 @@
 
 http://johnstratoudakis.github.io/OnTheRoad
 
+
 # Description
 
 Are you planning a road trip or a train trip and want to figure out what path to take while visiting the most cities in your path?
