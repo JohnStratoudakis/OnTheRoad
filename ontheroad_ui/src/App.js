@@ -214,6 +214,7 @@ class App extends React.Component {
         return (
             <div className="App" style={{width: '100%'}}>
                 <header className="App-header">
+                    <div style={{ position: 'relative', width: '100%'}}>
                     <br />
                     <Location
                         addresses={addresses}
