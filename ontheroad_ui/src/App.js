@@ -58,12 +58,9 @@ class App extends React.Component {
             this.serverHost = "localhost";
         }
         Object.keys(process.env).forEach(function(key) {
-              console.log('export ' + key + '="' + process.env[key] +'"');
+              console.log('App.js: ' + key + '="' + env[key] +'"');
         });
         console.log(`App.js:serverHost: ${this.serverHost}`);
-        for(var en in process.env) {
-            console.log(`App.js:.e: ${en}`);
-        }
 
         let addresses_storage = window.localStorage.getItem("addresses");
         if(addresses_storage === null) {
@@ -217,7 +214,7 @@ class App extends React.Component {
                     <br />
                     <div style={{ position: 'relative', width: '100%'}}>
                     <h5>Location</h5>
-                    <h3>Local Storage DEBUG_11 INFO:</h3>
+                    <h3>Local Storage DEBUG_12 INFO:</h3>
                     <div>
                     {
                         addresses && addresses.map((city, idx) => 
