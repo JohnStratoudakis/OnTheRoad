@@ -53,24 +53,26 @@ class App extends React.Component {
 
     constructor(props) {
         super(props);
+        console.log("App.js:constructor()");
         if(this.serverHost === undefined) {
             this.serverHost = "localhost";
         }
-        //this.dump_test = this.dump_test.bind(this);
         let addresses_storage = window.localStorage.getItem("addresses");
         if(addresses_storage === null) {
+            console.log(`No addresses found in localStorage...`);
             addresses_storage = [];
         } else {
-            console.log(`RAW_ADDRESSES: ${addresses_storage}`);
+            console.log(`Loading addresses from localStorage...`);
             addresses_storage = JSON.parse(addresses_storage);
             for(var i=0; i<addresses_storage.length; i++) {
                 console.log(`address_storage[${i}]: ${addresses_storage[i][2]}`);
             }
         }
+
         this.handleCalculate = this.handleCalculate.bind(this);
         this.handleClear = this.handleClear.bind(this);
         this.handleOnAddressesChange = this.handleOnAddressesChange.bind(this);
-        console.log(`App:constructor(), addresses_storage: ${addresses_storage}`);
+
         this.state = {
           results: ['', ''],
           addresses: addresses_storage
@@ -183,32 +185,35 @@ class App extends React.Component {
 
     handleOnAddressesChange(new_addresses) {
         console.log("App.handleOnAddressesChange()");
-        console.log(`new_addresses.length: ${new_addresses.length}`);
-        for(var i=0; i < new_addresses.length; i++) {
-            var element = new_addresses[i];
-            console.log(`element.length: ${element.length}`)
-            for(var j=0; j < element.length; j++) {
-                console.log(`new_addresses[${i}][${j}]: ${new_addresses[i][j]}`);
-            }
-        }
+        //console.log(`new_addresses.length: ${new_addresses.length}`);
+//        for(var i=0; i < new_addresses.length; i++) {
+//            var element = new_addresses[i];
+//            console.log(`element.length: ${element.length}`)
+//            for(var j=0; j < element.length; j++) {
+//                console.log(`new_addresses[${i}][${j}]: ${new_addresses[i][j]}`);
+//            }
+//        }
         this.setState({addresses: new_addresses});
     }
 
     render() {
         const addresses = this.state.addresses;
         console.log("App::render()");
-        console.log(`App::render():addresses: ${addresses}`);
+        console.log(`App::render():addresses`);
+        //for(var i=0; i<addresses.length; i++) {
+        //    console.log(`addresses[${i}]: ${addresses[i][2]}`);
+        //}
         return (
             <div className="App" style={{width: '100%'}}>
                 <header className="App-header">
                     <br />
                     <div style={{ position: 'relative', width: '100%'}}>
                     <h5>Location</h5>
-                    <h3>DEBUG INFO:</h3>
+                    <h3>Local Storage DEBUG INFO:</h3>
                     <div>
                     {
                         addresses && addresses.map((city, idx) => 
-                            <div className={ App.row }>
+                            <div key={idx} className={ App.row }>
                                 <div>
                                     <h4>{ city[2] }</h4>
                                 </div>
@@ -242,7 +247,7 @@ class App extends React.Component {
                     <div>
                     {
                         this.state.results.map((city, idx) => 
-                            <div className={ App.row }>
+                            <div key={idx} className={ App.row }>
                                 <div>
                                     <h4>{ city[0] }</h4><h6>{city[1]}</h6>
                                 </div>
