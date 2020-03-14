@@ -54,7 +54,10 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         console.log("App.js:constructor()");
-        if(this.serverHost === undefined) {
+        if(process.env.NODE_ENV === "production") {
+            this.serverHost = "johnstratoudakis.com";
+        } else {
+        //if(this.serverHost === undefined) {
             this.serverHost = "localhost";
         }
         Object.keys(process.env).forEach(function(key) {
@@ -214,7 +217,7 @@ class App extends React.Component {
                     <br />
                     <div style={{ position: 'relative', width: '100%'}}>
                     <h5>Location</h5>
-                    <h3>Local Storage DEBUG_14 INFO:</h3>
+                    <h3>Local Storage DEBUG_15 INFO:</h3>
                     <div>
                     {
                         addresses && addresses.map((city, idx) => 
