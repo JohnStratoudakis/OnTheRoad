@@ -58,7 +58,7 @@ class App extends React.Component {
             this.serverHost = "localhost";
         }
         Object.keys(process.env).forEach(function(key) {
-              console.log('App.js: ' + key + '="' + env[key] +'"');
+              console.log('App.js: ' + key + '="' + process.env[key] +'"');
         });
         console.log(`App.js:serverHost: ${this.serverHost}`);
 
