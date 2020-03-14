@@ -58,6 +58,8 @@ class App extends React.Component {
             this.serverHost = "localhost";
         }
         console.log(`App.js:serverHost: ${this.serverHost}`);
+        console.log(`App.js:process.env: ${process.env}`);
+
         let addresses_storage = window.localStorage.getItem("addresses");
         if(addresses_storage === null) {
             console.log(`No addresses found in localStorage...`);
@@ -210,7 +212,7 @@ class App extends React.Component {
                     <br />
                     <div style={{ position: 'relative', width: '100%'}}>
                     <h5>Location</h5>
-                    <h3>Local Storage DEBUG_7 INFO:</h3>
+                    <h3>Local Storage DEBUG_8 INFO:</h3>
                     <div>
                     {
                         addresses && addresses.map((city, idx) => 
