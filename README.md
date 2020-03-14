@@ -2,6 +2,10 @@
 
 [![Build Status](https://travis-ci.org/JohnStratoudakis/OnTheRoad.svg?branch=master)](https://travis-ci.org/JohnStratoudakis/OnTheRoad) [![PyPI version](https://badge.fury.io/py/OnTheRoad.svg)](https://badge.fury.io/py/OnTheRoad)
 
+# Live Demo
+
+http://johnstratoudakis.github.io/OnTheRoad
+
 Are you planning a road trip or a train trip and want to figure out what path to take while visiting the most cities in your path?
 
 This is a Python Flask app with a React JS front end that uses the mlrose Traveling Salesperson Library to calculate an optimal path through multiple cities, without having to return to the original city.
