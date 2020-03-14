@@ -37,3 +37,5 @@ deploy:
   local_dir: ontheroad_ui/build
   on:
     branch: master
+  with:
+    REACT_APP_HOST_IP: johnstratoudakis.com
