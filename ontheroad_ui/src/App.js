@@ -209,7 +209,7 @@ class App extends React.Component {
                     <br />
                     <div style={{ position: 'relative', width: '100%'}}>
                     <h5>Location</h5>
-                    <h3>Local Storage DEBUG INFO:</h3>
+                    <h3>Local Storage DEBUG_____IIII INFO:</h3>
                     <div>
                     {
                         addresses && addresses.map((city, idx) => 
