@@ -31,7 +31,7 @@ before_install:
 - tar xvf secret-files.tar
 deploy:
   provider: pages
-  skip_cleanup: false
+  skip_cleanup: true
   github_token: $github_token
   keep_history: true
   local_dir: ontheroad_ui/build
