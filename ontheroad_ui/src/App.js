@@ -215,20 +215,6 @@ class App extends React.Component {
             <div className="App" style={{width: '100%'}}>
                 <header className="App-header">
                     <br />
-                    <div style={{ position: 'relative', width: '100%'}}>
-                    <h5>Location</h5>
-                    <h3>Local Storage DEBUG_15 INFO:</h3>
-                    <div>
-                    {
-                        addresses && addresses.map((city, idx) => 
-                            <div key={idx} className={ App.row }>
-                                <div>
-                                    <h4>{ city[2] }</h4>
-                                </div>
-                            </div>
-                        )
-                    }
-                    </div>
                     <Location
                         addresses={addresses}
                         onAddressesChange={this.handleOnAddressesChange}
