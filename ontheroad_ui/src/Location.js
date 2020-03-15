@@ -88,9 +88,7 @@ class Location extends React.Component {
     }
 
     handleChange(e) {
-        //console.log("LOCATION->HANDLE_CHANGE");
-        //console.log(`e.toString(): ${e.toString()}`);
-        //console.log(typeof e);
+        console.log("Location::handleChange");
         this.props.onAddressesChange(e);
     }
 
