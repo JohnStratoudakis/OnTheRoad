@@ -1,5 +1,31 @@
-#PYTHON?=python.exe
-PYTHON?=python3.7
+
+ifeq ($(OS),Windows_NT)
+    ARCH=win
+	PYTHON?=python.exe
+else
+	PYTHON?=python3.7
+	UNAME_S := $(shell uname -s)
+	UNAME_M := $(shell uname -m)
+    ifeq ($(UNAME_S),Linux)
+		ifeq ($(UNAME_M),armv7l)
+			ARCH=rpi
+		else
+			ARCH=linux
+		endif
+    endif
+    ifeq ($(UNAME_S),Darwin)
+    	ARCH=osx
+    endif
+endif
+
+.PHONY: universal-win
+universal-win:
+	@echo Windows version of Universal Rule
+
+.PHONY: universal
+universal:
+	@echo UNIVERSAL RULE
+	@echo Detected Architecture: ${ARCH}
 
 .PHONY: help
 help:
@@ -20,17 +46,17 @@ install-deps:
 .PHONY: utest
 utest:
 	@echo "Running tests"
-	${PYTHON} -m pytest --show-capture all -s -v ./tests/unit/
+	${PYTHON} -m pytest --show-capture all -s -r p -v ./tests/unit/
 
 .PHONY: itest
 itest:
 	@echo "Running Integration Tests"
 	${PYTHON} -m pytest --show-capture all -s -v ./tests/integration/
 
-.PHONY: test-filter
-test-filter:
-	echo "Running tests with filter ${filter}"
-	${PYTHON} -m pytest -v ./tests/* -k ${filter}
+.PHONY: test-%
+test-%:
+	echo Running tests with filter $*
+	${PYTHON} -m pytest -v --disable-pytest-warnings -s -r p -k $* tests
 
 .PHONY: package
 package:

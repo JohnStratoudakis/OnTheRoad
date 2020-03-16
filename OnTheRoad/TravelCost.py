@@ -44,7 +44,7 @@ class TravelCost:
         import os.path
 
         if os.path.isfile(filename):
-#            print("LOADING FROM CACHE: {}".format(filename))
+            #print("LOADING FROM CACHE: {}".format(filename))
             j = loadObj(filename)
         else:
             import os
@@ -72,6 +72,7 @@ class TravelCost:
             #else:
                 #print("NO ERROR")
 
+#        dumpToScreen(j)
         dumpObj(j, filename)
         dist_meters = j['routes'][0]['legs'][0]['distance']['value']
         duration_seconds = j['routes'][0]['legs'][0]['duration']['value']
@@ -85,15 +86,15 @@ def dumpToScreen(json_obj):
         print(json.dumps(json_obj, indent=4))
         print(80 * "-")
 
-def dumpObj(obj, filename):
+def dumpObj(raw_obj, filename):
     import pickle
     with open(filename, "wb") as fout:
-        pickle.dump(obj, fout)
+        pickle.dump(raw_obj, fout)
 
-    from pprint import pprint
-    with open(filename + ".json", "w") as fout_json:
-    #fout = open(filename + ".json", "w")
-        pprint(obj, stream=fout_json, indent=4)
+#    from pprint import pprint
+#    with open(filename + ".json", "w", encoding="utf-8") as fout_json:
+#    #fout = open(filename + ".json", "w")
+#        pprint(raw_obj, stream=fout_json, indent=4)
 
 def loadObj(filename):
     data = None
