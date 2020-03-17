@@ -1,4 +1,13 @@
+
 from OnTheRoad import Location, TravelCost
+
+import logging
+from flask.logging import default_handler
+
+
+logger = logging.getLogger(__name__.split('.')[0])
+logger.addHandler(default_handler)
+
 
 # state is an array of cities to visit
 def tsp_fitness(state, c):
@@ -10,7 +19,8 @@ def tsp_fitness(state, c):
             cost = TravelCost.TravelCost.getDistanceBetween(shortA, shortB) [0]
             total_cost += cost
     except Exception as ex:
-        print("Exception caught in tsp_fitness: {}".format(ex))
+        print("Exception caught in tsp_fitness: {}".format(str(ex)))
+        print("{}".format(ex))
     return total_cost
 
 def calcTsp(allCities):
@@ -34,6 +44,10 @@ def calcTsp(allCities):
                                                      max_attempts = 20,
                                                      #max_iters = 2000,
                                                      random_state = 3)
+
+    for state in best_state:
+        print("city: {}".format(allCities[state].getShortName()))
+        logger.debug("city: {}".format(allCities[state].getShortName()))
 
     return [best_state, best_fitness]
 

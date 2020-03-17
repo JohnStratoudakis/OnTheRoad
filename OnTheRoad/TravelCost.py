@@ -1,6 +1,14 @@
+
 from OnTheRoad import Location
 
+from flask.logging import default_handler
+import logging
 import numpy as np
+
+
+logger = logging.getLogger(__name__.split('.')[0])
+logger.addHandler(default_handler)
+
 
 # TODO: Have to incorporate Google Flights API
 
@@ -58,12 +66,24 @@ class TravelCost:
 
             # Make actual request
             data = urllib.request.urlopen(url_addr)
+
+            #import urllib3
+            #opener = urllib.build_opener()
+            #opener.addheaders = [('Referer', 'https://johnstratoudakis.com')]
+            #data = opener.open(url_addr)
+
+            # Response
             resData = data.read()
+            import chardet
             import json
-            j = json.loads(resData)
+            j = json.loads(resData.decode(chardet.detect(resData)["encoding"]))
+            #j = json.loads(resData)
 
             if 'error_message' in j:
                 print("There is an error message embedded in the response.")
+                print("Error Message: {}".format(j["error_message"]))
+                print("Status: {}".format(j["status"]))
+#                print("j: {}".format(j))
                 return [TravelCost.MAX_VAL, TravelCost.MAX_VAL]
             elif j['status'] == 'ZERO_RESULTS':
                 print("ZERO_RESULTS.")
@@ -76,6 +96,7 @@ class TravelCost:
         dumpObj(j, filename)
         dist_meters = j['routes'][0]['legs'][0]['distance']['value']
         duration_seconds = j['routes'][0]['legs'][0]['duration']['value']
+        #print("dist_meter: {}".format(dist_meters))
         return [dist_meters, duration_seconds]
 
 def dumpToScreen(json_obj):
