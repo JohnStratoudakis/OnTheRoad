@@ -1,4 +1,9 @@
 
+import logging
+
+logger = logging.getLogger(__name__.split('.')[0])
+
+
 class Location:
     def __init__(self, name, shortName, address):
         self.name = name

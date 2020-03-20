@@ -45,3 +45,25 @@ def mock_getDistanceBetween(city_1, city_2):
     elif shortB in allCosts and shortA in allCosts[shortB]:
         return allCosts[city_2.getShortName()][city_1.getShortName()]
 
+
+#def dump_distance_matrix(allCities):
+#    for i in range(len(allCities)):
+#        if i == 0:
+#            c_header = f"\n{'+':>20}"
+#            for c in range(len(allCities)):
+#                jo = str(allCities[c])
+#                print(f"{jo:>20}")
+#                c_header += f'{jo:>20}'
+#            print(f"{c_header}")
+#        line = f'{str(allCities[i]):>20}'
+#        for j in range(len(allCities)):
+#            shortA = allCities[i]
+#            shortB = allCities[j]
+#            if shortA == shortB:
+#                cost = "-"
+#            else:
+#                cost = TravelCost.TravelCost.getDistanceBetween(shortA, shortB) [0]
+#                if int(cost):
+#                    cost = f"{int(cost):,d}"
+#            line += f"{cost:>20}"
+#        print(f"{line}")

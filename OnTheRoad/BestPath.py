@@ -1,5 +1,4 @@
-
-from OnTheRoad import Location, TravelCost
+from OnTheRoad.TravelCost import TravelCost
 
 import logging
 from flask.logging import default_handler
@@ -16,7 +15,7 @@ def tsp_fitness(state, c):
         for i in range(0, len(state)-1):
             shortA = c[state[i]]
             shortB = c[state[i+1]]
-            cost = TravelCost.TravelCost.getDistanceBetween(shortA, shortB) [0]
+            cost = TravelCost.getDistanceBetween(shortA, shortB) [0]
             total_cost += cost
     except Exception as ex:
         print("Exception caught in tsp_fitness: {}".format(str(ex)))
@@ -57,7 +56,7 @@ def genDistList(allCities):
     for i in range(len(allCities)):
         for j in range(i, len(allCities)):
             if i != j:
-                cost = TravelCost.TravelCost.getDistanceBetween(allCities[i], allCities[j]) [0]
+                cost = TravelCost.getDistanceBetween(allCities[i], allCities[j]) [0]
                 dist_list.append((i, j, cost))
 
     return dist_list

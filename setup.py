@@ -1,4 +1,4 @@
-#!/usr/bin/python3.7
+#!/usr/bin/python3.8
 
 from setuptools import setup
 
@@ -11,7 +11,7 @@ setup(
     packages=["OnTheRoad"],
     entry_points={
         "console_scripts": [
-            "onTheRoad=OnTheRoad.travel_main:main"
+            "onTheRoad=OnTheRoad.__main__:main"
             ]
         },
 )

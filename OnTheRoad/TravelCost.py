@@ -2,30 +2,25 @@
 from OnTheRoad import Location
 
 from flask.logging import default_handler
+import chardet
+import json
 import logging
 import numpy as np
 
+import urllib.parse
+import urllib.request
+import os.path
 
 logger = logging.getLogger(__name__.split('.')[0])
 logger.addHandler(default_handler)
 
-
-# TODO: Have to incorporate Google Flights API
-
-class TravelCost:
+class TravelCost(object):
     MAX_VAL = np.inf
 
     @staticmethod
-    def getTravelCost(startLoc, endLoc):
-        travelCost = TravelCost(startLoc, endLoc)
-        return travelCost.cost()
-
-    @staticmethod
-    def cost(startLoc, endLoc):
-        return TravelCost.getDistanceBetween(startLoc, endLoc)
-
-    @staticmethod
     def getDistanceBetween(startLoc, endLoc):
+        logger.debug(f"getDistanceBetween({startLoc} -> {endLoc})")
+
         travelMode = "transit"
         [dist_meters, duration_seconds] = TravelCost.getDistanceByMode(startLoc, endLoc, travelMode)
         if dist_meters == TravelCost.MAX_VAL:
@@ -35,6 +30,8 @@ class TravelCost:
 
     @staticmethod
     def getDistanceByMode(startLoc, endLoc, travelMode):
+        logger.debug(f"getDistanceByMode({startLoc} -> {endLoc} via {travelMode}")
+
         source_address = startLoc.getAddress()
         dest_address = endLoc.getAddress()
         #mode = "transit"
@@ -45,15 +42,12 @@ class TravelCost:
         if not os.path.exists(temp_dir):
             os.makedirs(temp_dir)
         filename = temp_dir + startLoc.getShortName() + "-" + endLoc.getShortName() + ".obj"
-        #filename = temp_dir + source_address.replace(" ", "_") + "-" + dest_address.replace(" ", "_") + ".obj"
-
-        import urllib.parse
-        import urllib.request
-        import os.path
 
         if os.path.isfile(filename):
-            #print("LOADING FROM CACHE: {}".format(filename))
+            logger.debug(" + Loading from cache: {}".format(filename))
             j = loadObj(filename)
+        elif True:
+            logger.info("SKIPPING")
         else:
             import os
             API_KEY = os.environ['GOOG_API_KEY']
@@ -67,18 +61,13 @@ class TravelCost:
             # Make actual request
             data = urllib.request.urlopen(url_addr)
 
-            #import urllib3
-            #opener = urllib.build_opener()
-            #opener.addheaders = [('Referer', 'https://johnstratoudakis.com')]
-            #data = opener.open(url_addr)
-
             # Response
             resData = data.read()
-            import chardet
-            import json
             j = json.loads(resData.decode(chardet.detect(resData)["encoding"]))
             #j = json.loads(resData)
 
+            logger.info(80 * "r")
+            logger.info("DUMP OF DATA____________3")
             if 'error_message' in j:
                 print("There is an error message embedded in the response.")
                 print("Error Message: {}".format(j["error_message"]))
@@ -87,16 +76,21 @@ class TravelCost:
                 return [TravelCost.MAX_VAL, TravelCost.MAX_VAL]
             elif j['status'] == 'ZERO_RESULTS':
                 print("ZERO_RESULTS.")
-                #dumpToScreen(j)
+                print("Start: {}".format(startLoc.getName()))
+                print("Stop: {}".format(endLoc.getName()))
+                dumpToScreen(j)
                 return [TravelCost.MAX_VAL, TravelCost.MAX_VAL]
-            #else:
-                #print("NO ERROR")
+            else:
+                print("NO ERROR")
+                dumpToScreen(j)
 
 #        dumpToScreen(j)
         dumpObj(j, filename)
         dist_meters = j['routes'][0]['legs'][0]['distance']['value']
         duration_seconds = j['routes'][0]['legs'][0]['duration']['value']
         #print("dist_meter: {}".format(dist_meters))
+
+        logger.debug(f" <- ({dist_meters} meters, {duration_seconds} seconds)")
         return [dist_meters, duration_seconds]
 
 def dumpToScreen(json_obj):
@@ -112,6 +106,9 @@ def dumpObj(raw_obj, filename):
     with open(filename, "wb") as fout:
         pickle.dump(raw_obj, fout)
 
+    import json
+    with open(filename + ".json", "w", encoding="utf-8") as fout_json:
+        fout_json.write(json.dumps(raw_obj, indent=4))
 #    from pprint import pprint
 #    with open(filename + ".json", "w", encoding="utf-8") as fout_json:
 #    #fout = open(filename + ".json", "w")
@@ -123,4 +120,3 @@ def loadObj(filename):
     with open(filename, "rb") as fin:
         data = pickle.load(fin)
     return data
-
