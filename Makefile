@@ -3,7 +3,7 @@ ifeq ($(OS),Windows_NT)
     ARCH=win
 	PYTHON?=python.exe
 else
-	PYTHON?=python3.7
+	PYTHON?=python3.8
 	UNAME_S := $(shell uname -s)
 	UNAME_M := $(shell uname -m)
     ifeq ($(UNAME_S),Linux)
