@@ -35,6 +35,7 @@ def get_args() -> argparse.Namespace:
     parser.add_argument("--dump-matrix", action="store_true", help="Dump Matrix of distances")
     parser.add_argument("--cities", help="")
     parser.add_argument("--cities-file", help="File Containing List of Addresses")
+    parser.add_argument("--output", help="Where to save Python file")
     parser.add_argument("--verbose", action="store_true", help="Be verbose")
 
     return parser.parse_args()
@@ -82,7 +83,7 @@ def main() -> None:
 
             logger.info("-" * LINE_LENGTH)
             dump_ascii_matrix(all_cities)
-            dump_python_matrix(all_cities)
+            dump_python_matrix(all_cities, args.output)
 
 if __name__ == "__main__":
     main()

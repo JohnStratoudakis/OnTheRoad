@@ -108,9 +108,11 @@ test-%:
 	${PYTHON} -m pytest --disable-pytest-warnings -r p -k "$*" tests
 
 .PHONY: dump_distance_matrix
+dump_distance_matrix: export OUTPUT_FILE:=tests/unit/MockDistance.py
+dump_distance_matrix: export CITIES_FILE:=tests/unit/cities_list.txt
 dump_distance_matrix:
-	@echo "Dump Distance Matrix"
-	${PYTHON} -m OnTheRoad --dump-matrix --cities-file ./tests/unit/cities_list.txt
+	@echo "Dump Distance Matrix ${CITIES_FILE}"
+	${PYTHON} -m OnTheRoad --dump-matrix --cities-file ${CITIES_FILE} --output ${OUTPUT_FILE}
 
 .PHONY: dump_distance_matrix-info
 dump_distance_matrix-info:

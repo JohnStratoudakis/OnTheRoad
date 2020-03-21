@@ -46,9 +46,11 @@ class TravelCost(object):
         if os.path.isfile(filename):
             logger.debug(" + Loading from cache: {}".format(filename))
             j = loadObj(filename)
-        elif True:
-            logger.info("SKIPPING")
+        #elif True:
+        #   logger.error("GGG")
+        #   logger.info("SKIPPING")
         else:
+            print("Querying-" * 80)
             import os
             API_KEY = os.environ['GOOG_API_KEY']
             source_address = urllib.parse.quote_plus(source_address)
