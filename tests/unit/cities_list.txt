@@ -2,7 +2,7 @@ ams, Amsterdam, The Netherlands
 bra, Bratislava, Slovakia
 bru, Brussels, Belgium
 bud, Budapest, Hungary
-london, London, England
+lon, London, England
 lju, Ljubljana, Slovenia
 mun, Munich, Germany
 pra, Prague, Czechia

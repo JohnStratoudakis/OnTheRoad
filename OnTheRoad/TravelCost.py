@@ -6,6 +6,7 @@ import chardet
 import json
 import logging
 import numpy as np
+import os
 
 import urllib.parse
 import urllib.request
@@ -19,8 +20,6 @@ class TravelCost(object):
 
     @staticmethod
     def getDistanceBetween(startLoc, endLoc):
-        logger.debug(f"getDistanceBetween({startLoc} -> {endLoc})")
-
         travelMode = "transit"
         [dist_meters, duration_seconds] = TravelCost.getDistanceByMode(startLoc, endLoc, travelMode)
         if dist_meters == TravelCost.MAX_VAL:
@@ -29,26 +28,33 @@ class TravelCost(object):
         return [dist_meters, duration_seconds]
 
     @staticmethod
+    def loadCachedFile(file_name):
+        if os.path.isfile(file_name):
+            j = loadObj(file_name)
+            return j
+        return None
+
+    @staticmethod
+    def loadCachedResponse(startLoc, endLoc):
+        logger.debug("Checking cache")
+        temp_dir = "./data_cache/"
+        if not os.path.exists(temp_dir):
+            os.makedirs(temp_dir)
+        filename = temp_dir + startLoc + "-" + endLoc + ".obj"
+        return TravelCost.loadCachedFile(filename)
+
+    @staticmethod
     def getDistanceByMode(startLoc, endLoc, travelMode):
         logger.debug(f"getDistanceByMode({startLoc} -> {endLoc} via {travelMode}")
 
         source_address = startLoc.getAddress()
         dest_address = endLoc.getAddress()
-        #mode = "transit"
 
-        # Prepare Caching Directory
-        import os
-        temp_dir = "./data_cache/"
-        if not os.path.exists(temp_dir):
-            os.makedirs(temp_dir)
-        filename = temp_dir + startLoc.getShortName() + "-" + endLoc.getShortName() + ".obj"
+        cached_response = TravelCost.loadCachedResponse(startLoc.getShortName,
+                          endLoc.getShortName())
 
-        if os.path.isfile(filename):
-            logger.debug(" + Loading from cache: {}".format(filename))
-            j = loadObj(filename)
-        #elif True:
-        #   logger.error("GGG")
-        #   logger.info("SKIPPING")
+        if cached_response:
+            logger.debug(" + Loaded from cache ")
         else:
             print("Querying-" * 80)
             import os
@@ -87,7 +93,7 @@ class TravelCost(object):
                 dumpToScreen(j)
 
 #        dumpToScreen(j)
-        dumpObj(j, filename)
+#        dumpObj(j, filename)
         dist_meters = j['routes'][0]['legs'][0]['distance']['value']
         duration_seconds = j['routes'][0]['legs'][0]['duration']['value']
         #print("dist_meter: {}".format(dist_meters))

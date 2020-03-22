@@ -1,5 +1,5 @@
 
-#from OnTheRoad.BestPath import BestPath
+from OnTheRoad import BestPath
 from OnTheRoad.Location import Location
 from OnTheRoad.TravelCost import TravelCost
 
@@ -14,7 +14,7 @@ import sys
 logger = logging.getLogger(__name__.split('.')[0])
 LINE_LENGTH = 80
 
-def configure_logging(verbose):
+def configure_logging(logger, verbose):
     if verbose:
         logger.setLevel(logging.DEBUG)
         #logging.getLogger().setLevel(logging.DEBUG)
@@ -36,16 +36,23 @@ def get_args() -> argparse.Namespace:
     parser.add_argument("--cities", help="")
     parser.add_argument("--cities-file", help="File Containing List of Addresses")
     parser.add_argument("--output", help="Where to save Python file")
+
+    parser.add_argument("--dump-path",
+                        help="Dump details of path specified by '<3" +
+                             " letter code>-<3 letter code>'")
     parser.add_argument("--verbose", action="store_true", help="Be verbose")
 
     return parser.parse_args()
 
 def main() -> None:
     args = get_args()
-    configure_logging(args.verbose)
+    configure_logging(logger, args.verbose)
 
     logger.info("-" * LINE_LENGTH)
     logger.info(" + Checking for environment variables")
+    # We need
+    # GOOG_API_KEY
+    # 
     logger.info("-" * LINE_LENGTH)
     logger.info(" + Log Level Test")
     logger.info("INFO")
@@ -83,7 +90,11 @@ def main() -> None:
 
             logger.info("-" * LINE_LENGTH)
             dump_ascii_matrix(all_cities)
-            dump_python_matrix(all_cities, args.output)
+            if args.output:
+                dump_python_matrix(all_cities, args.output)
+    elif args.dump_path and len(args.dump_path) > 0:
+        logger.info(f"Dumping details for path: {args.dump_path}")
+        BestPath.dumpPathDetails(args.dump_path)
 
 if __name__ == "__main__":
     main()

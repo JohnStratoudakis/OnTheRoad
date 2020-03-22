@@ -52,6 +52,10 @@ clean:
 install-deps:
 	${PYTHON} -m pip install --user -r requirements.txt
 
+# Log Levels and what they print
+# DEBUG: INFO, ERROR, DEBUG
+# INFO: INFO, ERROR
+# ERROR: ERROR
 ###############################################################################
 # Testing Section
 
@@ -85,12 +89,12 @@ install-deps:
 .PHONY: unit_tests
 unit_tests:
 	@echo "Running unit tests"
-	${PYTHON} -m pytest --color=yes -r ap -k TravelCosts ./tests/unit/
+	${PYTHON} -m pytest --disable-pytest-warnings --color=yes -r ap  ./tests/unit/
 
 .PHONY: integration_tests
 integration_tests:
 	@echo "Running Integration Tests"
-	${PYTHON} -m pytest --color=yes -r ap -k TravelCosts ./tests/integration/
+	${PYTHON} -m pytest --disable-pytest-warnings --color=yes -r ap ./tests/integration/
 
 # make test-info-TravelCostsTests
 # make test-info-"TravelCostsTests and test_smoke"
@@ -107,17 +111,28 @@ test-%:
 	#${PYTHON} -m pytest --color=yes -r ap -k TravelCosts -k "$*" tests
 	${PYTHON} -m pytest --disable-pytest-warnings -r p -k "$*" tests
 
-.PHONY: dump_distance_matrix
-dump_distance_matrix: export OUTPUT_FILE:=tests/unit/MockDistance.py
-dump_distance_matrix: export CITIES_FILE:=tests/unit/cities_list.txt
-dump_distance_matrix:
+###############################################################################
+export CITIES_FILE:=tests/unit/cities_list.txt
+.PHONY: update_distance_matrix
+update_distance_matrix: export OUTPUT_FILE:=tests/unit/MockDistance.py
+update_distance_matrix:
 	@echo "Dump Distance Matrix ${CITIES_FILE}"
 	${PYTHON} -m OnTheRoad --dump-matrix --cities-file ${CITIES_FILE} --output ${OUTPUT_FILE}
+
+.PHONY: dump_distance_matrix
+dump_distance_matrix:
+	@echo "Dump Distance Matrix Verbose"
+	${PYTHON} -m OnTheRoad --dump-matrix --cities-file ${CITIES_FILE} --verbose
 
 .PHONY: dump_distance_matrix-info
 dump_distance_matrix-info:
 	@echo "Dump Distance Matrix Verbose"
-	${PYTHON} -m OnTheRoad --dump-matrix --cities-file ./tests/unit/cities_list.txt --verbose
+	${PYTHON} -m OnTheRoad --dump-matrix --cities-file ${CITIES_FILE}
+
+.PHONY: dump_path-%
+dump_path-%:
+	@echo "Dump path details for: $*"
+	${PYTHON} -m OnTheRoad --dump-path $*
 ###############################################################################
 
 .PHONY: package
