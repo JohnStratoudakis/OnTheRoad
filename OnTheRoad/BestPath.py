@@ -2,6 +2,7 @@ from OnTheRoad.TravelCost import TravelCost
 
 import logging
 from flask.logging import default_handler
+import traceback
 
 logger = logging.getLogger(__name__.split('.')[0])
 logger.addHandler(default_handler)
@@ -17,8 +18,11 @@ def tsp_fitness(state, c):
             cost = TravelCost.getDistanceBetween(shortA, shortB) [0]
             total_cost += cost
     except Exception as ex:
-        print("Exception caught in tsp_fitness: {}".format(str(ex)))
-        print("{}".format(ex))
+        logger.error("-" * 80)
+        logger.error("Exception caught in tsp_fitness: {}".format(str(ex)))
+        logger.error("\t{}".format(ex))
+        track = traceback.format_exc()
+        logger.error(f"track: {track}")
     return total_cost
 
 def calcTsp(allCities):

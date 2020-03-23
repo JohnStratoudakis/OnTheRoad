@@ -206,9 +206,16 @@ class BestPathTests(TestCase):
 
         # WHEN
         best_state, best_fitness = BestPath.calcTsp(allCities)
-        BestPath.dumpBestPath(allCities, best_state, best_fitness)
+#        BestPath.dumpBestPath(allCities, best_state, best_fitness)
 
         # THEN
+        tot_pra_bud_bra_vie_lju_mun = TravelCost.getDistanceBetween(self.pra, self.bud)[0] + \
+                                      TravelCost.getDistanceBetween(self.bud, self.bra)[0] + \
+                                      TravelCost.getDistanceBetween(self.bra, self.vie)[0] + \
+                                      TravelCost.getDistanceBetween(self.vie, self.lju)[0] + \
+                                      TravelCost.getDistanceBetween(self.lju, self.mun)[0]
+        assert_that(best_fitness, equal_to(tot_pra_bud_bra_vie_lju_mun))
+
         assert_that(best_state[0], equal_to(self.getIndex("pra", allCities)))
         assert_that(best_state[1], equal_to(self.getIndex("bud", allCities)))
         assert_that(best_state[2], equal_to(self.getIndex("bra", allCities)))

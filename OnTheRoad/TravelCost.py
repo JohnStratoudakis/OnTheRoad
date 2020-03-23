@@ -50,19 +50,23 @@ class TravelCost(object):
         source_address = startLoc.getAddress()
         dest_address = endLoc.getAddress()
 
-        cached_response = TravelCost.loadCachedResponse(startLoc.getShortName,
-                          endLoc.getShortName())
+        response = TravelCost.loadCachedResponse(
+                                    startLoc.getShortName(),
+                                    endLoc.getShortName())
 
-        if cached_response:
+        if response:
             logger.debug(" + Loaded from cache ")
         else:
-            print("Querying-" * 80)
-            import os
+            logger.debug(" + Not found in cache, querying-")
+
             API_KEY = os.environ['GOOG_API_KEY']
             source_address = urllib.parse.quote_plus(source_address)
             dest_address = urllib.parse.quote_plus(dest_address)
 
-            my_url = "/maps/api/directions/json?origin={}&destination={}&sensor=false&mode={}".format(source_address, dest_address, travelMode)
+            my_url = "/maps/api/directions/json?origin={}&destination={}&sensor=false&mode={}".format(
+                                                                    source_address,
+                                                                    dest_address,
+                                                                    travelMode)
             url_addr = "https://maps.googleapis.com%s" % my_url
             url_addr += "&key=" + API_KEY
 
@@ -71,32 +75,25 @@ class TravelCost(object):
 
             # Response
             resData = data.read()
-            j = json.loads(resData.decode(chardet.detect(resData)["encoding"]))
-            #j = json.loads(resData)
+            response = json.loads(resData.decode(chardet.detect(resData)["encoding"]))
 
-            logger.info(80 * "r")
-            logger.info("DUMP OF DATA____________3")
-            if 'error_message' in j:
-                print("There is an error message embedded in the response.")
-                print("Error Message: {}".format(j["error_message"]))
-                print("Status: {}".format(j["status"]))
-#                print("j: {}".format(j))
+            if 'error_message' in response:
+                logger.error("There is an error message embedded in the response.")
+                logger.error("Error Message: {}".format(response["error_message"]))
+                logger.error("Status: {}".format(response["status"]))
                 return [TravelCost.MAX_VAL, TravelCost.MAX_VAL]
-            elif j['status'] == 'ZERO_RESULTS':
-                print("ZERO_RESULTS.")
-                print("Start: {}".format(startLoc.getName()))
-                print("Stop: {}".format(endLoc.getName()))
-                dumpToScreen(j)
+            elif response['status'] == 'ZERO_RESULTS':
+                logger.error("ZERO_RESULTS.")
+                logger.error("Start: {}".format(startLoc.getName()))
+                logger.error("Stop: {}".format(endLoc.getName()))
+                dumpToScreen(response)
                 return [TravelCost.MAX_VAL, TravelCost.MAX_VAL]
             else:
-                print("NO ERROR")
-                dumpToScreen(j)
+                logger.debug("NO ERROR")
+                dumpToScreen(response)
 
-#        dumpToScreen(j)
-#        dumpObj(j, filename)
-        dist_meters = j['routes'][0]['legs'][0]['distance']['value']
-        duration_seconds = j['routes'][0]['legs'][0]['duration']['value']
-        #print("dist_meter: {}".format(dist_meters))
+        dist_meters = response['routes'][0]['legs'][0]['distance']['value']
+        duration_seconds = response['routes'][0]['legs'][0]['duration']['value']
 
         logger.debug(f" <- ({dist_meters} meters, {duration_seconds} seconds)")
         return [dist_meters, duration_seconds]

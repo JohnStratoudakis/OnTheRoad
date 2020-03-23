@@ -24,9 +24,14 @@ help:
 	@echo "install-deps "
 	@echo "unit_tests"
 	@echo "integration_tests"
+	@echo "Testing"
+	@echo 
 	@echo "test-info-<test_filter>"
 	@echo "test-<test_filter>"
 	@echo "dump_distance_matrix"
+	@echo 
+	@echo "dump_path-%"
+	@echo "simple_query"
 	@echo "package"
 	@echo "publish-test"
 	@echo "publish-prod"
@@ -133,6 +138,11 @@ dump_distance_matrix-info:
 dump_path-%:
 	@echo "Dump path details for: $*"
 	${PYTHON} -m OnTheRoad --dump-path $*
+
+.PHONY: simple_query
+simple_query:
+	@echo "Executing a simple query defined in ./tests/unit/small_tests.txt"
+	${PYTHON} -m OnTheRoad --calc-path ./tests/uname/small_tests.txt
 ###############################################################################
 
 .PHONY: package

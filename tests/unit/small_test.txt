@@ -1,0 +1,3 @@
+ams, Amsterdam, The Netherlands
+bru, Brussels, Belgium
+lon, London, England
