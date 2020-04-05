@@ -169,3 +169,23 @@ start_uwsgi:
 .PHONY: start_client
 start_client:
 	cd ontheroad_ui && yarn start
+
+
+###############################################################################
+# Running in WSL with Ubuntu 18
+# Create Virtualenv
+# $ python3.8 -m venv myenv
+# $ source myenv/bin/activate
+# $ pip install -r requirements.txt
+# $ pip list
+	
+# Run
+# uwsgi --http-socket :5000 --plugin python3 --module wsgi:app
+# uwsgi --http-socket :5000 --plugin python38 --module wsgi:app 
+# uwsgi --http-socket :5000 --py-autoreload --plugin python38 --module wsgi:app 
+
+# Quick test
+# curl http://127.0.0.1:5000/version
+
+# Stop
+# pkill -9 uwsgi

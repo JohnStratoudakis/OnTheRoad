@@ -1,5 +1,3 @@
-#!/usr/bin/python3.7
-
 from flask import Flask
 from flask import request
 from flask.logging import default_handler
