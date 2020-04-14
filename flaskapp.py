@@ -27,6 +27,13 @@ def set_up_logging(verbose):
     logger.info("INFO")
     logger.debug("DEBUG")
 
+@app.route('/version', methods=['GET'])
+def get_version():
+    print("get_version() called")
+    version = "0.0.1"
+    print(f"Returning version: {version}")
+    response_raw_text = f"OnTheRoad WSGI Version: {version}\n"
+    return response_raw_text
 
 @app.route('/onTheRoad', methods=['POST'])
 def post():
