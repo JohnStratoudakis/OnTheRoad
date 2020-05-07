@@ -1,3 +1,4 @@
 FROM tiangolo/uwsgi-nginx-flask:python3.7
 
-COPY ./OnTheRoad /app
+COPY ./OnTheRoad /app/OnTheRoad
+COPY uwsgi.ini /app

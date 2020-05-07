@@ -189,3 +189,6 @@ start_client:
 
 # Stop
 # pkill -9 uwsgi
+#
+# PRODUCTION USE
+#
