@@ -1,7 +1,7 @@
 version: '3'
 services:
   web:
-    build: ./
+    build: ./OnTheRoad
     container_name: johnstratoudakis/ontheroad:latest
     ports:
 #     - "5000:5000"
