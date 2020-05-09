@@ -170,6 +170,9 @@ start_uwsgi:
 start_client:
 	cd ontheroad_ui && yarn start
 
+.PHONY: test-api
+test-api:
+	curl https://app.johnstratoudakis.com/OnTheRoad/version
 
 ###############################################################################
 # Running in WSL with Ubuntu 18
