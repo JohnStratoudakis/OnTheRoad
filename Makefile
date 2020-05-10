@@ -157,22 +157,8 @@ publish-test:
 publish-prod:
 	 ${PYTHON} -m twine upload --verbose --config-file .pypirc-bot -r pypi dist/*
 
-# Debug
-.PHONY: venv
-venv:
-	cd OnTheRoad && ${PYTHON} main.py
-
-.PHONY: install-deps
-install-deps:
-	cd OnTheRoad && ${PYTHON} -m pip install -r requirements.txt
-
-.PHONY: start_server
-start_server:
-	cd OnTheRoad && ${PYTHON} main.py
-
-#.PHONY: start_uwsgi
-#start_uwsgi:
-#	uwsgi --socket 0.0.0.0:5000 --protocol=http -w flaskapp:app
+###############################################################################
+# Running in WSL with Ubuntu 18
 
 .PHONY: start_client
 start_client:
@@ -181,25 +167,3 @@ start_client:
 .PHONY: test-api
 test-api:
 	curl https://app.johnstratoudakis.com/OnTheRoad/version
-
-###############################################################################
-# Running in WSL with Ubuntu 18
-# Create Virtualenv
-# $ python3.8 -m venv myenv
-# $ source myenv/bin/activate
-# $ pip install -r requirements.txt
-# $ pip list
-	
-# Run
-# uwsgi --http-socket :5000 --plugin python3 --module wsgi:app
-# uwsgi --http-socket :5000 --plugin python38 --module wsgi:app 
-# uwsgi --http-socket :5000 --py-autoreload --plugin python38 --module wsgi:app 
-
-# Quick test
-# curl http://127.0.0.1:5000/version
-
-# Stop
-# pkill -9 uwsgi
-#
-# PRODUCTION USE
-#
