@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route('/version', methods=['GET'])
 def get_version():
     print("get_version() called")
-    version = "0.0.6"
+    version = "0.0.7"
     print(f"Returning version: {version}")
 
     response_raw_text = f"OnTheRoad WSGI Version: {version}\n"
