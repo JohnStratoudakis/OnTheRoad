@@ -157,14 +157,22 @@ publish-test:
 publish-prod:
 	 ${PYTHON} -m twine upload --verbose --config-file .pypirc-bot -r pypi dist/*
 
-# Test via make itest
+# Debug
+.PHONY: venv
+venv:
+	cd OnTheRoad && ${PYTHON} main.py
+
+.PHONY: install-deps
+install-deps:
+	cd OnTheRoad && ${PYTHON} -m pip install -r requirements.txt
+
 .PHONY: start_server
 start_server:
-	${PYTHON} flaskapp.py
+	cd OnTheRoad && ${PYTHON} main.py
 
-.PHONY: start_uwsgi
-start_uwsgi:
-	uwsgi --socket 0.0.0.0:5000 --protocol=http -w flaskapp:app
+#.PHONY: start_uwsgi
+#start_uwsgi:
+#	uwsgi --socket 0.0.0.0:5000 --protocol=http -w flaskapp:app
 
 .PHONY: start_client
 start_client:
