@@ -9,3 +9,7 @@ stop_docker: export CONTAINER_ID=$$(docker ps -qa --filter "label=label=ontheroa
 stop_docker:
 	@echo "CONTAINER_ID=${CONTAINER_ID}"
 	docker stop ${CONTAINER_ID}
+
+debug_docker: export CONTAINER_ID=$$(docker ps -qa --filter "label=label=ontheroad_ui")
+debug_docker:
+	docker exec -it ${CONTAINER_ID} /bin/sh

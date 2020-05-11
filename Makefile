@@ -53,10 +53,10 @@ universal:
 clean:
 	find . -name "__pycache__" | xargs rm -rf
 
-.PHONY: install-deps
-install-deps:
-	${PYTHON} -m pip install --user -r requirements.txt
-
+#.PHONY: install-deps
+#install-deps:
+#	${PYTHON} -m pip install --user -r requirements.txt
+#
 # Log Levels and what they print
 # DEBUG: INFO, ERROR, DEBUG
 # INFO: INFO, ERROR
