@@ -25,8 +25,6 @@ start_docker:
 	docker run -p 5000:80 --rm -it johnstratoudakis/ontheroad:dev 
 
 stop_docker: export CONTAINER_ID=$$(docker ps -qa --filter "label=label=ontheroad_dev")
-stop_docker: export JOHN=HHHH
 stop_docker:
-	@echo "JOHN=${JOHN}"
 	@echo "CONTAINER_ID=${CONTAINER_ID}"
 	docker stop ${CONTAINER_ID}
