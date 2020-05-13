@@ -13,3 +13,7 @@ stop_docker:
 debug_docker: export CONTAINER_ID=$$(docker ps -qa --filter "label=label=ontheroad_ui")
 debug_docker:
 	docker exec -it ${CONTAINER_ID} /bin/sh
+
+clean_docker:
+	docker rm $$(docker ps -qa) || true
+	docker rmi $$(docker images -qa) || true

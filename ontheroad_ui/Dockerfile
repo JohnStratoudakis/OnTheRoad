@@ -1,17 +1,3 @@
-#FROM node:latest
-#
-#WORKDIR /app
-#
-#ENV PATH /app/node_modules/.bin:$PATH
-#
-#COPY package.json ./
-#COPY package-lock.json ./
-#
-#RUN yarn
-#COPY . ./
-#RUN yarn build
-#
-#CMD ["nginx", "-g", "daemon off;"]
 FROM node:latest as build
 
 WORKDIR /app
