@@ -1,16 +1,21 @@
 
 build_docker:
-	docker build --label "label=ontheroad_ui" -t johnstratoudakis/ontheroad:ui .
+	docker build --label "label=ontheroad_ui_dev" -t johnstratoudakis/ontheroad:ui_dev -f Dockerfile.dev .
 
 start_docker:
-	docker run -p 5000:80 --rm -it johnstratoudakis/ontheroad:ui
+	docker run -p 3000:3000 --rm -it \
+           -v ${PWD}:/app -v app/node_modules \
+           johnstratoudakis/ontheroad:ui_dev
+	#docker run -p 5000:80 --rm -it johnstratoudakis/ontheroad:ui
+	#-e CHOKIDAR_USEPOLLING=true \
+#Finally, -e CHOKIDAR_USEPOLLING=true enables a polling mechanism via chokidar (which wraps fs.watch, fs.watchFile, and fsevents) so that hot-reloading will work.
 
-stop_docker: export CONTAINER_ID=$$(docker ps -qa --filter "label=label=ontheroad_ui")
+stop_docker: export CONTAINER_ID=$$(docker ps -qa --filter "label=label=ontheroad_ui_dev")
 stop_docker:
 	@echo "CONTAINER_ID=${CONTAINER_ID}"
 	docker stop ${CONTAINER_ID}
 
-debug_docker: export CONTAINER_ID=$$(docker ps -qa --filter "label=label=ontheroad_ui")
+debug_docker: export CONTAINER_ID=$$(docker ps -qa --filter "label=label=ontheroad_ui_dev")
 debug_docker:
 	docker exec -it ${CONTAINER_ID} /bin/sh
 
