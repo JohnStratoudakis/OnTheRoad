@@ -13,18 +13,20 @@ require('dotenv').config();
 
 
 class App extends React.Component {
-    serverHost = process.env.REACT_APP_HOST_IP;
-    serverPort = "5000";
+    serverHost = "";
+    serverPort = "";
 
     constructor(props) {
         super(props);
         console.log("App.js:constructor()");
-        if(process.env.NODE_ENV === "production") {
-            this.serverHost = "johnstratoudakis.com";
-        } else {
-            this.serverHost = "localhost";
-        }
-        console.log(`App.js:serverHost: ${this.serverHost}`);
+        console.log("process.env.NODE_ENV: " + process.env.NODE_ENV);
+        console.log("process.env.REACT_APP_HOST_IP: " + process.env.REACT_APP_HOST_IP);
+        console.log("process.env.REACT_APP_HOST_PORT: " + process.env.REACT_APP_HOST_PORT);
+        console.log("serverHost: " + this.serverHost);
+        console.log("serverPort: " + this.serverPort);
+        this.serverHost = process.env.REACT_APP_HOST_IP;
+        this.serverPort = process.env.REACT_APP_HOST_PORT;
+
         // Dump all environment variables
         Object.keys(process.env).forEach(function(key) {
               console.log('App.js: ' + key + '="' + process.env[key] +'"');
