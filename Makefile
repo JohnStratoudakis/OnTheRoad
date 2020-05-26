@@ -52,6 +52,7 @@ universal:
 .PHONY: clean
 clean:
 	find . -name "__pycache__" | xargs rm -rf
+	rm -rf ./OnTheRoad/venv
 
 #.PHONY: install-deps
 #install-deps:
