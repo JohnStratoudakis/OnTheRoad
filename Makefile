@@ -91,10 +91,18 @@ clean:
 #                       Warnings are displayed at all times except when
 #                       --disable-warnings is set
 
+OnTheRoad/venv: OnTheRoad/venv/bin/activate
+
+#.PHONY: OnTheRoad/venv/bin/activate
+OnTheRoad/venv/bin/activate: requirements.txt
+	test -d OnTheRoad/venv || python3.7 -m venv OnTheRoad/venv
+	. ./OnTheRoad/venv/bin/activate; pip install -Ur requirements.txt
+	touch OnTheRoad/venv/bin/activate
+
 .PHONY: unit_tests
-unit_tests:
+unit_tests: OnTheRoad/venv
 	@echo "Running unit tests"
-	${PYTHON} -m pytest --disable-pytest-warnings --color=yes -r ap  ./tests/unit/
+	. ./OnTheRoad/venv/bin/activate; ${PYTHON} -m pytest --disable-pytest-warnings --color=yes -r ap  ./tests/unit/
 
 .PHONY: integration_tests
 integration_tests:
