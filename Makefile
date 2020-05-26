@@ -106,24 +106,24 @@ unit_tests: OnTheRoad/venv
 	. ./OnTheRoad/venv/bin/activate; ${PYTHON} -m pytest --disable-pytest-warnings --color=yes -r ap  ./tests/unit/
 
 .PHONY: integration_tests
-integration_tests:
+integration_tests: OnTheRoad/venv
 	@echo "Running Integration Tests"
-	${PYTHON} -m pytest --disable-pytest-warnings --color=yes -r ap ./tests/integration/
+	. ./OnTheRoad/venv/bin/activate; ${PYTHON} -m pytest --disable-pytest-warnings --color=yes -r ap ./tests/integration/
 
 # make test-info-TravelCostsTests
 # make test-info-"TravelCostsTests and test_smoke"
 .PHONY: test-info-%
-test-info-%:
+test-info-%: OnTheRoad/venv
 	@echo "Running tests with filter $* and info verbosity"
-	${PYTHON} -m pytest --disable-pytest-warnings -s -r p -k "$*" tests
+	. ./OnTheRoad/venv/bin/activate; ${PYTHON} -m pytest --disable-pytest-warnings -s -r p -k "$*" tests
 
 # make test-TravelCostsTests
 # make test-"TravelCostsTests and test_smoke"
 .PHONY: test-%
-test-%:
+test-%: OnTheRoad/venv
 	@echo "Running tests with filter $*"
 	#${PYTHON} -m pytest --color=yes -r ap -k TravelCosts -k "$*" tests
-	${PYTHON} -m pytest --disable-pytest-warnings -r p -k "$*" tests
+	. ./OnTheRoad/venv/bin/activate; ${PYTHON} -m pytest --disable-pytest-warnings -r p -k "$*" tests
 
 ###############################################################################
 export CITIES_FILE:=tests/unit/cities_list.txt
