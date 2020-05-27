@@ -61,3 +61,4 @@ git commit -m "Adding deploy key and pypirc file for continuous delivery"
 
 ## This repo helped me figure out how to use bumpversion properly:
 https://github.com/guettli/github-travis-bumpversion-pypi
+
