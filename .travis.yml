@@ -20,8 +20,11 @@ script:
 - git remote add deploy $(git remote -v | sed -nre 's#^origin.*https://([^/]*)/([^
   ]*) *.*push.*#git@\1:\2#p')
 - git push deploy HEAD:master
+- docker login -u $DOCKER_USER -p $DOCKER_PASS
 - docker build -t johnstratoudakis/ontheroad_flask:latest ./OnTheRoad
 - docker build -t johnstratoudakis/ontheroad_ui:latest ./ontheroad_ui
+- docker push johnstratoudakis/ontheroad_flask:latest
+- docker push johnstratoudakis/ontheroad_ui:latest
 #- cd ontheroad_ui
 #- yarn install
 #- yarn run build
@@ -44,13 +47,13 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_3bc2bd3e7847_key -iv $encrypted_3bc2bd3e7847_iv
   -in secret-files.tar.enc -out secret-files.tar -d
 - tar xvf secret-files.tar
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $github_token
-  keep_history: true
-  local_dir: ontheroad_ui/build
-  on:
-    branch: master
-  with:
-    REACT_APP_HOST_IP: johnstratoudakis.com
+#deploy:
+#  provider: pages
+#  skip_cleanup: true
+#  github_token: $github_token
+#  keep_history: true
+#  local_dir: ontheroad_ui/build
+#  on:
+#    branch: master
+#  with:
+#    REACT_APP_HOST_IP: johnstratoudakis.com
