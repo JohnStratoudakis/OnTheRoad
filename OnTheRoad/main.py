@@ -1,5 +1,5 @@
 from flask import Flask
-import flask_config
+from OnTheRoad import flask_config
 
 app = Flask(__name__)
 

@@ -20,16 +20,16 @@ script:
 - git remote add deploy $(git remote -v | sed -nre 's#^origin.*https://([^/]*)/([^
   ]*) *.*push.*#git@\1:\2#p')
 - git push deploy HEAD:master
-- docker login -u $DOCKER_USER -p $DOCKER_PASS
 - docker build -t johnstratoudakis/ontheroad_flask:latest ./OnTheRoad
 - docker build -t johnstratoudakis/ontheroad_ui:latest ./ontheroad_ui
-- docker push johnstratoudakis/ontheroad_flask:latest
-- docker push johnstratoudakis/ontheroad_ui:latest
 #- cd ontheroad_ui
 #- yarn install
 #- yarn run build
 - cd ..
-#after_success:
+after_success:
+- docker login -u $DOCKER_USER -p $DOCKER_PASS
+- docker push johnstratoudakis/ontheroad_flask:latest
+- docker push johnstratoudakis/ontheroad_ui:latest
 #- git config --global user.email "johnstratoudakis@egmail.com"
 #- git config --global user.name "Bumpversion after CI"
 #- bumpversion --config-file .bumpversion.cfg --verbose patch
