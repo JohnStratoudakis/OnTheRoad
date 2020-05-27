@@ -1,12 +1,12 @@
 from flask import Flask
+import flask_config
 
 app = Flask(__name__)
 
 
 @app.route('/version', methods=['GET'])
 def get_version():
-    print("get_version() called")
-    version = "0.0.10"
+    version = flask_config.version
     print(f"Returning version: {version}")
 
     response_raw_text = f"OnTheRoad WSGI Version: {version}\n"
