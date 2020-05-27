@@ -100,6 +100,10 @@ OnTheRoad/venv/bin/activate: requirements.txt
 	. ./OnTheRoad/venv/bin/activate; pip install -Ur requirements.txt
 	touch OnTheRoad/venv/bin/activate
 
+.PHONY: start_flask
+start_flask: OnTheRoad/venv
+	. ./OnTheRoad/venv/bin/activate; FLASK_ENV=development python3.7 OnTheRoad/main.py
+
 .PHONY: unit_tests
 unit_tests: OnTheRoad/venv
 	@echo "Running unit tests"
