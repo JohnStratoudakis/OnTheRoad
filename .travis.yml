@@ -6,6 +6,11 @@ install:
 - pip install .
 - pip install -r requirements.txt
 sudo: required
+notifications:
+  webhooks:
+    urls:
+      - https://app.johnstratoudakis.com/hooks/redeploy
+    on_success: always # default: always
 services:
 - docker
 script:
