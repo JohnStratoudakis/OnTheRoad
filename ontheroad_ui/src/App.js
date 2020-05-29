@@ -13,19 +13,17 @@ require('dotenv').config();
 
 
 class App extends React.Component {
-    serverHost = "";
-    serverPort = "";
+    serverString = "";
 
     constructor(props) {
         super(props);
-        console.log("App.js:constructor()");
-        console.log("process.env.NODE_ENV: " + process.env.NODE_ENV);
-        console.log("process.env.REACT_APP_HOST_IP: " + process.env.REACT_APP_HOST_IP);
-        console.log("process.env.REACT_APP_HOST_PORT: " + process.env.REACT_APP_HOST_PORT);
-        console.log("serverHost: " + this.serverHost);
-        console.log("serverPort: " + this.serverPort);
-        this.serverHost = process.env.REACT_APP_HOST_IP;
-        this.serverPort = process.env.REACT_APP_HOST_PORT;
+        if(process.env.NODE_ENV == "production") {
+            this.serverString = "app.johnstratoudakis.com/Travel";
+        } else {
+            this.serverString = "127.0.0.1:5000"
+        }
+        console.log("serverString: " + this.serverString);
+        console.log("NODE_ENV: " + procekss.env.NODE_ENV);
 
         // Dump all environment variables
         Object.keys(process.env).forEach(function(key) {
@@ -91,11 +89,11 @@ class App extends React.Component {
         var request = {
             "locations": request_addresses
         };
-        console.log("Server Host: " + this.serverHost);
+        console.log("Server String: " + this.serverString);
         console.log("Sending request: " + request.locations);
 
         // Make request
-        axios.post(`https://${this.serverHost}/onTheRoad`, request )
+        axios.post(`https://${this.serverString}`, request )
             .then(res => {
                 var results_array = [];
                 for(var i=0; i < res.data['best_path'].length; i++) {
