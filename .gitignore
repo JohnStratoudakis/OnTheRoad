@@ -9,3 +9,4 @@ travis_deploy_key
 travis-deploy-token
 .env
 node_modules
+*.swp

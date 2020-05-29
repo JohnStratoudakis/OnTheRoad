@@ -1,7 +1,11 @@
+
 from flask import Flask
+from flask_cors import CORS
+
 from OnTheRoad import flask_config
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/version', methods=['GET'])
