@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app)
 
 @app.route('/version', methods=['GET'])
-@crossdomain(origin='johnstratoudakis.com')
+#@crossdomain(origin='johnstratoudakis.com')
 def get_version():
     version = flask_config.version
     print(f"Returning version: {version}")
