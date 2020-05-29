@@ -23,7 +23,7 @@ class App extends React.Component {
             this.serverString = "127.0.0.1:5000"
         }
         console.log("serverString: " + this.serverString);
-        console.log("NODE_ENV: " + procekss.env.NODE_ENV);
+        console.log("NODE_ENV: " + process.env.NODE_ENV);
 
         // Dump all environment variables
         Object.keys(process.env).forEach(function(key) {
