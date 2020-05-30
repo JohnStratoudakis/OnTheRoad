@@ -7,6 +7,7 @@ start_server: export REACT_APP_HOST_PORT=5000
 start_server: build
 	yarn start
 
+# Docker Section
 build_docker:
 	docker build --label "label=ontheroad_ui_dev" -t johnstratoudakis/ontheroad_ui:dev -f Dockerfile.dev .
 

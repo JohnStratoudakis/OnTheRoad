@@ -18,12 +18,9 @@ get_local_version:
 get_prod_version:
 	curl https://app.johnstratoudakis.com/OnTheRoad/version
 
+# Docker Section
 build_docker:
 	docker build --label "label=ontheroad_flask_dev" -t johnstratoudakis/ontheroad_flask:dev .
-
-debug_docker: export CONTAINER_ID=$$(docker ps -qa --filter "label=label=ontheroad_ui_dev")
-debug_docker:
-	docker exec -it ${CONTAINER_ID} /bin/sh
 
 start_docker:
 	docker run -p 5000:80 --rm -it johnstratoudakis/ontheroad_flask:dev 
@@ -32,3 +29,12 @@ stop_docker: export CONTAINER_ID=$$(docker ps -qa --filter "label=label=ontheroa
 stop_docker:
 	@echo "CONTAINER_ID=${CONTAINER_ID}"
 	docker stop ${CONTAINER_ID}
+
+debug_docker: export CONTAINER_ID=$$(docker ps -qa --filter "label=label=ontheroad_flask_dev")
+debug_docker:
+	@echo "CONTAINER_ID=${CONTAINER_ID}"
+	docker exec -it ${CONTAINER_ID} /bin/sh
+
+clean_docker:
+	docker rm $$(docker ps -qa) || true
+	docker rmi $$(docker images -qa) || true
