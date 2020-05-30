@@ -1,16 +1,23 @@
 
 from flask import Flask
-#from flask_cors import CORS
+from flask_cors import CORS
+#from flask_cors import cross_origin
+#from flask_cors import crossdomain
 
-from OnTheRoad import flask_config
+#from OnTheRoad import flask_config
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/version": {"origins": "johnstratoudakis.com"}})
 #CORS(app)
 
+#cors = CORS(app, resources={r"/slash": {"origins": "*"}})
+import flask_cors
 @app.route('/version', methods=['GET'])
 #@crossdomain(origin='*')
+#@flask_cors.cross_origin()
 def get_version():
-    version = flask_config.version
+    #version = flask_config.version
+    version="1.0.1"
     print(f"Returning version: {version}")
 
     response_raw_text = f"OnTheRoad WSGI Version: {version}\n"
