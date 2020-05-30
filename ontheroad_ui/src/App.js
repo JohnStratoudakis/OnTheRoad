@@ -18,7 +18,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         if(process.env.NODE_ENV == "production") {
-            this.serverString = "app.johnstratoudakis.com/Travel";
+            this.serverString = "app.johnstratoudakis.com/OnTheRoad";
         } else {
             this.serverString = "127.0.0.1:5000"
         }
