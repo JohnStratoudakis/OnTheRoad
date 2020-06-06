@@ -17,9 +17,6 @@ cors = CORS(app, resources={r"/": {"origins": "johnstratoudakis.com"}})
 #@flask_cors.cross_origin()
 def get_version():
     version = flask_config.version
-    #version="1.0.1"
-    print(f"Returning version: {version}")
-    print(f"Repeating myself: Returning version: {version}")
 
     response_raw_text = f"OnTheRoad WSGI Version: {version}\n"
 
