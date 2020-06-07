@@ -1,6 +1,7 @@
 
 from flask import Flask
 from flask_cors import CORS
+from flask.logging import default_handler
 #from flask_cors import cross_origin
 #from flask_cors import crossdomain
 
@@ -9,7 +10,7 @@ import logging
 from OnTheRoad import flask_config
 
 logger = logging.getLogger(__name__.split('.')[0])
-#logger.addHandler(default_handler)
+logger.addHandler(default_handler)
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/": {"origins": "johnstratoudakis.com"}})
@@ -34,8 +35,8 @@ cors = CORS(app, resources={r"/": {"origins": "johnstratoudakis.com"}})
 def get_version():
     version = flask_config.version
 
-#    logger.info(f'[INFO] get_version called, version: {version}')
-#    logger.debug(f'[DEBUG] get_version called, version: {version}')
+    logger.info(f'[INFO] get_version called, version: {version}')
+    logger.debug(f'[DEBUG] get_version called, version: {version}')
     response_raw_text = f"OnTheRoad WSGI Version: {version}\n"
 
     return response_raw_text
