@@ -11,6 +11,7 @@ from OnTheRoad import flask_config
 
 logger = logging.getLogger(__name__.split('.')[0])
 logger.addHandler(default_handler)
+logger.addHandler(logging.StreamHandler(sys.stdout))
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/": {"origins": "johnstratoudakis.com"}})
