@@ -15,14 +15,14 @@ app = Flask(__name__)
 cors = CORS(app, resources={r"/": {"origins": "johnstratoudakis.com"}})
 #CORS(app)
 
-def set_up_logging(verbose):
-    if verbose:
-        logger.setLevel(logging.DEBUG)
-    else:
-        logger.setLevel(logging.INFO)
-    formatter = logging.Formatter('%(asctime)s - %(message)s')
-    logger.info("INFO")
-    logger.debug("DEBUG")
+#def set_up_logging(verbose):
+#    if verbose:
+#        logger.setLevel(logging.DEBUG)
+#    else:
+#        logger.setLevel(logging.INFO)
+#    formatter = logging.Formatter('%(asctime)s - %(message)s')
+#    logger.info("INFO")
+#    logger.debug("DEBUG")
 
 #set_up_logging(false)
 
@@ -34,8 +34,8 @@ def set_up_logging(verbose):
 def get_version():
     version = flask_config.version
 
-    logger.info(f'[INFO] get_version called, version: {version}')
-    logger.debug(f'[DEBUG] get_version called, version: {version}')
+#    logger.info(f'[INFO] get_version called, version: {version}')
+#    logger.debug(f'[DEBUG] get_version called, version: {version}')
     response_raw_text = f"OnTheRoad WSGI Version: {version}\n"
 
     return response_raw_text
