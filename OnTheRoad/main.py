@@ -4,12 +4,12 @@ from flask_cors import CORS
 #from flask_cors import cross_origin
 #from flask_cors import crossdomain
 
-import logging
+#import logging
 
 from OnTheRoad import flask_config
 
-logger = logging.getLogger(__name__.split('.')[0])
-logger.addHandler(default_handler)
+#logger = logging.getLogger(__name__.split('.')[0])
+#logger.addHandler(default_handler)
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/": {"origins": "johnstratoudakis.com"}})
@@ -24,7 +24,7 @@ def set_up_logging(verbose):
     logger.info("INFO")
     logger.debug("DEBUG")
 
-set_up_logging(false)
+#set_up_logging(false)
 
 #cors = CORS(app, resources={r"/slash": {"origins": "*"}})
 #import flask_cors
