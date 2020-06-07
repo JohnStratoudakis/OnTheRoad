@@ -29,6 +29,7 @@ dictConfig({
     }
 })
 
+LINE_LENGTH = 80
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/": {"origins": "johnstratoudakis.com"}})
@@ -49,9 +50,10 @@ def get_version():
 @app.route('/', methods=['POST'])
 def default_path():
     print("-" * LINE_LENGTH)
-#    logger.info("=" * LINE_LENGTH)
+    app.logger.info("=" * LINE_LENGTH)
     API_KEY = os.environ['GOOG_API_KEY']
-#    logger.error("=" * LINE_LENGTH)
+    app.logger.error(f"API_KEY: {API_KEY}"")
+    app.logger.error("=" * LINE_LENGTH)
     if request.is_json:
 #        API_KEY = os.environ['GOOG_API_KEY']
 #        print("JOHN_API_KEY: {}".format(API_KEY))
@@ -64,7 +66,7 @@ def default_path():
         allCities = []
         for location in locations:
             loc_obj = Location.Location(location[0], location[0], location[1])
-            logger.info("Location: {}".format(location[0]))
+            app.logger.info("Location: {}".format(location[0]))
             allCities.append(loc_obj)
 
         best_state, best_fitness = BestPath.calcTsp(allCities)
@@ -90,13 +92,13 @@ def default_path():
                 "message":"Request not in Json format"
                 }
     return jsonify(resp)
-    #version = flask_config.version
-    version="1.0.1"
-    print(f"Returning version: {version}")
-
-    response_raw_text = f"OnTheRoad WSGI Version: {version}\n"
-
-    return response_raw_text
+#    #version = flask_config.version
+#    version="1.0.1"
+#    print(f"Returning version: {version}")
+#
+#    response_raw_text = f"OnTheRoad WSGI Version: {version}\n"
+#
+#    return response_raw_text
 
 @app.route('/slash', methods=['GET'])
 def slash():
