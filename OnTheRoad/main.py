@@ -4,7 +4,7 @@ from flask_cors import CORS
 #from flask_cors import cross_origin
 #from flask_cors import crossdomain
 
-#import logging
+import logging
 
 from OnTheRoad import flask_config
 
