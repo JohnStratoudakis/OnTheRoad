@@ -4,20 +4,38 @@ from flask_cors import CORS
 #from flask_cors import cross_origin
 #from flask_cors import crossdomain
 
+import logging
+
 from OnTheRoad import flask_config
+
+logger = logging.getLogger(__name__.split('.')[0])
+logger.addHandler(default_handler)
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/": {"origins": "johnstratoudakis.com"}})
 #CORS(app)
 
+def set_up_logging(verbose):
+    if verbose:
+        logger.setLevel(logging.DEBUG)
+    else:
+        logger.setLevel(logging.INFO)
+    formatter = logging.Formatter('%(asctime)s - %(message)s')
+    logger.info("INFO")
+    logger.debug("DEBUG")
+
+set_up_logging(false)
+
 #cors = CORS(app, resources={r"/slash": {"origins": "*"}})
 #import flask_cors
-@app.route('/version', methods=['GET'])
 #@crossdomain(origin='*')
 #@flask_cors.cross_origin()
+@app.route('/version', methods=['GET'])
 def get_version():
     version = flask_config.version
 
+    logger.info(f'[INFO] get_version called, version: {version}')
+    logger.debug(f'[DEBUG] get_version called, version: {version}')
     response_raw_text = f"OnTheRoad WSGI Version: {version}\n"
 
     return response_raw_text
