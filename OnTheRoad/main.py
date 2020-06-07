@@ -26,41 +26,24 @@ dictConfig({
     }
 })
 
-#logger = logging.getLogger(__name__.split('.')[0])
-#logger.addHandler(default_handler)
-#logger.addHandler(logging.StreamHandler(sys.stdout))
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/": {"origins": "johnstratoudakis.com"}})
-#CORS(app)
 
-#def set_up_logging(verbose):
-#    if verbose:
-#        logger.setLevel(logging.DEBUG)
-#    else:
-#        logger.setLevel(logging.INFO)
-#    formatter = logging.Formatter('%(asctime)s - %(message)s')
-#    logger.info("INFO")
-#    logger.debug("DEBUG")
 
-#set_up_logging(false)
-
-#cors = CORS(app, resources={r"/slash": {"origins": "*"}})
-#import flask_cors
-#@crossdomain(origin='*')
-#@flask_cors.cross_origin()
 @app.route('/version', methods=['GET'])
 def get_version():
     version = flask_config.version
 
-    print(f'[PRINT_2] get_version called, version: {version}')
-    app.logger.info(f'[INFO_2] get_version called, version: {version}')
-    app.logger.debug(f'[DEBUG_2] get_version called, version: {version}')
+    print(f'[PRINT_3] get_version called, version: {version}')
+    app.logger.info(f'[INFO_3] get_version called, version: {version}')
+    app.logger.debug(f'[DEBUG_3] get_version called, version: {version}')
+    app.logger.debug(f'[DEBUG_3] get_version called, version: {version}')
     response_raw_text = f"OnTheRoad WSGI Version: {version}\n"
 
     return response_raw_text
 
-@app.route('/locations', methods=['POST'])
+@app.route('/', methods=['POST'])
 def locations():
     #version = flask_config.version
     version="1.0.1"
