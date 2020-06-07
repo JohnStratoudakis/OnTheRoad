@@ -4,10 +4,13 @@ from flask_cors import CORS
 from flask.logging import default_handler
 #from flask_cors import cross_origin
 #from flask_cors import crossdomain
+from flask import jsonify
 
 import logging
+import os
 import sys
 from OnTheRoad import flask_config
+from OnTheRoad import BestPath, Location, TravelCost
 
 from logging.config import dictConfig
 dictConfig({
@@ -44,7 +47,49 @@ def get_version():
     return response_raw_text
 
 @app.route('/', methods=['POST'])
-def locations():
+def default_path():
+    print("-" * LINE_LENGTH)
+#    logger.info("=" * LINE_LENGTH)
+    API_KEY = os.environ['GOOG_API_KEY']
+#    logger.error("=" * LINE_LENGTH)
+    if request.is_json:
+#        API_KEY = os.environ['GOOG_API_KEY']
+#        print("JOHN_API_KEY: {}".format(API_KEY))
+        content = request.get_json()
+        # TODO: Use python logger with appropriate log leves
+        #print(f"Content: {content}")
+        locations = content['locations']
+        #print(f"Locations: {locations}")
+
+        allCities = []
+        for location in locations:
+            loc_obj = Location.Location(location[0], location[0], location[1])
+            logger.info("Location: {}".format(location[0]))
+            allCities.append(loc_obj)
+
+        best_state, best_fitness = BestPath.calcTsp(allCities)
+        #best_state = [1, 0, 2]
+        best_path = []
+        for state in best_state:
+            loc_obj = Location.Location(allCities[state].getName(),
+                                        allCities[state].getName(),
+                                        allCities[state].getAddress())
+            # TODO: Figure out how to serialize Location object
+            #       to send back a better response
+            #best_path.append(loc_obj)
+            best_path.append([loc_obj.getName(), loc_obj.getAddress()])
+
+        resp = {
+                "status":200,
+                "message":"Successfully calculated",
+                "best_path": best_path
+                }
+    else:
+        resp = {
+                "status":400,
+                "message":"Request not in Json format"
+                }
+    return jsonify(resp)
     #version = flask_config.version
     version="1.0.1"
     print(f"Returning version: {version}")
