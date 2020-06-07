@@ -36,6 +36,7 @@ cors = CORS(app, resources={r"/": {"origins": "johnstratoudakis.com"}})
 def get_version():
     version = flask_config.version
 
+    print(f'[INFO] get_version called, version: {version}')
     logger.info(f'[INFO] get_version called, version: {version}')
     logger.debug(f'[DEBUG] get_version called, version: {version}')
     response_raw_text = f"OnTheRoad WSGI Version: {version}\n"
