@@ -8,7 +8,7 @@ import logging
 
 from OnTheRoad import flask_config
 
-#logger = logging.getLogger(__name__.split('.')[0])
+logger = logging.getLogger(__name__.split('.')[0])
 #logger.addHandler(default_handler)
 
 app = Flask(__name__)
