@@ -52,7 +52,7 @@ def default_path():
     print("-" * LINE_LENGTH)
     app.logger.info("=" * LINE_LENGTH)
     API_KEY = os.environ['GOOG_API_KEY']
-    app.logger.error(f"API_KEY: {API_KEY}"")
+    app.logger.error(f"API_KEY: {API_KEY}")
     app.logger.error("=" * LINE_LENGTH)
     if request.is_json:
 #        API_KEY = os.environ['GOOG_API_KEY']
