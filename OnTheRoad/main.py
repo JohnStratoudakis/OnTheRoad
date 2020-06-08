@@ -5,6 +5,7 @@ from flask.logging import default_handler
 #from flask_cors import cross_origin
 #from flask_cors import crossdomain
 from flask import jsonify
+from flask import request
 
 import logging
 import os
@@ -51,9 +52,9 @@ def get_version():
 def default_path():
     print("-" * LINE_LENGTH)
     app.logger.info("=" * LINE_LENGTH)
-    API_KEY = os.environ['GOOG_API_KEY']
-    app.logger.error(f"API_KEY: {API_KEY}")
-    app.logger.error("=" * LINE_LENGTH)
+#    API_KEY = os.environ['GOOG_API_KEY']
+#    app.logger.error(f"API_KEY: {API_KEY}")
+#    app.logger.error("=" * LINE_LENGTH)
     if request.is_json:
 #        API_KEY = os.environ['GOOG_API_KEY']
 #        print("JOHN_API_KEY: {}".format(API_KEY))
