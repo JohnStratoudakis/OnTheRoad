@@ -27,6 +27,14 @@ class BestPathTests(TestCase):
     mun = Location.Location("Munich", "mun", "Munich, Germany")
     lju = Location.Location("Ljubljana", "lju", "ljubljana, Slovenia")
 
+    # North Eastern Europe
+    sto = Location.Location("Stockholm", "sto", "Stockholm, Sweden")
+    hel = Location.Location("Helsinki", "hel", "Helsinki, Finland")
+    tal = Location.Location("Tallinn", "tal", "Tallinn, Estonia")
+    rig = Location.Location("Riga", "rig", "Riga, Latvia")
+    vil = Location.Location("Vilnius", "vil", "Vilnius, Lithuania")
+    kra = Location.Location("Krakow", "kra", "Krakow, Poland")
+
     def getIndex(self, shortName, allCities):
         for idx in range(len(allCities)):
             if shortName == allCities[idx].getShortName():

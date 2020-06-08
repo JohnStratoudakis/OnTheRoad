@@ -50,28 +50,20 @@ def get_version():
 
 @app.route('/', methods=['POST'])
 def default_path():
-#    print("-" * LINE_LENGTH)
     app.logger.info("=" * LINE_LENGTH)
-#    API_KEY = os.environ['GOOG_API_KEY']
-#    app.logger.error(f"API_KEY: {API_KEY}")
-#    app.logger.error("=" * LINE_LENGTH)
     if request.is_json:
-#        API_KEY = os.environ['GOOG_API_KEY']
-#        print("JOHN_API_KEY: {}".format(API_KEY))
         content = request.get_json()
-        # TODO: Use python logger with appropriate log leves
-        #print(f"Content: {content}")
+#        app.logger.info(f"requiest_content: {content}")
         locations = content['locations']
-        #print(f"Locations: {locations}")
 
         allCities = []
         for location in locations:
             loc_obj = Location.Location(location[0], location[0], location[1])
-            app.logger.info("Location: {}".format(location[0]))
+            app.logger.info(" - Location: {}".format(location[0]))
             allCities.append(loc_obj)
 
         best_state, best_fitness = BestPath.calcTsp(allCities)
-        #best_state = [1, 0, 2]
+
         best_path = []
         for state in best_state:
             loc_obj = Location.Location(allCities[state].getName(),
@@ -83,14 +75,14 @@ def default_path():
             best_path.append([loc_obj.getName(), loc_obj.getAddress()])
 
         resp = {
-                "status":200,
-                "message":"Successfully calculated",
+                "status": 200,
+                "message": "Successfully calculated",
                 "best_path": best_path
                 }
     else:
         resp = {
-                "status":400,
-                "message":"Request not in Json format"
+                "status": 400,
+                "message": "Request not in Json format"
                 }
     app.logger.info(f"Sending: {resp}")
     app.logger.info(f"Sending: {jsonify(resp)}")
