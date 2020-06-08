@@ -118,7 +118,7 @@ class App extends React.Component {
     }
 
     handleOnAddressesChange(new_addresses) {
-        console.log("App.handleOnAddressesChange()");
+        //console.log("App.handleOnAddressesChange()");
         this.setState({addresses: new_addresses});
     }
 

@@ -93,7 +93,7 @@ def default_path():
                 "message":"Request not in Json format"
                 }
     app.logger.info(f"Sending: {resp}")
-    app.logger.info(f"Sending: {jsonify(resp})")
+    app.logger.info(f"Sending: {jsonify(resp)}")
     return jsonify(resp)
 
 @app.route('/slash', methods=['GET'])
