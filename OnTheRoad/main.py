@@ -50,7 +50,7 @@ def get_version():
 
 @app.route('/', methods=['POST'])
 def default_path():
-    print("-" * LINE_LENGTH)
+#    print("-" * LINE_LENGTH)
     app.logger.info("=" * LINE_LENGTH)
 #    API_KEY = os.environ['GOOG_API_KEY']
 #    app.logger.error(f"API_KEY: {API_KEY}")
@@ -92,14 +92,9 @@ def default_path():
                 "status":400,
                 "message":"Request not in Json format"
                 }
+    app.logger.info(f"Sending: {resp}")
+    app.logger.info(f"Sending: {jsonify(resp})")
     return jsonify(resp)
-#    #version = flask_config.version
-#    version="1.0.1"
-#    print(f"Returning version: {version}")
-#
-#    response_raw_text = f"OnTheRoad WSGI Version: {version}\n"
-#
-#    return response_raw_text
 
 @app.route('/slash', methods=['GET'])
 def slash():
