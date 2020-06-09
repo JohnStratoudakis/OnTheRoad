@@ -127,7 +127,7 @@ class BestPathTests(TestCase):
 
 
     @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=tests.unit.MockDistance.mock_getDistanceBetween)
-    def test_may_trip(self):
+    def test_may_trip_2019(self):
         # GIVEN
         allCities = [self.lon, self.bru, self.ams]
 

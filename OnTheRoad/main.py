@@ -6,6 +6,7 @@ from flask.logging import default_handler
 #from flask_cors import crossdomain
 from flask import jsonify
 from flask import request
+from flask import app
 
 import logging
 import os

@@ -2,8 +2,14 @@ ams, Amsterdam, The Netherlands
 bra, Bratislava, Slovakia
 bru, Brussels, Belgium
 bud, Budapest, Hungary
+hel, Helsinki, Finland
+kra, Krakow, Poland
 lon, London, England
 lju, Ljubljana, Slovenia
 mun, Munich, Germany
 pra, Prague, Czechia
+rig, Riga, Latvia
+sto, Stockholm, Sweden
+tal, Tallinn, Estonia
 vie, Vienna, Austria
+vil, Vilnius, Lithuania

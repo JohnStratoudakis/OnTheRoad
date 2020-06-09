@@ -133,43 +133,43 @@ test-%: OnTheRoad/venv
 export CITIES_FILE:=tests/unit/cities_list.txt
 .PHONY: update_distance_matrix
 update_distance_matrix: export OUTPUT_FILE:=tests/unit/MockDistance.py
-update_distance_matrix:
+update_distance_matrix: OnTheRoad/venv
 	@echo "Dump Distance Matrix ${CITIES_FILE}"
-	${PYTHON} -m OnTheRoad --dump-matrix --cities-file ${CITIES_FILE} --output ${OUTPUT_FILE}
+	. ./OnTheRoad/venv/bin/activate; ${PYTHON} -m OnTheRoad --dump-matrix --cities-file ${CITIES_FILE} --output ${OUTPUT_FILE}
 
 .PHONY: dump_distance_matrix
-dump_distance_matrix:
+dump_distance_matrix: OnTheRoad/venv
 	@echo "Dump Distance Matrix Verbose"
-	${PYTHON} -m OnTheRoad --dump-matrix --cities-file ${CITIES_FILE} --verbose
+	. ./OnTheRoad/venv/bin/activate; ${PYTHON} -m OnTheRoad --dump-matrix --cities-file ${CITIES_FILE}
 
 .PHONY: dump_distance_matrix-info
-dump_distance_matrix-info:
+dump_distance_matrix-info: OnTheRoad/venv
 	@echo "Dump Distance Matrix Verbose"
-	${PYTHON} -m OnTheRoad --dump-matrix --cities-file ${CITIES_FILE}
+	. ./OnTheRoad/venv/bin/activate; ${PYTHON} -m OnTheRoad --dump-matrix --cities-file ${CITIES_FILE} --verbose
 
 .PHONY: dump_path-%
-dump_path-%:
+dump_path-%: OnTheRoad/venv
 	@echo "Dump path details for: $*"
-	${PYTHON} -m OnTheRoad --dump-path $*
+	. ./OnTheRoad/venv/bin/activate; ${PYTHON} -m OnTheRoad --dump-path $*
 
 .PHONY: simple_query
-simple_query:
+simple_query: OnTheRoad/venv
 	@echo "Executing a simple query defined in ./tests/unit/small_tests.txt"
-	${PYTHON} -m OnTheRoad --calc-path ./tests/uname/small_tests.txt
+	. ./OnTheRoad/venv/bin/activate; ${PYTHON} -m OnTheRoad --calc-path ./tests/uname/small_tests.txt
 ###############################################################################
-
-.PHONY: package
-package:
-	${PYTHON} setup.py sdist bdist_wheel
-
-.PHONY: publish-test
-publish-test:
-	 ${PYTHON} -m twine upload --verbose --config-file .pypirc-bot -r testpypi dist/*
-
-.PHONY: publish-prod
-publish-prod:
-	 ${PYTHON} -m twine upload --verbose --config-file .pypirc-bot -r pypi dist/*
-
+#
+#.PHONY: package
+#package:
+#	${PYTHON} setup.py sdist bdist_wheel
+#
+#.PHONY: publish-test
+#publish-test:
+#	 ${PYTHON} -m twine upload --verbose --config-file .pypirc-bot -r testpypi dist/*
+#
+#.PHONY: publish-prod
+#publish-prod:
+#	 ${PYTHON} -m twine upload --verbose --config-file .pypirc-bot -r pypi dist/*
+#
 ###############################################################################
 # Running in WSL with Ubuntu 18
 
