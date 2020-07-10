@@ -1,22 +1,26 @@
+PYTHON=python3.8
 
-ifeq ($(OS),Windows_NT)
-    ARCH=win
-	PYTHON?=python.exe
-else
-	PYTHON?=python3.7
-	UNAME_S := $(shell uname -s)
-	UNAME_M := $(shell uname -m)
-    ifeq ($(UNAME_S),Linux)
-		ifeq ($(UNAME_M),armv7l)
-			ARCH=rpi
-		else
-			ARCH=linux
-		endif
-    endif
-    ifeq ($(UNAME_S),Darwin)
-    	ARCH=osx
-    endif
-endif
+# Backup MySql Databases gist
+# https://gist.github.com/spalladino/6d981f7b33f6e0afe6bb
+
+#ifeq ($(OS),Windows_NT)
+#    ARCH=win
+#	PYTHON?=python.exe
+#else
+#	PYTHON?=python3.8
+#	UNAME_S := $(shell uname -s)
+#	UNAME_M := $(shell uname -m)
+#    ifeq ($(UNAME_S),Linux)
+#		ifeq ($(UNAME_M),armv7l)
+#			ARCH=rpi
+#		else
+#			ARCH=linux
+#		endif
+#    endif
+#    ifeq ($(UNAME_S),Darwin)
+#    	ARCH=osx
+#    endif
+#endif
 
 .PHONY: help
 help:
@@ -96,13 +100,13 @@ OnTheRoad/venv: OnTheRoad/venv/bin/activate
 
 #.PHONY: OnTheRoad/venv/bin/activate
 OnTheRoad/venv/bin/activate: requirements.txt
-	test -d OnTheRoad/venv || python3.7 -m venv OnTheRoad/venv
+	test -d OnTheRoad/venv || ${PYTHON} -m venv OnTheRoad/venv
 	. ./OnTheRoad/venv/bin/activate; pip install -Ur requirements.txt
 	touch OnTheRoad/venv/bin/activate
 
 .PHONY: start_flask
 start_flask: OnTheRoad/venv
-	. ./OnTheRoad/venv/bin/activate; FLASK_ENV=development python3.7 OnTheRoad/main.py
+	. ./OnTheRoad/venv/bin/activate; FLASK_ENV=development ${PYTHON} OnTheRoad/main.py
 
 .PHONY: unit_tests
 unit_tests: OnTheRoad/venv

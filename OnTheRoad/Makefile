@@ -1,3 +1,4 @@
+PYTHON=python3.8
 
 clean:
 	rm -rf venv
@@ -5,12 +6,12 @@ clean:
 venv: venv/bin/activate
 
 venv/bin/activate: requirements.txt
-	test -d venv || python3.7 -m venv venv
+	test -d venv || ${PYTHON} -m venv venv
 	. venv/bin/activate; pip install -Ur requirements.txt
 	touch venv/bin/activate
 
 start_server: venv
-	. venv/bin/activate; FLASK_ENV=development python3.7 main.py
+	. venv/bin/activate; FLASK_ENV=development ${PYTHON} main.py
 
 get_local_version:
 	curl http://127.0.0.1:5000/version
