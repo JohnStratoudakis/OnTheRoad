@@ -11,7 +11,12 @@ import pytest
 import tests.unit.MockDistance
 
 from unittest import mock, TestCase
-from hamcrest import any_of, assert_that, equal_to
+from hamcrest import (
+    any_of,
+    assert_that,
+    equal_to,
+    greater_than
+)
 
 class BestPathTests(TestCase):
     # An actual Euro Trip I did in May of 2019
@@ -136,109 +141,103 @@ class BestPathTests(TestCase):
         allCities = [self.lon, self.bru, self.ams]
 
         # WHEN
-        best_state, fitness = BestPath.calcTsp(allCities)
+        index = self.getIndex("ams", allCities)
+        best_state, fitness = BestPath.calcTsp(allCities, index)
 
         # THEN
-        # Technically there are multiple 'best paths' to take
-        # London -> Brussels -> Amsterdam
         # Amsterdam -> Brussels -> London
-        assert_that(best_state[0], any_of(0, 2))
-        assert_that(best_state[1], equal_to(1))
-        assert_that(best_state[2], any_of(0, 2))
+        assert_that(best_state[0], equal_to(self.getIndex("ams", allCities)))
+        assert_that(best_state[1], equal_to(self.getIndex("bru", allCities)))
+        assert_that(best_state[2], equal_to(self.getIndex("lon", allCities)))
 
-        tot_distance_from_lon = TravelCost.getDistanceBetween(self.lon, self.bru)[0] + \
-                                TravelCost.getDistanceBetween(self.bru, self.ams)[0]
-        tot_distance_from_ams = TravelCost.getDistanceBetween(self.ams, self.bud)[0] + \
-                                TravelCost.getDistanceBetween(self.lon, self.bru)[0]
+        tot_ams_bru_lon = TravelCost.getDistanceBetween(self.ams, self.bru)[0] + \
+                          TravelCost.getDistanceBetween(self.bru, self.lon)[0]
 
-#        assert_that(fitness, any_of(tot_distance_from_lon, tot_distance_from_ams))
+        assert_that(fitness, equal_to(tot_ams_bru_lon))
 
-    #@pytest.mark.skip(reason="Failing")
     @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=tests.unit.MockDistance.mock_getDistanceBetween)
     def test_may_trip_with_Budapest(self):
         # GIVEN
         allCities = [self.lon, self.bud, self.bru, self.ams]
 
-        # WHEN
-        best_state, best_fitness = BestPath.calcTsp(allCities)
-
-        DistanceMatrix.dump_ascii_matrix(allCities)
-        BestPath.dumpBestPath(allCities, best_state, best_fitness)
-        import sys; sys.exit(0)
+        # WHEN - Start in Budapest
+        index = self.getIndex(self.bud.getShortName(), allCities)
+        best_state, best_fitness = BestPath.calcTsp(allCities, index)
 
         # THEN
-        tot_lon_ams_bru_bud = TravelCost.getDistanceBetween(self.lon, self.ams)[0] + \
+        tot_bud_ams_bru_lon = TravelCost.getDistanceBetween(self.bud, self.ams)[0] + \
                               TravelCost.getDistanceBetween(self.ams, self.bru)[0] + \
-                              TravelCost.getDistanceBetween(self.bru, self.bud)[0]
-#        assert_that(best_fitness, equal_to(tot_lon_ams_bru_bud))
+                              TravelCost.getDistanceBetween(self.bru, self.lon)[0]
+        assert_that(best_fitness, equal_to(tot_bud_ams_bru_lon))
 
-        assert_that(best_state[0], equal_to(self.getIndex("lon", allCities)))
+        assert_that(best_state[0], equal_to(self.getIndex("bud", allCities)))
         assert_that(best_state[1], equal_to(self.getIndex("ams", allCities)))
         assert_that(best_state[2], equal_to(self.getIndex("bru", allCities)))
-        assert_that(best_state[3], equal_to(self.getIndex("bud", allCities)))
+        assert_that(best_state[3], equal_to(self.getIndex("lon", allCities)))
 
-
-    @pytest.mark.skip(reason="Failing")
     @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=tests.unit.MockDistance.mock_getDistanceBetween)
     def test_dec_trip(self):
         # GIVEN
         allCities = [self.vie, self.bud, self.bra, self.pra]
 
-        # WHEN
-        best_state, best_fitness = BestPath.calcTsp(allCities)
+        # WHEN - Start in Prague
+        index = self.getIndex(self.pra.getShortName(), allCities)
+        best_state, best_fitness = BestPath.calcTsp(allCities, index)
 
         # THEN
         tot_pra_bra_vie_bud = TravelCost.getDistanceBetween(self.pra, self.bra)[0] + \
                               TravelCost.getDistanceBetween(self.bra, self.vie)[0] + \
                               TravelCost.getDistanceBetween(self.vie, self.bud)[0]
-        #assert_that(best_fitness, equal_to(tot_pra_bra_vie_bud))
+        assert_that(best_fitness, equal_to(tot_pra_bra_vie_bud))
 
         assert_that(best_state[0], equal_to(self.getIndex("pra", allCities)))
         assert_that(best_state[1], equal_to(self.getIndex("bra", allCities)))
         assert_that(best_state[2], equal_to(self.getIndex("vie", allCities)))
         assert_that(best_state[3], equal_to(self.getIndex("bud", allCities)))
 
-    @pytest.mark.skip(reason="Failing")
     @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=tests.unit.MockDistance.mock_getDistanceBetween)
     def test_dec_trip_2(self):
         # GIVEN
         allCities = [self.vie, self.bud, self.pra, self.bra]
 
         # WHEN
-        best_state, best_fitness = BestPath.calcTsp(allCities)
+        index = self.getIndex(self.pra.getShortName(), allCities)
+        best_state, best_fitness = BestPath.calcTsp(allCities, index)
 
         # THEN
         tot_pra_bra_vie_bud = TravelCost.getDistanceBetween(self.pra, self.bra)[0] + \
                               TravelCost.getDistanceBetween(self.bra, self.vie)[0] + \
                               TravelCost.getDistanceBetween(self.vie, self.bud)[0]
-#        assert_that(best_fitness, equal_to(tot_pra_bra_vie_bud))
+        assert_that(best_fitness, equal_to(tot_pra_bra_vie_bud))
 
         assert_that(best_state[0], equal_to(self.getIndex("pra", allCities)))
         assert_that(best_state[1], equal_to(self.getIndex("bra", allCities)))
         assert_that(best_state[2], equal_to(self.getIndex("vie", allCities)))
         assert_that(best_state[3], equal_to(self.getIndex("bud", allCities)))
 
-    @pytest.mark.skip(reason="Failing")
     @mock.patch('OnTheRoad.TravelCost.TravelCost.getDistanceBetween', new=tests.unit.MockDistance.mock_getDistanceBetween)
     def test_south_central_europe(self):
         # GIVEN
         allCities = [self.mun, self.lju, self.vie, self.pra, self.bra, self.bud]
 
         # WHEN
-        best_state, best_fitness = BestPath.calcTsp(allCities)
-#        BestPath.dumpBestPath(allCities, best_state, best_fitness)
+        index = self.getIndex(self.pra.getShortName(), allCities)
+        best_state, best_fitness = BestPath.calcTsp(allCities, index)
+
+#        DistanceMatrix.dump_ascii_matrix(allCities)
+        BestPath.dumpBestPath(allCities, best_state, best_fitness)
 
         # THEN
-        tot_pra_bud_bra_vie_lju_mun = TravelCost.getDistanceBetween(self.pra, self.bud)[0] + \
+        tot_pra_vie_bud_bra_lju_mun = TravelCost.getDistanceBetween(self.pra, self.vie)[0] + \
+                                      TravelCost.getDistanceBetween(self.vie, self.bud)[0] + \
                                       TravelCost.getDistanceBetween(self.bud, self.bra)[0] + \
-                                      TravelCost.getDistanceBetween(self.bra, self.vie)[0] + \
-                                      TravelCost.getDistanceBetween(self.vie, self.lju)[0] + \
+                                      TravelCost.getDistanceBetween(self.bra, self.lju)[0] + \
                                       TravelCost.getDistanceBetween(self.lju, self.mun)[0]
-#        assert_that(best_fitness, equal_to(tot_pra_bud_bra_vie_lju_mun))
+        assert_that(best_fitness, equal_to(tot_pra_vie_bud_bra_lju_mun))
 
         assert_that(best_state[0], equal_to(self.getIndex("pra", allCities)))
-        assert_that(best_state[1], equal_to(self.getIndex("bud", allCities)))
-        assert_that(best_state[2], equal_to(self.getIndex("bra", allCities)))
-        assert_that(best_state[3], equal_to(self.getIndex("vie", allCities)))
+        assert_that(best_state[1], equal_to(self.getIndex("vie", allCities)))
+        assert_that(best_state[2], equal_to(self.getIndex("bud", allCities)))
+        assert_that(best_state[3], equal_to(self.getIndex("bra", allCities)))
         assert_that(best_state[4], equal_to(self.getIndex("lju", allCities)))
         assert_that(best_state[5], equal_to(self.getIndex("mun", allCities)))

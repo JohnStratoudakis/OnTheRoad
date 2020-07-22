@@ -3,15 +3,20 @@ from OnTheRoad.TravelCost import TravelCost
 import logging
 from flask.logging import default_handler
 import traceback
+import numpy as np
 
 logger = logging.getLogger(__name__.split('.')[0])
 logger.addHandler(default_handler)
 
 
 # state is an array of cities to visit
-def tsp_fitness(state, c):
+def tsp_fitness(state, c, starting_point = None):
     total_cost = 0
     try:
+        if starting_point:
+            if state[0] != starting_point:
+                return np.inf
+
         for i in range(0, len(state)-1):
             shortA = c[state[i]]
             shortB = c[state[i+1]]
@@ -25,7 +30,7 @@ def tsp_fitness(state, c):
         logger.error(f"track: {track}")
     return total_cost
 
-def calcTsp(allCities):
+def calcTsp(allCities, starting_point=None):
     from mlrose import TravellingSales, TSPOpt, genetic_alg, CustomFitness
     import numpy as np
 
@@ -33,7 +38,7 @@ def calcTsp(allCities):
     best_fitness = []
 
     # Initialize custom fitness function object
-    kwargs = {'c': allCities}
+    kwargs = {'c': allCities, 'starting_point':starting_point}
     fitness_cust = CustomFitness(tsp_fitness, problem_type='tsp', **kwargs)
 
     # Define optimization problem object

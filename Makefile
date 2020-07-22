@@ -3,25 +3,6 @@ PYTHON=python3.8
 # Backup MySql Databases gist
 # https://gist.github.com/spalladino/6d981f7b33f6e0afe6bb
 
-#ifeq ($(OS),Windows_NT)
-#    ARCH=win
-#	PYTHON?=python.exe
-#else
-#	PYTHON?=python3.8
-#	UNAME_S := $(shell uname -s)
-#	UNAME_M := $(shell uname -m)
-#    ifeq ($(UNAME_S),Linux)
-#		ifeq ($(UNAME_M),armv7l)
-#			ARCH=rpi
-#		else
-#			ARCH=linux
-#		endif
-#    endif
-#    ifeq ($(UNAME_S),Darwin)
-#    	ARCH=osx
-#    endif
-#endif
-
 .PHONY: help
 help:
 	@echo "clean"
@@ -43,15 +24,6 @@ help:
 	@echo "start_uwsgi"
 	@echo "start_client"
 
-
-.PHONY: universal-win
-universal-win:
-	@echo Windows version of Universal Rule
-
-.PHONY: universal
-universal:
-	@echo UNIVERSAL RULE
-	@echo Detected Architecture: ${ARCH}
 
 .PHONY: clean
 clean:

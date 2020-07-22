@@ -10,3 +10,4 @@ travis-deploy-token
 .env
 node_modules
 *.swp
+*.pyc
