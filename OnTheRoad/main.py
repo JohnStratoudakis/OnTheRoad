@@ -11,8 +11,10 @@ from flask import app
 import logging
 import os
 import sys
-from OnTheRoad import flask_config
-from OnTheRoad import BestPath, Location, TravelCost
+#from OnTheRoad import flask_config
+#from OnTheRoad import BestPath, Location, TravelCost
+#import flask_config
+#import BestPath, Location, TravelCost
 
 from logging.config import dictConfig
 dictConfig({
