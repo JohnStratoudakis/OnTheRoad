@@ -10,8 +10,8 @@ venv/bin/activate: requirements.txt
 	. venv/bin/activate; pip install -Ur requirements.txt
 	touch venv/bin/activate
 
-start_server: venv
-	. venv/bin/activate; FLASK_ENV=development ${PYTHON} main.py
+#start_server: venv
+#	. venv/bin/activate; FLASK_ENV=development ${PYTHON} main.py
 
 get_local_version:
 	curl http://127.0.0.1:5000/version

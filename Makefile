@@ -78,7 +78,7 @@ OnTheRoad/venv/bin/activate: requirements.txt
 
 .PHONY: start_flask
 start_flask: OnTheRoad/venv
-	. ./OnTheRoad/venv/bin/activate; FLASK_ENV=development ${PYTHON} OnTheRoad/main.py
+	. ./OnTheRoad/venv/bin/activate; FLASK_ENV=development ${PYTHON} -m OnTheRoad.main
 
 .PHONY: unit_tests
 unit_tests: OnTheRoad/venv
