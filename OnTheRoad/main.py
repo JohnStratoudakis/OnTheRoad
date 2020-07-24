@@ -1,22 +1,25 @@
 
-from flask import Flask
+from flask import (
+    app,
+    Flask,
+    jsonify,
+    request
+)
 from flask_cors import CORS
 from flask.logging import default_handler
-#from flask_cors import cross_origin
-#from flask_cors import crossdomain
-from flask import jsonify
-from flask import request
-from flask import app
+
+from OnTheRoad import (
+    BestPath,
+    flask_config,
+    Location,
+    TravelCost
+)
 
 import logging
+from logging.config import dictConfig
 import os
 import sys
-from OnTheRoad import flask_config
-from OnTheRoad import BestPath, Location, TravelCost
-#import flask_config
-#import BestPath, Location, TravelCost
 
-from logging.config import dictConfig
 dictConfig({
     'version': 1,
     'formatters': {'default': {
