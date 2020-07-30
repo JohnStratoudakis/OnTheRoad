@@ -85,6 +85,7 @@ class Location extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.onAdd = this.onAdd.bind(this);
+        this.onRemove = this.onRemove.bind(this);
     }
 
     handleChange(e) {
@@ -114,18 +115,18 @@ class Location extends React.Component {
       });
 
       window.localStorage.setItem("addresses", JSON.stringify(allAddresses));
-//      console.log(`Adding new address to state: ${allAddresses}`);
+      this.handleChange(allAddresses);
+    }
 
-      // Reset PlacesAutoComplete
-      //var placesAutoComplete = document.getElementById("placesAutoComplete");
-      //placesAutoComplete.value = "";
-//      console.log(`this.state.allAddresses.length: ${this.state.allAddresses.length}`);
-//      for(var i=0; i < this.state.allAddresses.length; i++) {
-//        console.log(`this.state.allAddresses[${i}]: ${this.state.allAddresses[i]}`);
-//      }
-      //console.log("LOCATION->ON_ADD");
-      //console.log(`e: ${e}`);
-      //console.log(`e.length: ${e.toString()}`);
+    onRemove(index) {
+      console.log(`Location.onRemove() index: = ${index}`);
+      var allAddresses = this.props.addresses;
+      allAddresses.splice(index, 1);
+      this.setState({
+        addresses: allAddresses
+      });
+
+      window.localStorage.setItem("addresses", JSON.stringify(allAddresses));
       this.handleChange(allAddresses);
     }
 
@@ -157,6 +158,13 @@ class Location extends React.Component {
           //console.log(`lng: ${this.state.latlng.lng}`);
         }
 
+        var destinations = addresses.map(function(name, index) {
+                                  console.log("Adding address: {name}:{index}");
+                                  return  <tr key={index}>
+                                            <td>{name[2].toString()}</td>
+                                            <td>{index}-RemoveButton<Button variant="secondary" onClick={() => {this.onRemove(index)}} size="sm">Remove</Button></td>
+                                          </tr>;
+                                }.bind(this));
         return (
             <div className={"location.style"} >
                 <div className="container no-padding">
@@ -223,15 +231,7 @@ class Location extends React.Component {
                               </tr>
                             </thead>
                             <tbody>
-                                {
-                                addresses && addresses.map(function(name, index){
-                                    console.log("Adding an address");
-                                  return  <tr key={index}>
-                                            <td>{name[2].toString()}</td>
-                                            <td>{index}</td>
-                                          </tr>;
-                                })
-                                }
+                                {destinations}
                             </tbody>
                           </Table>
 
