@@ -68,6 +68,7 @@ class Location extends React.Component {
                 lng:"-73.92346189999999"
             },
             addresses: [],
+            startingIndex: 0,
             name: '',
             placeID: null
         }
@@ -86,6 +87,7 @@ class Location extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.onAdd = this.onAdd.bind(this);
         this.onRemove = this.onRemove.bind(this);
+        this.onSetStart = this.onSetStart.bind(this);
     }
 
     handleChange(e) {
@@ -130,6 +132,15 @@ class Location extends React.Component {
       this.handleChange(allAddresses);
     }
 
+    onSetStart(index) {
+      console.log(`Location.onSetStart() index: = ${index}`);
+      var startingIndex = this.props.startingIndex;
+      startingIndex = index;
+      this.setState({
+        startingIndex: startingIndex
+      });
+    }
+
     getPlace(address, placeID) {
       console.log(`Location.getPlace(): address=${address}`);
       console.log(`Location.getPlace(): placeID=${placeID}`);
@@ -142,27 +153,21 @@ class Location extends React.Component {
 
     render() {
         const addresses = this.props.addresses;
-        //const addresses = this.state.addresses;
         const {lat, lng} = this.state.latlng || {}
         const inputProps = {
             value: this.state.address,
             onChange: this.onChange
         }
-//        console.log("Location.render()");
-//        console.log(`addresses: ${addresses}`);
-//        console.log(`this.state.addresses: ${this.state.addresses}`);
-//        console.log(`this.state.address: ${this.state.address}`);
         if(this.state.latlng && (this.state.latlng.lat !== "0" &&
                                  this.state.latlng.lng !== "0")) {
-          //console.log(`lat: ${this.state.latlng.lat}`);
-          //console.log(`lng: ${this.state.latlng.lng}`);
         }
 
         var destinations = addresses.map(function(name, index) {
                                   console.log("Adding address: {name}:{index}");
                                   return  <tr key={index}>
                                             <td>{name[2].toString()}</td>
-                                            <td>{index}-RemoveButton<Button variant="secondary" onClick={() => {this.onRemove(index)}} size="sm">Remove</Button></td>
+                                            <td><Button variant="secondary" onClick={() => {this.onRemove(index)}} size="sm">Remove</Button></td>
+                                            <td><Button variant="secondary" onClick={() => {this.onSetStart(index)}} disabled={this.state.startingIndex == index}>Set as Start</Button></td>
                                           </tr>;
                                 }.bind(this));
         return (
@@ -228,6 +233,7 @@ class Location extends React.Component {
                               <tr>
                                 <th>Address</th>
                                 <th>Remove</th>
+                                <th>Starting Point</th>
                               </tr>
                             </thead>
                             <tbody>

@@ -18,9 +18,9 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         if(process.env.NODE_ENV == "production") {
-            this.serverString = "www.johnstratoudakis.com/OnTheRoad";
+            this.serverString = "https://www.johnstratoudakis.com/OnTheRoad";
         } else {
-            this.serverString = "127.0.0.1:5000"
+            this.serverString = "http://127.0.0.1:5000"
         }
         console.log("serverString: " + this.serverString);
         console.log("NODE_ENV: " + process.env.NODE_ENV);
@@ -83,7 +83,7 @@ class App extends React.Component {
         console.log(`addresses.length: ${addresses.length}`);
         for(var i=0; i < addresses.length; i++) {
             console.log(`addresses[${i}][2]: ${addresses[i][2]}`);
-            request_addresses.push( [ addresses[i][2], addresses[i][2] ] );
+            request_addresses.push( [ addresses[i][2], addresses[i][2], false ] );
         }
 
         var request = {
@@ -93,7 +93,7 @@ class App extends React.Component {
         console.log("Sending request: " + request.locations);
 
         // Make request
-        axios.post(`https://${this.serverString}`, request )
+        axios.post(`${this.serverString}`, request )
             .then(res => {
                 var results_array = [];
                 for(var i=0; i < res.data['best_path'].length; i++) {

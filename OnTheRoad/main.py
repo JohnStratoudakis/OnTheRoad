@@ -39,7 +39,7 @@ dictConfig({
 LINE_LENGTH = 80
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/": {"origins": "johnstratoudakis.com"}})
+cors = CORS(app, resources={r"/": {"origins": ["http://localhost:3000", "johnstratoudakis.com"]}})
 
 
 @app.route('/version', methods=['GET'])
@@ -65,7 +65,7 @@ def default_path():
         allCities = []
         for location in locations:
             loc_obj = Location.Location(location[0], location[0], location[1])
-            app.logger.info(" - Location: {}".format(location[0]))
+            app.logger.info(f' - Location: {location[0]},  Starting Point: {location[2]}')
             allCities.append(loc_obj)
 
         best_state, best_fitness = BestPath.calcTsp(allCities)
