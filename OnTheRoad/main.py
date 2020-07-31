@@ -61,6 +61,7 @@ def default_path():
         content = request.get_json()
 #        app.logger.info(f"requiest_content: {content}")
         locations = content['locations']
+        startingIndex = content['startingIndex']
 
         allCities = []
         for location in locations:
@@ -68,7 +69,8 @@ def default_path():
             app.logger.info(f' - Location: {location[0]},  Starting Point: {location[2]}')
             allCities.append(loc_obj)
 
-        best_state, best_fitness = BestPath.calcTsp(allCities)
+        app.logger.info(f' - Starting Index: {startingIndex}')
+        best_state, best_fitness = BestPath.calcTsp(allCities, startingIndex)
 
         best_path = []
         for state in best_state:

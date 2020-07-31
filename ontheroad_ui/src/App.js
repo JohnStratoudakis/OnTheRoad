@@ -94,7 +94,8 @@ class App extends React.Component {
         }
 
         var request = {
-            "locations": request_addresses
+            "locations": request_addresses,
+            "startingIndex": startingIndex
         };
         console.log("Server String: " + this.serverString);
         console.log("Sending request: " + request.locations);
