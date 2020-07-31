@@ -13,7 +13,7 @@ logger.addHandler(default_handler)
 def tsp_fitness(state, c, starting_point = None):
     total_cost = 0
     try:
-        if starting_point:
+        if starting_point is not None:
             if state[0] != starting_point:
                 return np.inf
 
