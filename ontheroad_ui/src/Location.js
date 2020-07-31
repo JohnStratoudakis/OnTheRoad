@@ -72,7 +72,9 @@ class Location extends React.Component {
             name: '',
             placeID: null
         }
-        this.getPlace = this.getPlace.bind(this)
+        this.handlePlacesChange = this.handlePlacesChange.bind(this)
+        this.handlePlacesSelect = this.handlePlacesSelect.bind(this)
+
         this.onChange = (address) => {
           this.setState({ address, placeID: null, latlng: {lat:"0", lng:"0"}})
         }
@@ -91,7 +93,7 @@ class Location extends React.Component {
     }
 
     handleChange(e) {
-        console.log("Location::handleChange");
+        console.log(`Location::handleChange: ${e}`);
         this.props.onAddressesChange(e);
     }
 
@@ -105,7 +107,6 @@ class Location extends React.Component {
       console.log(`Location.onAdd(): New address= ${this.state.address}`);
 
       var allAddresses = this.props.addresses;
-//      this.dump_addresses(allAddresses, "Location:PRE");
       if(null === allAddresses) {
           allAddresses = [];
       }
@@ -113,9 +114,11 @@ class Location extends React.Component {
 //      this.dump_addresses(allAddresses, "Location:POST");
 
       this.setState({
-        addresses: allAddresses
+        addresses: allAddresses,
+        address: ""
       });
 
+      console.log(`this.state: ${this.state}`);
       window.localStorage.setItem("addresses", JSON.stringify(allAddresses));
       this.handleChange(allAddresses);
     }
@@ -139,20 +142,25 @@ class Location extends React.Component {
       this.setState({
         startingIndex: startingIndex
       });
+      this.props.onStartingIndexChange(index);
     }
 
-    getPlace(address, placeID) {
-      console.log(`Location.getPlace(): address=${address}`);
-      console.log(`Location.getPlace(): placeID=${placeID}`);
-        this.saveAddress(address, placeID)
-        geocodeByAddress(address)
-            .then(results => getLatLng(results[0]) )
-            .then(latlng => this.saveLocation(latlng, address) )
-            .catch(error => console.error('Error', error))
+    handlePlacesChange(address) {
+      console.log(`PlacesAutoComplete.handlePlacesChange(): address=${address}`);
+    }
+
+    handlePlacesSelect(address, placeID) {
+      console.log(`PlacesAutoComplete.handlePlacesSelect(): address=${address}, placeID=${placeID}`);
+      this.saveAddress(address, placeID)
+      geocodeByAddress(address)
+        .then(results => getLatLng(results[0]) )
+        .then(latlng => this.saveLocation(latlng, address) )
+        .catch(error => console.error('Error', error));
     }
 
     render() {
         const addresses = this.props.addresses;
+        const startingIndex = this.props.startingIndex;
         const {lat, lng} = this.state.latlng || {}
         const inputProps = {
             value: this.state.address,
@@ -163,7 +171,7 @@ class Location extends React.Component {
         }
 
         var destinations = addresses.map(function(name, index) {
-                                  console.log("Adding address: {name}:{index}");
+                                  //console.log("Adding address: {name}:{index}");
                                   return  <tr key={index}>
                                             <td>{name[2].toString()}</td>
                                             <td><Button variant="secondary" onClick={() => {this.onRemove(index)}} size="sm">Remove</Button></td>
@@ -181,8 +189,10 @@ class Location extends React.Component {
                         <h3>Enter an Address:</h3>
                         <hr />
                           <PlacesAutocomplete
+                            id="placesAutoComplete"
                             inputProps={inputProps}
-                            onSelect={this.getPlace}
+                            onChange={this.handlePlacesChange}
+                            onSelect={this.handlePlacesSelect}
                             styles={ defaultStyles }/>
                       </td>
                       <td>

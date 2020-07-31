@@ -26,9 +26,12 @@ class App extends React.Component {
         console.log("NODE_ENV: " + process.env.NODE_ENV);
 
         // Dump all environment variables
+        /*
+        console.log('Dump all environment variables');
         Object.keys(process.env).forEach(function(key) {
               console.log('App.js: ' + key + '="' + process.env[key] +'"');
         });
+        */
 
         let addresses_storage = window.localStorage.getItem("addresses");
         if(addresses_storage === null) {
@@ -45,10 +48,12 @@ class App extends React.Component {
         this.handleCalculate = this.handleCalculate.bind(this);
         this.handleClear = this.handleClear.bind(this);
         this.handleOnAddressesChange = this.handleOnAddressesChange.bind(this);
+        this.handleOnStartingIndexChange = this.handleOnStartingIndexChange.bind(this);
 
         this.state = {
           results: ['', ''],
-          addresses: addresses_storage
+          addresses: addresses_storage,
+          startingIndex: 0
         };
     }
 
@@ -76,14 +81,16 @@ class App extends React.Component {
     }
 
     handleCalculate(event) {
-        console.log("handleCalculate()");
+        console.log("App.js::handleCalculate()");
 
         var request_addresses = [];
         var addresses = this.state.addresses;
+        var startingIndex = this.state.startingIndex;
         console.log(`addresses.length: ${addresses.length}`);
+        console.log(`startingIndex: ${startingIndex}`);
         for(var i=0; i < addresses.length; i++) {
             console.log(`addresses[${i}][2]: ${addresses[i][2]}`);
-            request_addresses.push( [ addresses[i][2], addresses[i][2], false ] );
+            request_addresses.push( [ addresses[i][2], addresses[i][2], (startingIndex == i)] );
         }
 
         var request = {
@@ -118,12 +125,19 @@ class App extends React.Component {
     }
 
     handleOnAddressesChange(new_addresses) {
-        //console.log("App.handleOnAddressesChange()");
+        console.log(`handleOnAddressChange(${new_addresses})`);
         this.setState({addresses: new_addresses});
+    }
+
+    handleOnStartingIndexChange(new_startingIndex) {
+        console.log(`handleOnStartingIndexChange(${new_startingIndex})`);
+        this.setState({startingIndex: new_startingIndex});
     }
 
     render() {
         const addresses = this.state.addresses;
+        const startingIndex = this.state.startingIndex;
+
         console.log("App::render()");
         return (
             <div className="App" style={{width: '100%'}}>
@@ -133,6 +147,8 @@ class App extends React.Component {
                     <Location
                         addresses={addresses}
                         onAddressesChange={this.handleOnAddressesChange}
+                        startingIndex={startingIndex}
+                        onStartingIndexChange={this.handleOnStartingIndexChange}
                      />
                     </div>
                     <div>
