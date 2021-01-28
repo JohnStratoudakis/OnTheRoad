@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name="OnTheRoad",
-    version="0.0.198",
+    version="0.0.199",
     author="John Stratoudakis",
     author_email="johnstratoudakis@gmail.com",
     license="",
